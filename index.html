@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xuan Ho — Data Analyst Portfolio</title>
+  <meta name="description" content="Xuan Ho (Susan Ho) — Data Analyst specializing in ETL pipelines, Power BI dashboards, and SQL analytics. Based in Helsinki, Finland.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Xuan Ho</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="resume.html">About Me</a></li>
+        <li><a href="beyond.html">Beyond Work</a></li>
+        <li>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+            <span class="theme-icon">🌙</span>
+          </button>
+        </li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Xuan Ho</h1>
+      <p class="hero-title">
+        <span id="typing-text"></span><span class="typing-cursor"></span>
+      </p>
+      <p class="hero-bio">
+        Transitioning into Data Analytics with a solid foundation from an MBA in Finland (GPA 4.53/5.0)
+        and over 5 years of experience in Market Research and Sales Management.
+        Passionate about uncovering insights from complex data to enable data-driven business growth.
+      </p>
+      <div class="hero-cta">
+        <a href="projects.html" class="btn btn-primary">View My Projects →</a>
+        <a href="resume.html" class="btn btn-outline">About My Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tech Stack -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-line"></div>
+        <h2>Tech Stack</h2>
+        <p>Tools and technologies I work with daily.</p>
+      </div>
+      <div class="tech-grid reveal">
+        <div class="tech-item"><span class="tech-icon">🐍</span><span>Python</span></div>
+        <div class="tech-item"><span class="tech-icon">🗄️</span><span>SQL</span></div>
+        <div class="tech-item"><span class="tech-icon">📊</span><span>Power BI</span></div>
+        <div class="tech-item"><span class="tech-icon">☁️</span><span>BigQuery</span></div>
+        <div class="tech-item"><span class="tech-icon">📦</span><span>GCS</span></div>
+        <div class="tech-item"><span class="tech-icon">🐼</span><span>Pandas</span></div>
+        <div class="tech-item"><span class="tech-icon">📗</span><span>Excel</span></div>
+        <div class="tech-item"><span class="tech-icon">🔧</span><span>DAX</span></div>
+        <div class="tech-item"><span class="tech-icon">💻</span><span>VS Code</span></div>
+        <div class="tech-item"><span class="tech-icon">🐙</span><span>Git</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-line"></div>
+        <h2>Featured Project</h2>
+        <p>My latest and most comprehensive data engineering project.</p>
+      </div>
+      <div class="card reveal" style="max-width:700px;margin:0 auto">
+        <div class="card-tags" style="display:flex;gap:6px;margin-bottom:12px">
+          <span class="project-tag tag-python">Python</span>
+          <span class="project-tag tag-bigquery">BigQuery</span>
+          <span class="project-tag tag-gcs">GCS</span>
+        </div>
+        <h3 style="font-size:1.3rem;font-weight:700;margin-bottom:8px">
+          Building an Omnichannel Retail Data Pipeline
+        </h3>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.8;margin-bottom:20px">
+          A production-grade ETL pipeline processing 6M+ records from multiple e-commerce platforms,
+          payment gateways, and tracking systems into a BigQuery Star Schema — powering 3 Power BI dashboards
+          with automated RFM customer segmentation (11 segments).
+        </p>
+        <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn btn-primary" style="font-size:0.85rem;padding:10px 24px">
+          View on GitHub →
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-line"></div>
+        <h2>Certifications</h2>
+        <p>Validating my technical foundation.</p>
+      </div>
+      <div class="certs-grid reveal">
+        <div class="cert-card">
+          <div class="cert-icon">📊</div>
+          <div class="cert-info">
+            <h4>PL-300: Power BI Data Analyst</h4>
+            <p>Microsoft Certified</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">📗</div>
+          <div class="cert-info">
+            <h4>MOS Excel Specialist</h4>
+            <p>Microsoft Office Specialist 2016</p>
+          </div>
+        </div>
+        <div class="cert-card">
+          <div class="cert-icon">🗄️</div>
+          <div class="cert-info">
+            <h4>SQL (Advanced)</h4>
+            <p>HackerRank Certified</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <h2>Let's Connect</h2>
+      <p>I'm always open to connecting with professionals and fellow data enthusiasts. Feel free to reach out!</p>
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn" title="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub" title="GitHub">⌨</a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email" title="Email">✉</a>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Xuan Ho. Built with ☕ and curiosity.
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Mobile theme toggle sync
+    const mobileToggle = document.getElementById('theme-toggle-mobile');
+    if (window.innerWidth <= 768 && mobileToggle) {
+      mobileToggle.style.display = 'flex';
+    }
+    window.addEventListener('resize', () => {
+      if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none';
+    });
+    mobileToggle?.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      setTheme(current === 'dark' ? 'light' : 'dark');
+      const icon = mobileToggle.querySelector('.theme-icon');
+      if (icon) icon.textContent = document.documentElement.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    });
+  </script>
+</body>
+</html>

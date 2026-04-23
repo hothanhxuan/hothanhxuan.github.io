@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Xuan Ho</title>
+  <meta name="description" content="Data analytics projects by Xuan Ho — ETL pipelines, Power BI dashboards, SQL analysis, and more.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Xuan Ho</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="resume.html">About Me</a></li>
+        <li><a href="beyond.html">Beyond Work</a></li>
+        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span class="theme-icon">🌙</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1>Projects</h1>
+    <p>A collection of data analytics and engineering projects showcasing my technical skills.</p>
+  </div>
+
+  <!-- Filter + Projects -->
+  <section class="section">
+    <div class="container">
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="sql">SQL</button>
+        <button class="filter-btn" data-filter="powerbi">Power BI</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="card project-card reveal" data-tags="python bigquery gcs">
+          <div class="card-image">🛒</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-python">Python</span>
+              <span class="project-tag tag-bigquery">BigQuery</span>
+              <span class="project-tag tag-gcs">GCS</span>
+            </div>
+            <h3>Building an Omnichannel Retail Data Pipeline</h3>
+            <p>A production-grade ETL pipeline processing 6M+ records from multiple e-commerce platforms into a BigQuery Star Schema — with RFM customer segmentation and 3 Power BI dashboards.</p>
+            <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn btn-outline">View Project →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card project-card reveal" data-tags="powerbi">
+          <div class="card-image">📈</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-powerbi">Power BI</span>
+            </div>
+            <h3>Strategic BI & Market Growth Dashboard — SuperStore Global</h3>
+            <p>Comprehensive Power BI solution using a fact-dimension data model to process 51,000+ transaction records, tracking $12.64M revenue with 11.61% profit margin. Identified high-potential expansion zones like Canada.</p>
+            <a href="#" class="btn btn-outline">View Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card project-card reveal" data-tags="powerbi">
+          <div class="card-image">👥</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-powerbi">Power BI</span>
+            </div>
+            <h3>HR Analytics: Employee Turnover & Workforce Performance</h3>
+            <p>Analyzed data for ~300 employees tracking turnover rate (34.78%), average tenure (12.31 years), and engagement scores. Used DAX to pinpoint the Production department's 40.69% turnover and propose retention strategies.</p>
+            <a href="#" class="btn btn-outline">View Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="card project-card reveal" data-tags="powerbi">
+          <div class="card-image">🛍️</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-powerbi">Power BI</span>
+            </div>
+            <h3>Marketing Spend & Sales Performance — Fashion Retail</h3>
+            <p>Star Schema model integrating 10,500+ records across 4 tables with dynamic DAX measures for Week-over-Week ROAS, Budget, and Revenue Growth. Diagnosed underfunded hero SKUs and low-ROAS campaigns.</p>
+            <a href="#" class="btn btn-outline">View Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="card project-card reveal" data-tags="powerbi">
+          <div class="card-image">✈️</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-powerbi">Power BI</span>
+            </div>
+            <h3>Flight Delays & Network Performance — US Aviation</h3>
+            <p>Analytical dashboard processing 5.8 million flight records across 322 airports and 14 airlines using a star-schema model. Analyzed On-Time Performance (OTP) and delay distributions to optimize flight schedules.</p>
+            <a href="#" class="btn btn-outline">View Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="card project-card reveal" data-tags="sql bigquery">
+          <div class="card-image">🔍</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-sql">SQL</span>
+              <span class="project-tag tag-bigquery">BigQuery</span>
+            </div>
+            <h3>E-commerce User Behavior & Conversion Insights</h3>
+            <p>Advanced SQL project using Google BigQuery to analyze Google Analytics sessions. Leveraged CTEs and data segmentation to uncover conversion bottlenecks and contrast Purchaser vs. Non-Purchaser behavior.</p>
+            <a href="#" class="btn btn-outline">View Case Study →</a>
+          </div>
+        </div>
+
+        <!-- Coming Soon 1 -->
+        <div class="card project-card coming-soon reveal" data-tags="python ml">
+          <div class="card-image">🤖</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-python">Python</span>
+              <span class="project-tag tag-ml">ML</span>
+            </div>
+            <h3>Machine Learning Project</h3>
+            <p>Coming soon — stay tuned for an exciting machine learning project.</p>
+          </div>
+        </div>
+
+        <!-- Coming Soon 2 -->
+        <div class="card project-card coming-soon reveal" data-tags="sql">
+          <div class="card-image">📋</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-sql">SQL</span>
+            </div>
+            <h3>Advanced SQL Project</h3>
+            <p>Coming soon — another deep-dive SQL analytics project.</p>
+          </div>
+        </div>
+
+        <!-- Coming Soon 3 -->
+        <div class="card project-card coming-soon reveal" data-tags="excel">
+          <div class="card-image">📊</div>
+          <div class="card-body">
+            <div class="card-tags">
+              <span class="project-tag tag-excel">Excel</span>
+            </div>
+            <h3>Excel Analytics Project</h3>
+            <p>Coming soon — showcasing advanced Excel & data wrangling skills.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section-alt" style="text-align:center">
+    <div class="container reveal">
+      <h2 style="font-size:1.5rem;margin-bottom:12px">Have a data challenge?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:24px">I'm always open to discussing new projects or opportunities.</p>
+      <a href="mailto:susanngo1995@gmail.com" class="btn btn-primary">Get In Touch →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub">⌨</a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
+      </div>
+      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+  <script>
+    const mobileToggle = document.getElementById('theme-toggle-mobile');
+    if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
+    window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
+    mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
+  </script>
+</body>
+</html>
