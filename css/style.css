@@ -11737,14 +11737,14 @@ html {
   }
 }
 /* ==========================================================================
-   INDIGO & PINK THEME OVERRIDES
+   DEEP PURPLE & SUNSET ORANGE THEME OVERRIDES
    ========================================================================== */
 :root {
-  --primary: #1e30f3;
-  --primary-dark: #1a2ad4;
-  --secondary: #e21e80;
-  --gradient: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
-  --gradient-text: linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
+  --primary: #6f42c1;
+  --primary-dark: #59359a;
+  --secondary: #fd7e14;
+  --gradient: linear-gradient(135deg, #6f42c1 0%, #fd7e14 100%);
+  --gradient-text: linear-gradient(315deg, #6f42c1 0%, #fd7e14 100%);
   
   --bg: #ffffff;
   --bg-alt: #f8f9fa;
