@@ -11737,14 +11737,14 @@ html {
   }
 }
 /* ==========================================================================
-   PASTEL GREEN & PINK THEME OVERRIDES
+   INDIGO & PINK THEME OVERRIDES
    ========================================================================== */
 :root {
-  --primary: #A8E6CF;
-  --primary-dark: #92D1BB;
-  --secondary: #FFB7B2;
-  --gradient: linear-gradient(135deg, #A8E6CF 0%, #FFB7B2 100%);
-  --gradient-text: linear-gradient(135deg, #A8E6CF 0%, #FFB7B2 100%);
+  --primary: #1e30f3;
+  --primary-dark: #1a2ad4;
+  --secondary: #e21e80;
+  --gradient: linear-gradient(135deg, #1e30f3 0%, #e21e80 100%);
+  --gradient-text: linear-gradient(315deg, #1e30f3 0%, #e21e80 100%);
   
   --bg: #ffffff;
   --bg-alt: #f8f9fa;
@@ -11783,18 +11783,18 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Base Theme Overrides to enforce Pastel Green & Pink over Bootstrap Indigo/Pink */
+/* Base Theme Overrides */
 .text-primary { color: var(--primary) !important; }
 .bg-primary { background-color: var(--primary) !important; }
 .btn-primary { 
   background-color: var(--primary) !important;
   border-color: var(--primary) !important;
-  color: #1e293b !important; /* Dark text for pastel background contrast */
+  color: #fff !important; 
 }
 .btn-primary:hover {
   background-color: var(--primary-dark) !important;
   border-color: var(--primary-dark) !important;
-  color: #1e293b !important;
+  color: #fff !important;
 }
 
 .text-gradient {
