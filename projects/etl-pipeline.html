@@ -28,7 +28,7 @@
   <div class="nav-overlay" id="nav-overlay"></div>
 
   <!-- Hero -->
-  <section class="project-hero">
+  <section class="project-detail-hero">
     <div class="container">
       <a href="../projects.html" class="project-back-link">← Back to Projects</a>
       <div class="project-hero-tags">
@@ -37,6 +37,7 @@
         <span class="project-tag tag-gcs">GCS</span>
       </div>
       <h1>Building an Omnichannel Retail Data Pipeline</h1>
+      <p class="project-hero-subtitle">End-to-End ETL · Star Schema · RFM Segmentation</p>
       <p class="project-hero-summary">I built an ETL pipeline to process millions of sales records for a fast-growing technology retail chain. Driven by a custom Python orchestrator, the system cleans raw data and calculates customer segments — delivering an analysis-ready Data Warehouse for the analytics team.</p>
       <div class="project-hero-meta">
         <span class="project-meta-item">📅 2024–2025</span>
@@ -50,168 +51,96 @@
   <section class="section">
     <div class="container">
       <div class="project-layout">
-        <!-- Main Column -->
         <div class="project-main">
-
-          <!-- 01. Business Challenges -->
+          <!-- 01 -->
           <div class="project-section" id="business-challenge">
             <h2 class="project-section-heading"><span class="section-number">01.</span> Business Challenges</h2>
-            <p>A fast-growing technology retail chain — selling through both Shopify storefronts and direct online order systems — had no unified view of its own business. Sales data, payment records, and customer behaviour each lived in completely separate systems, managed by different teams.</p>
-            <p>Every month, analysts had to manually pull data from multiple sources, reconcile mismatched IDs, and stitch together reports in spreadsheets. The result: slow decisions, inconsistent numbers, and zero visibility into which customers were becoming loyal — and which were silently churning.</p>
-
+            <p>A fast-growing technology retail chain — selling through both Shopify storefronts and direct online order systems — had no unified view of its own business.</p>
+            <p>Every month, analysts had to manually pull data from multiple sources, reconcile mismatched IDs, and stitch together reports in spreadsheets.</p>
             <div class="challenge-cards">
-              <div class="challenge-card">
-                <h4>🗄️ Data Silos</h4>
-                <p>Shopify, Online Orders, ZaloPay, MoMo, PayPal, and Mercury Bank — all storing data independently, with no shared schema.</p>
-              </div>
-              <div class="challenge-card">
-                <h4>👤 No Customer View</h4>
-                <p>Tracking a single customer's journey across channels — from cart event to payment — was practically impossible.</p>
-              </div>
-              <div class="challenge-card">
-                <h4>📋 Manual Reporting</h4>
-                <p>Cashflow and sales reports were compiled by hand each month, making them slow, error-prone, and inconsistent.</p>
-              </div>
+              <div class="challenge-card"><h4>🗄️ Data Silos</h4><p>Shopify, Online Orders, ZaloPay, MoMo, PayPal, and Mercury Bank — all storing data independently.</p></div>
+              <div class="challenge-card"><h4>👤 No Customer View</h4><p>Tracking a single customer's journey across channels was practically impossible.</p></div>
+              <div class="challenge-card"><h4>📋 Manual Reporting</h4><p>Cashflow and sales reports were compiled by hand each month — slow, error-prone, and inconsistent.</p></div>
             </div>
           </div>
 
-          <!-- 02. My Approach -->
+          <!-- 02 -->
           <div class="project-section" id="my-approach">
             <h2 class="project-section-heading"><span class="section-number">02.</span> My Approach</h2>
-            <p>Due to project constraints, my primary focus was on establishing a solid and scalable data foundation. Rather than building a front-end BI layer immediately, I prioritised getting the data architecture right first — so any downstream tool (dashboards, notebooks, or SQL queries) could plug in reliably.</p>
-
+            <p>I prioritised getting the data architecture right first — so any downstream tool could plug in reliably.</p>
             <div class="approach-steps">
-              <div class="approach-step">
-                <div class="step-badge">1</div>
-                <div class="step-content">
-                  <h4>Ingest</h4>
-                  <p>Raw data dumps from all sales channels and payment systems are ingested into Google Cloud Storage buckets as the single source of truth, before any processing begins.</p>
-                </div>
-              </div>
-              <div class="approach-step">
-                <div class="step-badge">2</div>
-                <div class="step-content">
-                  <h4>Transform</h4>
-                  <p>Using Python scripts, the raw archives are decompressed, parsed, cleaned, and standardised into a unified schema — with automated data quality checks built into every step.</p>
-                </div>
-              </div>
-              <div class="approach-step">
-                <div class="step-badge">3</div>
-                <div class="step-content">
-                  <h4>Load & Segment</h4>
-                  <p>The transformed data is loaded into BigQuery as partitioned, clustered tables. A final SQL <code>MERGE</code> statement then automatically calculates and updates each customer's RFM segment — delivering business value without any extra tooling.</p>
-                </div>
-              </div>
+              <div class="approach-step"><div class="step-badge">1</div><div class="step-content"><h4>Ingest</h4><p>Raw data dumps ingested into Google Cloud Storage buckets as the single source of truth.</p></div></div>
+              <div class="approach-step"><div class="step-badge">2</div><div class="step-content"><h4>Transform</h4><p>Python scripts decompress, parse, clean, and standardise into a unified schema with data quality checks.</p></div></div>
+              <div class="approach-step"><div class="step-badge">3</div><div class="step-content"><h4>Load &amp; Segment</h4><p>Transformed data loaded into BigQuery. SQL <code>MERGE</code> calculates and updates each customer's RFM segment.</p></div></div>
             </div>
           </div>
 
-          <!-- 03. System Architecture -->
+          <!-- 03 -->
           <div class="project-section" id="system-architecture">
             <h2 class="project-section-heading"><span class="section-number">03.</span> System Architecture</h2>
-            <p>The pipeline follows a classic cloud-native approach: raw files land in Google Cloud Storage (GCS), get processed by a custom Python orchestrator, and are loaded into Google BigQuery for downstream analytics and reporting.</p>
-
+            <p>The pipeline follows a cloud-native approach: raw files land in GCS, get processed by a custom Python orchestrator, and are loaded into BigQuery.</p>
             <div class="figure-placeholder">
               <div class="figure-placeholder-inner">📐 Architecture Diagram</div>
               <p class="figure-caption">Figure 1 — High-level pipeline architecture: from raw sources to analysis-ready Data Warehouse.</p>
             </div>
-
             <h3>How the Pipeline Works</h3>
-            <p>Data flows through three layers — often referred to as the <strong>Medallion Architecture</strong>:</p>
-
+            <p>Data flows through three layers — the <strong>Medallion Architecture</strong>:</p>
             <div class="architecture-layers">
-              <div class="arch-layer">
-                <h4>🥉 Bronze — Raw</h4>
-                <p>Compressed files from all sources are ingested and stored as-is in GCS. No changes.</p>
-              </div>
-              <div class="arch-layer">
-                <h4>🥈 Silver — Cleaned</h4>
-                <p>Python scripts standardise schemas, fix data types, generate surrogate keys, and handle missing values.</p>
-              </div>
-              <div class="arch-layer">
-                <h4>🥇 Gold — Serving</h4>
-                <p>Dimension & Fact tables loaded into BigQuery. SQL views built on top for immediate reporting.</p>
-              </div>
+              <div class="arch-layer"><h4>🥉 Bronze — Raw</h4><p>Compressed files ingested and stored as-is in GCS.</p></div>
+              <div class="arch-layer"><h4>🥈 Silver — Cleaned</h4><p>Python standardises schemas, fixes data types, generates surrogate keys.</p></div>
+              <div class="arch-layer"><h4>🥇 Gold — Serving</h4><p>Dimension &amp; Fact tables loaded into BigQuery with SQL views for reporting.</p></div>
             </div>
           </div>
 
-          <!-- 04. Results -->
+          <!-- 04 -->
           <div class="project-section" id="results">
             <h2 class="project-section-heading"><span class="section-number">04.</span> Results</h2>
-            <p>After the pipeline runs, the team gains a centralised, analysis-ready Data Warehouse in Google BigQuery. Here is what the system delivers:</p>
-
+            <p>The team gains a centralised, analysis-ready Data Warehouse in BigQuery:</p>
             <h3>4.1 — Final Data Structure</h3>
-            <p>The pipeline produces a <strong>Star Schema</strong> data warehouse — a standard structure in analytics where all business events connect back to two core reference tables: Customers and Products. This makes cross-source queries fast and predictable.</p>
-
+            <p>A <strong>Star Schema</strong> data warehouse where all events connect back to Customers and Products.</p>
             <div class="result-columns">
-              <div class="result-col">
-                <h4>Dimension Tables (Who & What)</h4>
-                <ul>
-                  <li><code>dim_customer</code> — customer profile + RFM segment</li>
-                  <li><code>dim_product</code> — SKU, category, brand, pricing</li>
-                </ul>
-              </div>
-              <div class="result-col">
-                <h4>Fact Tables (What Happened)</h4>
-                <ul>
-                  <li><code>fact_orders</code> — all orders across channels</li>
-                  <li><code>fact_order_items</code> — product line detail</li>
-                  <li><code>fact_payment</code> — e-wallet transactions</li>
-                  <li><code>fact_bank_transactions</code> — bank records</li>
-                  <li><code>fact_cart_events</code> — user behaviour</li>
-                </ul>
-              </div>
+              <div class="result-col"><h4>Dimension Tables</h4><ul><li><code>dim_customer</code> — profile + RFM segment</li><li><code>dim_product</code> — SKU, category, brand</li></ul></div>
+              <div class="result-col"><h4>Fact Tables</h4><ul><li><code>fact_orders</code> — all orders</li><li><code>fact_order_items</code> — line detail</li><li><code>fact_payment</code> — e-wallet</li><li><code>fact_bank_transactions</code> — bank</li><li><code>fact_cart_events</code> — behaviour</li></ul></div>
             </div>
-
-            <h3>4.2 — Auto-Updated Customer Metrics & Segmentation</h3>
-            <p>Beyond simply loading data, the pipeline automatically recalculates key customer metrics after every run — including Lifetime Value (LTV), last order date, total order count, and average spend. These aggregate values are then used to re-classify each customer into an <strong>RFM-based segment</strong> (11 segments), kept always up-to-date inside the Data Warehouse.</p>
-
-            <h3>4.3 — Ready-to-Use Reporting Views</h3>
-            <p>Two pre-built views are immediately available for any BI tool or analyst team — no extra data prep required:</p>
-
+            <h3>4.2 — Auto-Updated Customer Metrics</h3>
+            <p>The pipeline recalculates LTV, last order date, order count, and average spend — re-classifying each customer into an <strong>RFM-based segment</strong> (11 segments).</p>
+            <h3>4.3 — Reporting Views</h3>
             <div class="result-columns">
-              <div class="result-col">
-                <h4>📊 Daily Cashflow View</h4>
-                <p>Reconciles orders, e-wallet payments, and bank movements into one daily summary — sales revenue, payment received, bank inflow/outflow, net cashflow. Finance can answer "did we actually receive the money?" in a single query.</p>
-              </div>
-              <div class="result-col">
-                <h4>🛒 Customer Journey View</h4>
-                <p>Stitches cart events and purchase records into a chronological sequence per customer — showing the full path from browsing to buying. Helps marketing understand where customers drop off.</p>
-              </div>
+              <div class="result-col"><h4>📊 Daily Cashflow View</h4><p>Reconciles orders, payments, and bank movements into one daily summary.</p></div>
+              <div class="result-col"><h4>🛒 Customer Journey View</h4><p>Stitches cart events and purchases into a chronological sequence per customer.</p></div>
             </div>
           </div>
 
-          <!-- 05. Business Impact -->
+          <!-- 05 -->
           <div class="project-section" id="business-impact">
             <h2 class="project-section-heading"><span class="section-number">05.</span> Business Impact</h2>
-            <p>With the pipeline in place, here is what changes for the business — across every team that touches data.</p>
-
+            <p>With the pipeline in place, here is what changes for the business:</p>
             <div class="impact-grid">
-              <div class="impact-card">
-                <h4>🎯 One Source of Truth</h4>
-                <p>Data from every sales channel, payment gateway, and tracking system now lives in one place — clean, consistent, and version-controlled.</p>
-              </div>
-              <div class="impact-card">
-                <h4>🔌 Plug-and-Play Analytics</h4>
-                <p>The analytics team connects directly to BigQuery and gets analysis-ready tables immediately — no manual data prep, no waiting for monthly exports.</p>
-              </div>
-              <div class="impact-card">
-                <h4>💰 Daily Financial Visibility</h4>
-                <p>Finance can now answer "Did we actually receive the money?" in a single query — reconciling all transactions into one daily cashflow summary.</p>
-              </div>
-              <div class="impact-card">
-                <h4>👥 Always-Current Customer View</h4>
-                <p>Marketing knows exactly who their Champions, Loyals, and At-Risk customers are — updated automatically after every pipeline run.</p>
-              </div>
+              <div class="impact-card"><h4>🎯 One Source of Truth</h4><p>All data now lives in one place — clean, consistent, and version-controlled.</p></div>
+              <div class="impact-card"><h4>🔌 Plug-and-Play Analytics</h4><p>The team connects directly to BigQuery — no manual data prep needed.</p></div>
+              <div class="impact-card"><h4>💰 Daily Financial Visibility</h4><p>Finance reconciles all transactions into one daily cashflow summary.</p></div>
+              <div class="impact-card"><h4>👥 Always-Current Customer View</h4><p>Marketing sees Champions, Loyals, and At-Risk customers — updated automatically.</p></div>
             </div>
           </div>
 
           <!-- Source Code CTA -->
           <div class="source-code-cta">
-            <h3>Source Code & Details</h3>
-            <p>This page is written for non-technical readers. For a deep dive into the code structure, data schema, and setup instructions, visit the GitHub repository below.</p>
+            <h3>Source Code &amp; Details</h3>
+            <p>For a deep dive into the code structure, data schema, and setup instructions, visit the GitHub repository.</p>
             <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn btn-primary">View on GitHub →</a>
           </div>
 
+          <!-- Prev / Next -->
+          <nav class="project-nav">
+            <div class="project-nav-item project-nav-prev disabled">
+              <span class="project-nav-label">← Previous</span>
+              <span class="project-nav-title">—</span>
+            </div>
+            <a href="superstore-dashboard.html" class="project-nav-item project-nav-next">
+              <span class="project-nav-label">Next Project →</span>
+              <span class="project-nav-title">SuperStore Dashboard</span>
+            </a>
+          </nav>
         </div>
 
         <!-- Sidebar -->
@@ -219,7 +148,7 @@
           <div class="sidebar-sticky">
             <div class="toc-card">
               <h4>Table of Contents</h4>
-              <ul class="toc-list">
+              <ul class="toc-list" id="toc-list">
                 <li><a href="#business-challenge">01. Business Challenge</a></li>
                 <li><a href="#my-approach">02. My Approach</a></li>
                 <li><a href="#system-architecture">03. System Architecture</a></li>
@@ -256,6 +185,15 @@
     if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
     window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
     mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
+    // Active TOC
+    const tocLinks = document.querySelectorAll('#toc-list a');
+    const secs = document.querySelectorAll('.project-section');
+    function updateToc() {
+      let cur = '';
+      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
+      tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+    }
+    window.addEventListener('scroll', updateToc, { passive: true });
   </script>
 </body>
 </html>
