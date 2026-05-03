@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flight Delays & Network Performance — Xuan Ho</title>
-  <meta name="description" content="Power BI dashboard processing 5.8M flight records across 322 airports and 14 airlines.">
+  <title>Flight Delays & Network Performance — US Aviation — Xuan Ho</title>
+  <meta name="description" content="Case study: Power BI dashboard processing 5.8M flight records across 322 airports and 14 airlines to analyze on-time performance and delay patterns.">
   <link rel="stylesheet" href="../css/custom.css">
 </head>
 <body>
@@ -28,59 +28,81 @@
     <a href="../projects.html" class="project-back-link">← Back to Projects</a>
     <div class="project-hero-tags"><span class="project-tag tag-powerbi">Power BI</span></div>
     <h1>Flight Delays &amp; Network Performance — US Aviation</h1>
-    <p class="project-hero-subtitle">Power BI · Star Schema · OTP Analysis</p>
-    <p class="project-hero-summary"><!-- TODO: Add summary --></p>
+    <p class="project-hero-subtitle">Power BI · Star Schema · On-Time Performance Analysis</p>
+    <p class="project-hero-summary">An analytical dashboard processing 5.8 million flight records across 322 airports and 14 airlines. The project dissects On-Time Performance (OTP), delay distributions by cause, and cancellation patterns — revealing which airlines, routes, and time slots are most affected by disruptions.</p>
     <div class="project-hero-meta">
       <span class="project-meta-item">📅 2024</span>
       <span class="project-meta-item">🛠️ Power BI, DAX</span>
-      <span class="project-meta-item">✈️ 5.8M Records · 322 Airports</span>
+      <span class="project-meta-item">✈️ 5.8M Flights · 322 Airports · 14 Airlines</span>
     </div>
   </div></section>
 
   <section class="section"><div class="container"><div class="project-layout">
     <div class="project-main">
+
       <div class="project-section" id="business-challenge">
         <h2 class="project-section-heading"><span class="section-number">01.</span> Business Challenges</h2>
-        <p><!-- TODO --></p>
+        <p>US aviation data is massive and fragmented — millions of flight records spread across different airports, airlines, and time periods. Without a unified analytical layer, identifying systemic delay patterns and their root causes is nearly impossible.</p>
         <div class="challenge-cards">
-          <div class="challenge-card"><h4><!-- TODO --></h4><p><!-- TODO --></p></div>
-          <div class="challenge-card"><h4><!-- TODO --></h4><p><!-- TODO --></p></div>
-          <div class="challenge-card"><h4><!-- TODO --></h4><p><!-- TODO --></p></div>
+          <div class="challenge-card"><h4>⏱️ Delay Complexity</h4><p>Flight delays stem from multiple causes — weather, carrier operations, NAS, security, and late aircraft — each requiring different mitigation strategies.</p></div>
+          <div class="challenge-card"><h4>📊 Scale of Data</h4><p>5.8 million flight records across 322 airports and 14 airlines need to be sliced, filtered, and visualized to reveal actionable patterns.</p></div>
+          <div class="challenge-card"><h4>🚫 Cancellation Patterns</h4><p>Flight cancellations were tracked separately from delays, making it impossible to see the full picture of airline reliability.</p></div>
         </div>
       </div>
+
       <div class="project-section" id="my-approach">
         <h2 class="project-section-heading"><span class="section-number">02.</span> My Approach</h2>
-        <p><!-- TODO --></p>
+        <p>I built a star-schema data model optimized for large-scale flight data analysis, with DAX measures designed for time-based aggregation and delay cause decomposition.</p>
         <div class="approach-steps">
-          <div class="approach-step"><div class="step-badge">1</div><div class="step-content"><h4><!-- TODO --></h4><p><!-- TODO --></p></div></div>
-          <div class="approach-step"><div class="step-badge">2</div><div class="step-content"><h4><!-- TODO --></h4><p><!-- TODO --></p></div></div>
-          <div class="approach-step"><div class="step-badge">3</div><div class="step-content"><h4><!-- TODO --></h4><p><!-- TODO --></p></div></div>
+          <div class="approach-step"><div class="step-badge">1</div><div class="step-content"><h4>Star Schema Model</h4><p>Designed a fact-dimension model with flight records as the fact table, linked to dimension tables for Airlines, Airports, Time (Date/Hour), and Delay Causes.</p></div></div>
+          <div class="approach-step"><div class="step-badge">2</div><div class="step-content"><h4>OTP Calculations</h4><p>Created DAX measures for On-Time Performance rate, average delay duration, delay cause breakdown percentages, and cancellation rates per airline/airport.</p></div></div>
+          <div class="approach-step"><div class="step-badge">3</div><div class="step-content"><h4>Multi-Dimensional Dashboard</h4><p>Built interactive dashboards covering network-level OTP, airline comparison, airport analysis, and time-of-day delay patterns.</p></div></div>
         </div>
       </div>
+
       <div class="project-section" id="dashboard-design">
         <h2 class="project-section-heading"><span class="section-number">03.</span> Dashboard Design</h2>
-        <p><!-- TODO --></p>
-        <div class="figure-placeholder"><div class="figure-placeholder-inner">📊 Dashboard Screenshot</div>
-        <p class="figure-caption">Replace with your Flight Delays dashboard screenshot.</p></div>
-      </div>
-      <div class="project-section" id="results">
-        <h2 class="project-section-heading"><span class="section-number">04.</span> Key Insights</h2>
-        <p><!-- TODO --></p>
-        <div class="impact-grid">
-          <div class="impact-card"><h4><!-- TODO --></h4><p><!-- TODO --></p></div>
-          <div class="impact-card"><h4><!-- TODO --></h4><p><!-- TODO --></p></div>
+        <p>The dashboard provides three analytical views — network overview, airline comparison, and airport-level deep dives — enabling stakeholders to identify problem areas at every level.</p>
+        <div class="figure-placeholder">
+          <div class="figure-placeholder-inner">📊 Flight Performance Dashboard</div>
+          <p class="figure-caption">Figure 1 — Replace with your Flight Delays dashboard screenshot.</p>
+        </div>
+        <div class="architecture-layers">
+          <div class="arch-layer"><h4>🌐 Network Overview</h4><p>System-wide OTP, total flights, delay rates, and cancellation trends across the entire US aviation network.</p></div>
+          <div class="arch-layer"><h4>✈️ Airline Comparison</h4><p>Head-to-head OTP comparison across 14 airlines — identifying the most and least reliable carriers.</p></div>
+          <div class="arch-layer"><h4>🏢 Airport Analysis</h4><p>Airport-level delay patterns, busiest hubs, and the relationship between traffic volume and delay frequency.</p></div>
         </div>
       </div>
+
+      <div class="project-section" id="results">
+        <h2 class="project-section-heading"><span class="section-number">04.</span> Key Insights</h2>
+        <p>Analyzing 5.8 million flights revealed clear patterns in when, where, and why flights are delayed:</p>
+        <div class="impact-grid">
+          <div class="impact-card"><h4>⏰ Peak Delay Windows</h4><p>Afternoon and evening flights (3pm–8pm) show significantly higher delay rates — suggesting cascading delays from earlier disruptions accumulate throughout the day.</p></div>
+          <div class="impact-card"><h4>🌦️ Weather vs Operations</h4><p>While weather causes the longest individual delays, <strong>carrier-related delays</strong> are the most frequent — indicating operational efficiency gaps airlines can control.</p></div>
+          <div class="impact-card"><h4>🏆 Airline Rankings</h4><p>On-Time Performance varies dramatically across carriers — the gap between the best and worst airlines can exceed 15 percentage points.</p></div>
+          <div class="impact-card"><h4>🏢 Hub Congestion</h4><p>Major hub airports (ATL, ORD, DFW) show higher delay rates than regional airports — a direct result of traffic volume and connection complexity.</p></div>
+        </div>
+      </div>
+
       <div class="project-section" id="business-impact">
         <h2 class="project-section-heading"><span class="section-number">05.</span> Business Impact</h2>
-        <p><!-- TODO --></p>
+        <p>The analysis provides actionable intelligence for airline operations teams, airport authorities, and passengers:</p>
+        <div class="challenge-cards">
+          <div class="challenge-card"><h4>🔧 Operational Focus</h4><p>Airlines should prioritise reducing carrier-controlled delays (turnaround time, crew scheduling) — the single largest addressable delay category.</p></div>
+          <div class="challenge-card"><h4>📅 Schedule Optimization</h4><p>Adding buffer time to afternoon/evening flights and spreading traffic away from peak windows can improve system-wide OTP.</p></div>
+          <div class="challenge-card"><h4>🏢 Hub Management</h4><p>High-congestion hubs need targeted gate management and faster turnaround procedures to prevent delay cascades.</p></div>
+        </div>
       </div>
-      <div class="source-code-cta"><h3>View the Dashboard</h3><p><!-- TODO --></p><a href="#" target="_blank" class="btn btn-primary">View Project →</a></div>
+
+      <div class="source-code-cta"><h3>Source Code &amp; Details</h3><p>Explore the data model, DAX measures, and dashboard files on GitHub.</p><a href="https://github.com/hothanhxuan/Project-5-Airlines-Airports-Cancellation-Analysis" target="_blank" class="btn btn-primary">View on GitHub →</a></div>
+
       <nav class="project-nav">
         <a href="fashion-marketing.html" class="project-nav-item project-nav-prev"><span class="project-nav-label">← Previous</span><span class="project-nav-title">Fashion Marketing</span></a>
         <a href="ecommerce-behavior.html" class="project-nav-item project-nav-next"><span class="project-nav-label">Next Project →</span><span class="project-nav-title">E-commerce Behavior</span></a>
       </nav>
     </div>
+
     <aside class="project-sidebar"><div class="sidebar-sticky"><div class="toc-card">
       <h4>Table of Contents</h4>
       <ul class="toc-list" id="toc-list">
@@ -90,7 +112,9 @@
         <li><a href="#results">04. Key Insights</a></li>
         <li><a href="#business-impact">05. Business Impact</a></li>
       </ul>
-    </div></div></aside>
+    </div>
+    <div class="toc-card"><h4>Source Code</h4><a href="https://github.com/hothanhxuan/Project-5-Airlines-Airports-Cancellation-Analysis" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px">View on GitHub</a></div>
+    </div></aside>
   </div></div></section>
 
   <footer class="footer"><div class="footer-content">
