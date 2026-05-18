@@ -811,3 +811,109 @@ a.project-nav-item:hover {
   background: rgba(111,66,193,0.08);
   border-left-color: var(--primary);
 }
+
+/* ========== CENTERED HERO ========== */
+.project-detail-hero .container.hero-center {
+  text-align: center;
+}
+.project-detail-hero .container.hero-center .project-hero-tags { justify-content: center; }
+.project-detail-hero .container.hero-center h1 { margin-left: auto; margin-right: auto; }
+.project-detail-hero .container.hero-center .project-hero-summary { margin-left: auto; margin-right: auto; }
+.project-detail-hero .container.hero-center .project-hero-meta { justify-content: center; }
+
+/* ========== GRADIENT SECTION HEADINGS ========== */
+h2.section-heading-gradient {
+  font-size: clamp(1.4rem, 3vw, 1.75rem); font-weight: 700;
+  background: var(--gradient-text); -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; background-clip: text;
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 2px solid var(--border);
+  display: inline-block;
+}
+
+/* ========== DIAGRAM WRAP (image containers) ========== */
+.diagram-wrap {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; background: var(--bg-alt);
+  padding: 12px; text-align: center; margin: 20px 0;
+}
+.diagram-wrap img {
+  max-width: 100%; height: auto; border-radius: var(--radius-sm); cursor: zoom-in;
+  transition: opacity 0.15s;
+}
+.diagram-wrap img:hover { opacity: 0.88; }
+.diagram-caption {
+  font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-top: 10px;
+}
+
+/* ========== CODE BLOCKS ========== */
+.code-snippet-container {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; margin-bottom: 20px;
+}
+.code-header {
+  background: var(--bg-alt); padding: 8px 16px;
+  font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;
+  display: flex; justify-content: space-between; align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.code-snippet-container pre {
+  margin: 0; padding: 16px; font-size: 0.82rem;
+  color: var(--text); overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+}
+.sql-toggle-area { text-align: center; padding: 8px; border-top: 1px solid var(--border); }
+.sql-toggle-btn {
+  padding: 6px 20px; border-radius: var(--radius-full);
+  border: 2px solid var(--primary); background: transparent;
+  color: var(--primary); font-size: 0.82rem; font-weight: 600;
+  cursor: pointer; transition: all var(--transition);
+}
+.sql-toggle-btn:hover { background: var(--primary); color: #fff; }
+
+/* ========== RESULT TABLE ========== */
+.result-table-wrap {
+  border: 1px solid var(--border); border-radius: var(--radius);
+  overflow: hidden; margin-bottom: 20px; box-shadow: var(--shadow);
+}
+.result-table-header {
+  background: var(--gradient); padding: 8px 16px;
+  font-size: 0.8rem; color: #fff; font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+}
+.result-table-wrap table {
+  width: 100%; border-collapse: collapse; font-size: 0.82rem; margin: 0;
+}
+.result-table-wrap thead { background: rgba(111,66,193,0.06); }
+.result-table-wrap thead th {
+  font-weight: 600; color: var(--primary); padding: 10px 16px;
+  border-bottom: 2px solid var(--border); white-space: nowrap; text-align: left;
+}
+.result-table-wrap tbody td {
+  padding: 8px 16px; color: var(--text-secondary); border-bottom: 1px solid var(--border-light);
+}
+.result-table-wrap tbody tr:hover { background: rgba(111,66,193,0.04); }
+
+/* ========== GRADIENT GITHUB BUTTON ========== */
+.btn-github-gradient {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 28px; border-radius: var(--radius-full);
+  background: var(--gradient); color: #fff;
+  font-size: 0.9rem; font-weight: 600; border: none; cursor: pointer;
+  transition: all var(--transition); text-decoration: none;
+  box-shadow: 0 4px 14px rgba(111,66,193,0.3);
+}
+.btn-github-gradient:hover {
+  transform: translateY(-2px); box-shadow: 0 6px 20px rgba(111,66,193,0.4);
+  color: #fff;
+}
+
+/* Sub-heading style (like the sample) */
+h3.sub-heading {
+  font-size: 0.8rem; font-weight: 700; color: var(--text-muted);
+  margin-top: 28px; margin-bottom: 12px;
+  text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* Question card wrapper */
+.question-block { margin-bottom: 48px; }
