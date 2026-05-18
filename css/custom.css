@@ -25,7 +25,7 @@
   --radius-lg: 16px;
   --radius-full: 9999px;
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --max-width: 1100px;
+  --max-width: 1320px;
   --gradient: linear-gradient(135deg, #6f42c1, #fd7e14);
   --gradient-text: linear-gradient(135deg, #6f42c1, #fd7e14);
   --glow: 0 0 20px rgba(111,66,193,0.15);
