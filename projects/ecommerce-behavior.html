@@ -1,217 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Unlocking E-commerce User Behavior & Conversion Insights — Xuan Ho</title>
-  <meta name="description" content="Case study: Advanced SQL project using BigQuery to analyze Google Analytics sessions, funnel conversion, and Purchaser vs Non-Purchaser behavior patterns.">
+  <meta name="description"
+    content="Case study: Advanced SQL project using BigQuery to analyze Google Analytics sessions, funnel conversion, and Purchaser vs Non-Purchaser behavior patterns.">
   <link rel="stylesheet" href="../css/custom.css">
 </head>
+
 <body>
-  <nav class="navbar"><div class="nav-container">
-    <a href="../index.html" class="nav-logo">Xuan Ho</a>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../projects.html" class="active">Projects</a></li>
-      <li><a href="../resume.html">About Me</a></li>
-      <li><a href="../beyond.html">Beyond Work</a></li>
-      <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span class="theme-icon">🌙</span></button></li>
-    </ul>
-    <div style="display:flex;align-items:center;gap:12px">
-      <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span class="theme-icon">🌙</span></button>
-      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Xuan Ho</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../resume.html">About Me</a></li>
+        <li><a href="../beyond.html">Beyond Work</a></li>
+        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span
+              class="theme-icon">🌙</span></button></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span
+            class="theme-icon">🌙</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
     </div>
-  </div></nav>
+  </nav>
   <div class="nav-overlay" id="nav-overlay"></div>
 
-  <section class="project-detail-hero"><div class="container hero-center">
-    <a href="../projects.html" class="project-back-link">← Back to Projects</a>
-    <div class="project-hero-tags">
-      <span class="project-tag tag-sql">SQL</span>
-      <span class="project-tag tag-bigquery">BigQuery</span>
+  <section class="project-detail-hero">
+    <div class="container hero-center">
+      <a href="../projects.html" class="project-back-link">← Back to Projects</a>
+      <div class="project-hero-tags">
+        <span class="project-tag tag-sql">SQL</span>
+        <span class="project-tag tag-bigquery">BigQuery</span>
+      </div>
+      <h1>E-commerce User Behavior &amp; Conversion Insights</h1>
+      <p class="project-hero-subtitle">SQL · BigQuery · Google Analytics · Funnel Analysis</p>
+      <p class="project-hero-summary">An advanced SQL project using Google BigQuery to analyze Google Analytics
+        e-commerce sessions. Using CTEs, window functions, and data segmentation, the project uncovers conversion
+        bottlenecks, contrasts Purchaser vs Non-Purchaser behavior, and identifies the highest-value traffic sources and
+        product categories.</p>
+      <div class="project-hero-meta">
+        <span class="project-meta-item">📅 2025</span>
+        <span class="project-meta-item">🛠️ SQL, BigQuery</span>
+        <span class="project-meta-item">🔍 Google Analytics Sessions</span>
+      </div>
     </div>
-    <h1>E-commerce User Behavior &amp; Conversion Insights</h1>
-    <p class="project-hero-subtitle">SQL · BigQuery · Google Analytics · Funnel Analysis</p>
-    <p class="project-hero-summary">An advanced SQL project using Google BigQuery to analyze Google Analytics e-commerce sessions. Using CTEs, window functions, and data segmentation, the project uncovers conversion bottlenecks, contrasts Purchaser vs Non-Purchaser behavior, and identifies the highest-value traffic sources and product categories.</p>
-    <div class="project-hero-meta">
-      <span class="project-meta-item">📅 2025</span>
-      <span class="project-meta-item">🛠️ SQL, BigQuery</span>
-      <span class="project-meta-item">🔍 Google Analytics Sessions</span>
-    </div>
-  </div></section>
+  </section>
 
-  <section class="section"><div class="container"><div class="project-layout">
-    <div class="project-main">
+  <section class="section">
+    <div class="container">
+      <div class="project-layout">
+        <div class="project-main">
 
-      <!-- ══════ PROJECT OVERVIEW ══════ -->
-      <div class="project-section" id="project-overview">
-        <h2 class="section-heading-gradient">Project Overview</h2>
-        <p>This project explores user behavior on an e-commerce platform using Google Analytics data in BigQuery. The main goal is to uncover actionable insights that answer key business questions:</p>
-        <ul>
-          <li>Which marketing channels bring the most valuable visitors?</li>
-          <li>How do users navigate from browsing products to completing purchases?</li>
-          <li>What are the conversion rates at different stages of the purchase process?</li>
-          <li>Which products drive the most revenue and which combinations are frequently purchased together?</li>
-        </ul>
-        <!-- 🖼️ IMAGE: Add cover image here -->
-        <!-- <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cover.png" alt="Project Cover"></div> -->
-      </div>
+          <!-- ══════ PROJECT OVERVIEW ══════ -->
+          <div class="project-section" id="project-overview">
+            <h2 class="section-heading-gradient">Project Overview</h2>
+            <p>This project explores user behavior on an e-commerce platform using Google Analytics data in BigQuery.
+              The main goal is to uncover actionable insights that answer key business questions:</p>
+            <ul>
+              <li>Which marketing channels bring the most valuable visitors?</li>
+              <li>How do users navigate from browsing products to completing purchases?</li>
+              <li>What are the conversion rates at different stages of the purchase process?</li>
+              <li>Which products drive the most revenue and which combinations are frequently purchased together?</li>
+            </ul>
+            <!-- 🖼️ IMAGE: Add cover image here -->
+            <!-- <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cover.png" alt="Project Cover"></div> -->
+          </div>
 
 
 
-      <!-- ══════ CASE STUDY 1: Traffic & Channel Performance ══════ -->
-      <div class="project-section" id="case-study-1">
-        <h2 class="section-heading-gradient">Case Study 1: Traffic &amp; Channel Performance</h2>
+          <!-- ══════ CASE STUDY 1: Traffic & Channel Performance ══════ -->
+          <div class="project-section" id="case-study-1">
+            <h2 class="section-heading-gradient">Case Study 1: Traffic &amp; Channel Performance</h2>
 
-        <h3 class="sub-heading">The Business Challenge</h3>
-        <p>The marketing team was investing across multiple channels but lacked clarity on which sources delivered the highest-quality visitors. Traffic was growing, but revenue wasn't scaling proportionally — suggesting a disconnect between volume and value.</p>
+            <h3 class="sub-heading">The Business Challenge</h3>
+            <p>The marketing team was investing across multiple channels but lacked clarity on which sources delivered
+              the highest-quality visitors. Traffic was growing, but revenue wasn't scaling proportionally — suggesting
+              a disconnect between volume and value.</p>
 
-        <h3 class="sub-heading">My Approach</h3>
-        <p>I structured three complementary SQL analyses to map the full traffic picture: monthly trend tracking, bounce rate segmentation by source, and revenue attribution by channel at both weekly and monthly granularity.</p>
+            <h3 class="sub-heading">My Approach</h3>
+            <p>I structured three complementary SQL analyses to map the full traffic picture: monthly trend tracking,
+              bounce rate segmentation by source, and revenue attribution by channel at both weekly and monthly
+              granularity.</p>
 
-        <h3 class="sub-heading">Results</h3>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs1-traffic-trends.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs1-traffic-trends.png" alt="Traffic Trends"><p class="diagram-caption">Monthly visits, pageviews, and transactions (Jan–Mar 2017)</p></div>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs1-bounce-rate.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs1-bounce-rate.png" alt="Bounce Rate by Source"><p class="diagram-caption">Bounce rate per traffic source (July 2017)</p></div>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs1-revenue-source.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs1-revenue-source.png" alt="Revenue by Source"><p class="diagram-caption">Revenue by traffic source — weekly &amp; monthly (June 2017)</p></div>
+            <h3 class="sub-heading">Results</h3>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs1-traffic-trends.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs1-traffic-trends.png"
+                alt="Traffic Trends">
+              <p class="diagram-caption">Monthly visits, pageviews, and transactions (Jan–Mar 2017)</p>
+            </div>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs1-bounce-rate.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs1-bounce-rate.png"
+                alt="Bounce Rate by Source">
+              <p class="diagram-caption">Bounce rate per traffic source (July 2017)</p>
+            </div>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs1-revenue-source.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs1-revenue-source.png"
+                alt="Revenue by Source">
+              <p class="diagram-caption">Revenue by traffic source — weekly &amp; monthly (June 2017)</p>
+            </div>
 
-        <h3 class="sub-heading">Key Insights</h3>
-        <ul>
-          <li>Traffic grew from ~64K to ~69K visits (Jan→Mar), but transactions only increased ~10% — conversion efficiency is not scaling with traffic.</li>
-          <li>Some referral sources show >70% bounce rate, while direct/organic search stays below 30% — high volume ≠ high engagement.</li>
-          <li>Organic search delivers the highest revenue per session, justifying deeper SEO investment over broad paid campaigns.</li>
-        </ul>
-      </div>
+            <h3 class="sub-heading">Key Insights</h3>
+            <ul>
+              <li>Traffic grew from ~64K to ~69K visits (Jan→Mar), but transactions only increased ~10% — conversion
+                efficiency is not scaling with traffic.</li>
+              <li>Some referral sources show >70% bounce rate, while direct/organic search stays below 30% — high volume
+                ≠ high engagement.</li>
+              <li>Organic search delivers the highest revenue per session, justifying deeper SEO investment over broad
+                paid campaigns.</li>
+            </ul>
+          </div>
 
-      <!-- ══════ CASE STUDY 2: Customer Behavior Deep Dive ══════ -->
-      <div class="project-section" id="case-study-2">
-        <h2 class="section-heading-gradient">Case Study 2: Purchaser vs. Non-Purchaser Behavior</h2>
+          <!-- ══════ CASE STUDY 2: Customer Behavior Deep Dive ══════ -->
+          <div class="project-section" id="case-study-2">
+            <h2 class="section-heading-gradient">Case Study 2: Purchaser vs. Non-Purchaser Behavior</h2>
 
-        <h3 class="sub-heading">The Business Challenge</h3>
-        <p>Marketing was treating all visitors equally, but clearly not all visitors are equal. The growth team needed to understand: <strong>what separates a buyer from a browser?</strong> And can engagement depth predict purchase intent?</p>
+            <h3 class="sub-heading">The Business Challenge</h3>
+            <p>Marketing was treating all visitors equally, but clearly not all visitors are equal. The growth team
+              needed to understand: <strong>what separates a buyer from a browser?</strong> And can engagement depth
+              predict purchase intent?</p>
 
-        <h3 class="sub-heading">My Approach</h3>
-        <p>I segmented users into Purchasers (<code>transactions >= 1 AND productRevenue IS NOT NULL</code>) and Non-Purchasers, then compared average pageviews, transaction frequency, and revenue per session using CTEs and <code>FULL JOIN</code> to prevent data loss.</p>
+            <h3 class="sub-heading">My Approach</h3>
+            <p>I segmented users into Purchasers (<code>transactions >= 1 AND productRevenue IS NOT NULL</code>) and
+              Non-Purchasers, then compared average pageviews, transaction frequency, and revenue per session using CTEs
+              and <code>FULL JOIN</code> to prevent data loss.</p>
 
-        <h3 class="sub-heading">Results</h3>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs2-pageviews.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs2-pageviews.png" alt="Purchaser vs Non-Purchaser Pageviews"><p class="diagram-caption">Avg pageviews — Purchasers vs. Non-Purchasers (Jun–Jul 2017)</p></div>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs2-transactions.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs2-transactions.png" alt="Avg Transactions"><p class="diagram-caption">Avg transactions per purchasing user &amp; revenue per session (July 2017)</p></div>
+            <h3 class="sub-heading">Results</h3>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs2-pageviews.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs2-pageviews.png"
+                alt="Purchaser vs Non-Purchaser Pageviews">
+              <p class="diagram-caption">Avg pageviews — Purchasers vs. Non-Purchasers (Jun–Jul 2017)</p>
+            </div>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs2-transactions.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs2-transactions.png"
+                alt="Avg Transactions">
+              <p class="diagram-caption">Avg transactions per purchasing user &amp; revenue per session (July 2017)</p>
+            </div>
 
-        <h3 class="sub-heading">Key Insights</h3>
-        <ul>
-          <li>Non-Purchasers browse <strong>significantly more pages</strong> per session — a signal of indecision and friction, not engagement.</li>
-          <li>Purchasers navigate with purpose: lower pageview counts suggest they found the right product quickly.</li>
-          <li>Average transactions per user is ~1.1 — most customers purchase only once, indicating weak retention.</li>
-          <li>Revenue per session data confirms that high-intent users convert efficiently when the right product is found.</li>
-        </ul>
-      </div>
+            <h3 class="sub-heading">Key Insights</h3>
+            <ul>
+              <li>Non-Purchasers browse <strong>significantly more pages</strong> per session — a signal of indecision
+                and friction, not engagement.</li>
+              <li>Purchasers navigate with purpose: lower pageview counts suggest they found the right product quickly.
+              </li>
+              <li>Average transactions per user is ~1.1 — most customers purchase only once, indicating weak retention.
+              </li>
+              <li>Revenue per session data confirms that high-intent users convert efficiently when the right product is
+                found.</li>
+            </ul>
+          </div>
 
-      <!-- ══════ CASE STUDY 3: Conversion Funnel & Cross-sell ══════ -->
-      <div class="project-section" id="case-study-3">
-        <h2 class="section-heading-gradient">Case Study 3: Conversion Funnel &amp; Cross-sell Opportunities</h2>
+          <!-- ══════ CASE STUDY 3: Conversion Funnel & Cross-sell ══════ -->
+          <div class="project-section" id="case-study-3">
+            <h2 class="section-heading-gradient">Case Study 3: Conversion Funnel &amp; Cross-sell Opportunities</h2>
 
-        <h3 class="sub-heading">The Business Challenge</h3>
-        <p>The product team knew the funnel was leaking, but couldn't pinpoint <strong>where</strong>. Additionally, the merchandising team wanted to understand whether customers buying specific products also purchase complementary items — to build bundling and upsell strategies.</p>
+            <h3 class="sub-heading">The Business Challenge</h3>
+            <p>The product team knew the funnel was leaking, but couldn't pinpoint <strong>where</strong>. Additionally,
+              the merchandising team wanted to understand whether customers buying specific products also purchase
+              complementary items — to build bundling and upsell strategies.</p>
 
-        <h3 class="sub-heading">My Approach</h3>
-        <p>I mapped the full conversion funnel (Product View → Add to Cart → Purchase) using <code>eCommerceAction.action_type</code> codes and calculated conversion rates at each stage. For cross-sell analysis, I identified co-purchased products using a self-join on buyer visitor IDs.</p>
+            <h3 class="sub-heading">My Approach</h3>
+            <p>I mapped the full conversion funnel (Product View → Add to Cart → Purchase) using
+              <code>eCommerceAction.action_type</code> codes and calculated conversion rates at each stage. For
+              cross-sell analysis, I identified co-purchased products using a self-join on buyer visitor IDs.</p>
 
-        <h3 class="sub-heading">Results</h3>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs3-funnel.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs3-funnel.png" alt="Conversion Funnel"><p class="diagram-caption">Conversion funnel cohort map (Jan–Mar 2017)</p></div>
-        <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs3-crosssell.png -->
-        <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs3-crosssell.png" alt="Cross-sell Analysis"><p class="diagram-caption">Products co-purchased with "YouTube Men's Vintage Henley"</p></div>
+            <h3 class="sub-heading">Results</h3>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs3-funnel.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs3-funnel.png"
+                alt="Conversion Funnel">
+              <p class="diagram-caption">Conversion funnel cohort map (Jan–Mar 2017)</p>
+            </div>
+            <!-- 🖼️ IMAGE: assets/images/projects/ecommerce/cs3-crosssell.png -->
+            <div class="diagram-wrap"><img src="../assets/images/projects/ecommerce/cs3-crosssell.png"
+                alt="Cross-sell Analysis">
+              <p class="diagram-caption">Products co-purchased with "YouTube Men's Vintage Henley"</p>
+            </div>
 
-        <h3 class="sub-heading">Key Insights</h3>
-        <ul>
-          <li>Only ~40% of viewed products are added to cart, and ~10% result in a purchase — the <strong>View → Cart</strong> transition is the biggest leak.</li>
-          <li>Add-to-Cart Rate improved from 28.47% (Jan) to 37.29% (Mar), a 31% relative improvement — suggesting UX changes or seasonal intent taking effect.</li>
-          <li>65–72% of users who add to cart <strong>never complete purchase</strong> — a clear cart abandonment problem.</li>
-          <li>Customers buying specific products also purchase 2–3 additional items on average — strong cross-sell and bundling opportunity.</li>
-        </ul>
-      </div>
+            <h3 class="sub-heading">Key Insights</h3>
+            <ul>
+              <li>Only ~40% of viewed products are added to cart, and ~10% result in a purchase — the <strong>View →
+                  Cart</strong> transition is the biggest leak.</li>
+              <li>Add-to-Cart Rate improved from 28.47% (Jan) to 37.29% (Mar), a 31% relative improvement — suggesting
+                UX changes or seasonal intent taking effect.</li>
+              <li>65–72% of users who add to cart <strong>never complete purchase</strong> — a clear cart abandonment
+                problem.</li>
+              <li>Customers buying specific products also purchase 2–3 additional items on average — strong cross-sell
+                and bundling opportunity.</li>
+            </ul>
+          </div>
 
-      <!-- ══════ CONCLUSIONS ══════ -->
-      <div class="project-section" id="conclusions">
-        <h2 class="section-heading-gradient">Conclusions &amp; Recommendations</h2>
-        <h3 class="sub-heading">Key Takeaways</h3>
-        <ul>
-          <li>Traffic grew from ~60K to ~70K visits (Jan→Mar) but transactions only increased ~10%</li>
-          <li>Bounce rate varies widely: some referral sources >70%, direct/search <30%</li>
-          <li>Purchasers average ~15–20 pageviews vs. ~5–7 for non-purchasers</li>
-          <li>Average transactions per user is ~1.1 — limited repeat buying</li>
-          <li>Only ~40% of viewed products are added to cart, ~10% result in purchase</li>
-          <li>Cross-sell potential: buyers of specific products purchase 2–3 additional items</li>
-        </ul>
-        <h3 class="sub-heading">Strategic Recommendations</h3>
-        <div class="challenge-cards">
-          <div class="challenge-card"><h4>🎯 Optimize Funnel</h4><p>Improve product pages, UX, and checkout experience to reduce drop-off.</p></div>
-          <div class="challenge-card"><h4>💰 Focus on Quality Traffic</h4><p>Allocate budget to channels with strong conversion performance.</p></div>
-          <div class="challenge-card"><h4>🔄 Boost Retention</h4><p>Use remarketing, email campaigns, and loyalty programs.</p></div>
-          <div class="challenge-card"><h4>📦 Leverage Cross-sell</h4><p>Promote product combinations to increase basket size and AOV.</p></div>
+          <!-- ══════ CONCLUSIONS ══════ -->
+          <div class="project-section" id="conclusions">
+            <h2 class="section-heading-gradient">Conclusions &amp; Recommendations</h2>
+            <h3 class="sub-heading">Key Takeaways</h3>
+            <ul>
+              <li>Traffic grew from ~60K to ~70K visits (Jan→Mar) but transactions only increased ~10%</li>
+              <li>Bounce rate varies widely: some referral sources >70%, direct/search <30%< /li>
+              <li>Purchasers average ~15–20 pageviews vs. ~5–7 for non-purchasers</li>
+              <li>Average transactions per user is ~1.1 — limited repeat buying</li>
+              <li>Only ~40% of viewed products are added to cart, ~10% result in purchase</li>
+              <li>Cross-sell potential: buyers of specific products purchase 2–3 additional items</li>
+            </ul>
+            <h3 class="sub-heading">Strategic Recommendations</h3>
+            <div class="challenge-cards">
+              <div class="challenge-card">
+                <h4>🎯 Optimize Funnel</h4>
+                <p>Improve product pages, UX, and checkout experience to reduce drop-off.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>💰 Focus on Quality Traffic</h4>
+                <p>Allocate budget to channels with strong conversion performance.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>🔄 Boost Retention</h4>
+                <p>Use remarketing, email campaigns, and loyalty programs.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>📦 Leverage Cross-sell</h4>
+                <p>Promote product combinations to increase basket size and AOV.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="source-code-cta">
+            <h3>Source Code &amp; Queries</h3>
+            <p>Explore the full SQL queries, analysis methodology, and results on GitHub.</p><a
+              href="https://github.com/hothanhxuan/Project-1-Understanding-E-commerce-User-Behavior-and-Conversion-Insights"
+              target="_blank" class="btn-github-gradient">⌨ View on GitHub →</a>
+          </div>
+
+          <nav class="project-nav">
+            <a href="flight-delays.html" class="project-nav-item project-nav-prev"><span class="project-nav-label">←
+                Previous</span><span class="project-nav-title">Flight Delays</span></a>
+            <div class="project-nav-item project-nav-next disabled"><span class="project-nav-label">Next Project
+                →</span><span class="project-nav-title">—</span></div>
+          </nav>
         </div>
+
+        <aside class="project-sidebar">
+          <div class="sidebar-sticky">
+
+            <!-- Source Code & Data Card -->
+            <div class="toc-card"
+              style="background: linear-gradient(135deg, rgba(30,48,243,0.04) 0%, rgba(226,30,128,0.04) 100%); border: 1px solid rgba(30,48,243,0.15); padding: 20px;">
+              <h4
+                style="color: #1e30f3; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">
+                Source Code &amp; Data</h4>
+              <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">For
+                the raw SQL scripts and full dataset repository, visit the GitHub link below.</p>
+
+              <a href="https://github.com/hothanhxuan/Project-1-Understanding-E-commerce-User-Behavior-Using-Google-Analytics-Data-in-BigQuery/"
+                target="_blank" class="btn-github-gradient"
+                style="width: 100%; justify-content: center; margin-bottom: 16px; padding: 10px 16px; font-size: 0.85rem;">⌨
+                View on GitHub</a>
+
+              <div
+                style="background: var(--surface); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
+                <p style="font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 4px;">📊 GA Sample
+                  Dataset</p>
+                <p
+                  style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); word-break: break-all; margin: 0;">
+                  bigquery-public-data.google_analytics_sample.ga_sessions_2017*</p>
+              </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-card" style="padding: 20px;">
+              <h4
+                style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">
+                Table of Contents</h4>
+              <ul class="toc-list" id="toc-list">
+                <li><a href="#project-overview">Project Overview</a></li>
+                <li><a href="#case-study-1">CS1: Traffic &amp; Channels</a></li>
+                <li><a href="#case-study-2">CS2: Buyer vs. Browser</a></li>
+                <li><a href="#case-study-3">CS3: Funnel &amp; Cross-sell</a></li>
+                <li><a href="#conclusions">Conclusions</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </aside>
       </div>
-
-      <div class="source-code-cta"><h3>Source Code &amp; Queries</h3><p>Explore the full SQL queries, analysis methodology, and results on GitHub.</p><a href="https://github.com/hothanhxuan/Project-1-Understanding-E-commerce-User-Behavior-and-Conversion-Insights" target="_blank" class="btn-github-gradient">⌨ View on GitHub →</a></div>
-
-      <nav class="project-nav">
-        <a href="flight-delays.html" class="project-nav-item project-nav-prev"><span class="project-nav-label">← Previous</span><span class="project-nav-title">Flight Delays</span></a>
-        <div class="project-nav-item project-nav-next disabled"><span class="project-nav-label">Next Project →</span><span class="project-nav-title">—</span></div>
-      </nav>
     </div>
+  </section>
 
-    <aside class="project-sidebar"><div class="sidebar-sticky">
-      
-      <!-- Source Code & Data Card -->
-      <div class="toc-card" style="background: linear-gradient(135deg, rgba(30,48,243,0.04) 0%, rgba(226,30,128,0.04) 100%); border: 1px solid rgba(30,48,243,0.15); padding: 20px;">
-        <h4 style="color: #1e30f3; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px;">Source Code &amp; Data</h4>
-        <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.5;">For the raw SQL scripts and full dataset repository, visit the GitHub link below.</p>
-        
-        <a href="https://github.com/hothanhxuan/Project-1-Understanding-E-commerce-User-Behavior-and-Conversion-Insights" target="_blank" class="btn-github-gradient" style="width: 100%; justify-content: center; margin-bottom: 16px; padding: 10px 16px; font-size: 0.85rem;">⌨ View on GitHub</a>
-        
-        <div style="background: var(--surface); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04);">
-          <p style="font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 4px;">📊 GA Sample Dataset</p>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); word-break: break-all; margin: 0;">bigquery-public-data.google_analytics_sample.ga_sessions_2017*</p>
-        </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub">⌨</a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
       </div>
-
-      <!-- Table of Contents -->
-      <div class="toc-card" style="padding: 20px;">
-        <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Table of Contents</h4>
-        <ul class="toc-list" id="toc-list">
-          <li><a href="#project-overview">Project Overview</a></li>
-          <li><a href="#case-study-1">CS1: Traffic &amp; Channels</a></li>
-          <li><a href="#case-study-2">CS2: Buyer vs. Browser</a></li>
-          <li><a href="#case-study-3">CS3: Funnel &amp; Cross-sell</a></li>
-          <li><a href="#conclusions">Conclusions</a></li>
-        </ul>
-      </div>
-
-    </div></aside>
-  </div></div></section>
-
-  <footer class="footer"><div class="footer-content">
-    <div class="social-links">
-      <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
-      <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub">⌨</a>
-      <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
+      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
     </div>
-    <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
-  </div></footer>
+  </footer>
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
   <script src="../js/main.js"></script>
   <script>
-    const mobileToggle=document.getElementById('theme-toggle-mobile');
-    if(window.innerWidth<=768&&mobileToggle)mobileToggle.style.display='flex';
-    window.addEventListener('resize',()=>{if(mobileToggle)mobileToggle.style.display=window.innerWidth<=768?'flex':'none';});
-    mobileToggle?.addEventListener('click',()=>{const c=document.documentElement.getAttribute('data-theme');setTheme(c==='dark'?'light':'dark');});
-    const tocLinks=document.querySelectorAll('#toc-list a'),secs=document.querySelectorAll('.project-section');
-    function updateToc(){let cur='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-120)cur=s.id;});tocLinks.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+cur);});}
-    window.addEventListener('scroll',updateToc,{passive:true});
+    const mobileToggle = document.getElementById('theme-toggle-mobile');
+    if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
+    window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
+    mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
+    const tocLinks = document.querySelectorAll('#toc-list a'), secs = document.querySelectorAll('.project-section');
+    function updateToc() { let cur = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; }); tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); }); }
+    window.addEventListener('scroll', updateToc, { passive: true });
   </script>
 </body>
+
 </html>
