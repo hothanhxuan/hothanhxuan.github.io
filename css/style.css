@@ -11823,6 +11823,8 @@ body {
 [data-theme="dark"] .navbar-light .nav-link:hover { color: var(--text) !important; }
 [data-theme="dark"] .navbar-light .nav-link.active { color: var(--text) !important; }
 [data-theme="dark"] .card { background-color: var(--surface) !important; border-color: var(--border) !important; }
+[data-theme="dark"] .btn-outline-dark { color: var(--text) !important; border-color: var(--text) !important; }
+[data-theme="dark"] .btn-outline-dark:hover { background-color: var(--text) !important; color: var(--bg) !important; }
 
 /* Custom components */
 .tech-item {
