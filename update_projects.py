@@ -1,54 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+import re
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects — Xuan Ho</title>
-  <meta name="description"
-    content="Data analytics projects by Xuan Ho — ETL pipelines, Power BI dashboards, SQL analysis, and more.">
-  <link rel="stylesheet" href="css/custom.css">
-</head>
+with open('d:\\PowerBI_Unigap\\portfolio\\projects.html', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-<body>
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">Xuan Ho</a>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html" class="active">Projects</a></li>
-        <li><a href="resume.html">About Me</a></li>
-        <li><a href="beyond.html">Beyond Work</a></li>
-        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span
-              class="theme-icon">🌙</span></button></li>
-      </ul>
-      <div style="display:flex;align-items:center;gap:12px">
-        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span
-            class="theme-icon">🌙</span></button>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-      </div>
-    </div>
-  </nav>
-  <div class="nav-overlay" id="nav-overlay"></div>
-
-  <!-- Page Header -->
-  <div class="page-header">
-    <h1>Projects</h1>
-    <p>A collection of data analytics and engineering projects showcasing my technical skills.</p>
-  </div>
-
-  <!-- Filter + Projects -->
-  <section class="section">
-    <div class="container">
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="python">Python</button>
-        <button class="filter-btn" data-filter="sql">SQL</button>
-        <button class="filter-btn" data-filter="powerbi">Power BI</button>
-      </div>
-
-      <div class="projects-grid">
+new_grid = """      <div class="projects-grid">
         <!-- Project 1 -->
         <div class="card project-card reveal" data-tags="python bigquery gcs">
           <div class="card-body">
@@ -222,40 +177,9 @@
             <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); font-size:4rem;">📊</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </div>"""
 
-  <!-- CTA -->
-  <section class="section section-alt" style="text-align:center">
-    <div class="container reveal">
-      <h2 style="font-size:1.5rem;margin-bottom:12px">Have a data challenge?</h2>
-      <p style="color:var(--text-secondary);margin-bottom:24px">I'm always open to discussing new projects or
-        opportunities.</p>
-      <a href="mailto:susanngo1995@gmail.com" class="btn btn-primary">Get In Touch →</a>
-    </div>
-  </section>
+updated_content = re.sub(r'<div class="projects-grid">.*</div>\n    </div>', new_grid + '\n    </div>', content, flags=re.DOTALL)
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="social-links">
-        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
-        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub">⌨</a>
-        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
-      </div>
-      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
-    </div>
-  </footer>
-
-  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
-  <script src="js/main.js"></script>
-  <script>
-    const mobileToggle = document.getElementById('theme-toggle-mobile');
-    if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
-    window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
-    mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
-  </script>
-</body>
-
-</html>
+with open('d:\\PowerBI_Unigap\\portfolio\\projects.html', 'w', encoding='utf-8') as f:
+    f.write(updated_content)
