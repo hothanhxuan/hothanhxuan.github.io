@@ -24,18 +24,20 @@
   </div></nav>
   <div class="nav-overlay" id="nav-overlay"></div>
 
-  <section class="project-detail-hero"><div class="container">
-    <a href="../projects.html" class="project-back-link">← Back to Projects</a>
-    <div class="project-hero-tags"><span class="project-tag tag-powerbi">Power BI</span></div>
-    <h1>HR Analytics: Employee Turnover &amp; Workforce Performance</h1>
-    <p class="project-hero-subtitle">Power BI · DAX · Workforce Intelligence</p>
-    <p class="project-hero-summary">I analysed workforce data for ~300 employees to uncover turnover patterns, department-level performance gaps, and engagement drivers. The dashboard pinpoints the Production department's 40.69% turnover rate and proposes targeted retention strategies backed by data.</p>
-    <div class="project-hero-meta">
-      <span class="project-meta-item">📅 2024</span>
-      <span class="project-meta-item">🛠️ Power BI, DAX</span>
-      <span class="project-meta-item">👥 ~300 Employees · 34.78% Turnover</span>
+  <section class="project-detail-hero">
+    <div class="container hero-center">
+      <a href="../projects.html" class="project-back-link">← Back to Projects</a>
+      <div class="project-hero-tags"><span class="project-tag tag-powerbi">Power BI</span></div>
+      <h1>HR Analytics: Employee Turnover &amp; Workforce Performance</h1>
+      <p class="project-hero-summary" style="max-width:750px;margin-left:auto;margin-right:auto">I analysed workforce data for ~300 employees to uncover turnover patterns, department-level performance gaps, and engagement drivers. The dashboard pinpoints the Production department's 40.69% turnover rate and proposes targeted retention strategies backed by data.</p>
+      <div class="project-hero-meta" style="justify-content:center">
+        <span class="project-meta-item">📅 Dec 2025</span>
+        <span class="project-meta-item">🛠️ Excel, Power BI</span>
+        <span class="project-meta-item">📊 311 Employee Records</span>
+        <span class="project-meta-item">🧠 HR Analytics</span>
+      </div>
     </div>
-  </div></section>
+  </section>
 
   <section class="section"><div class="container"><div class="project-layout">
     <div class="project-main">
@@ -64,9 +66,9 @@
       <div class="project-section" id="dashboard-design">
         <h2 class="project-section-heading"><span class="section-number">03.</span> Dashboard Design</h2>
         <p>The dashboard provides two analytical views: a high-level workforce overview for executives, and a detailed turnover analysis for HR managers to identify root causes.</p>
-        <div class="figure-placeholder">
-          <div class="figure-placeholder-inner">📊 HR Analytics Dashboard</div>
-          <p class="figure-caption">Figure 1 — Replace with your HR Analytics dashboard screenshot.</p>
+        <div class="figure-placeholder" style="background: none; border: none; padding: 0;">
+          <img src="../assets/images/hr-analytics/hr-executive-summary.png" class="img-fluid img-lightbox" alt="HR Analytics Dashboard Screenshot" style="border-radius:var(--radius);box-shadow:var(--shadow-md);">
+          <p class="figure-caption" style="text-align: center; margin-top: 12px; font-size: 0.85rem; color: var(--text-muted); font-style: italic;">Figure 1 — Interactive HR Analytics Dashboard (Executive Summary)</p>
         </div>
         <div class="result-columns">
           <div class="result-col"><h4>📋 Workforce Overview</h4><p>Top-line KPIs: total employees, active vs. terminated, average tenure (12.31 years), engagement score (3.39/5), and satisfaction index.</p></div>
@@ -95,25 +97,46 @@
         </div>
       </div>
 
-      <div class="source-code-cta"><h3>Source Code &amp; Details</h3><p>Explore the full data model, DAX measures, and dashboard files on GitHub.</p><a href="https://github.com/hothanhxuan/Project-3-Employee-Turnover-Workforce-Performance-Analysis" target="_blank" class="btn btn-primary">View on GitHub →</a></div>
+      <!-- Source Code CTA -->
+      <div class="source-code-cta">
+        <h3>Source Code &amp; Details</h3>
+        <p>Explore the full data model, DAX measures, and dashboard files on GitHub.</p>
+        <a href="https://github.com/hothanhxuan/Project-3-Employee-Turnover-Workforce-Performance-Analysis" target="_blank" class="btn-github-gradient">⌨ View on GitHub →</a>
+      </div>
 
+      <!-- Project Nav -->
       <nav class="project-nav">
         <a href="superstore-dashboard.html" class="project-nav-item project-nav-prev"><span class="project-nav-label">← Previous</span><span class="project-nav-title">SuperStore Dashboard</span></a>
         <a href="fashion-marketing.html" class="project-nav-item project-nav-next"><span class="project-nav-label">Next Project →</span><span class="project-nav-title">Fashion Marketing</span></a>
       </nav>
     </div>
 
-    <aside class="project-sidebar"><div class="sidebar-sticky"><div class="toc-card">
-      <h4>Table of Contents</h4>
-      <ul class="toc-list" id="toc-list">
-        <li><a href="#business-challenge">01. Business Challenge</a></li>
-        <li><a href="#my-approach">02. My Approach</a></li>
-        <li><a href="#dashboard-design">03. Dashboard Design</a></li>
-        <li><a href="#results">04. Key Insights</a></li>
-        <li><a href="#business-impact">05. Recommendations</a></li>
-      </ul>
-    </div>
-    <div class="toc-card"><h4>Source Code</h4><a href="https://github.com/hothanhxuan/Project-3-Employee-Turnover-Workforce-Performance-Analysis" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px">View on GitHub</a></div>
+    <!-- Sidebar -->
+    <aside class="project-sidebar"><div class="sidebar-sticky">
+
+      <!-- GitHub Card -->
+      <div class="toc-card" style="background:linear-gradient(135deg,rgba(111,66,193,0.05) 0%,rgba(253,126,20,0.05) 100%);border:1px solid rgba(111,66,193,0.15);padding:20px">
+        <h4 style="color:var(--primary);font-size:.85rem;font-weight:700;text-transform:uppercase;margin-bottom:8px">Source Code &amp; Data</h4>
+        <p style="font-size:.82rem;color:var(--text-secondary);margin-bottom:16px;line-height:1.5">For the dataset, Power BI files, and full Data Model, visit the GitHub repository below.</p>
+        <a href="https://github.com/hothanhxuan/Project-3-Employee-Turnover-Workforce-Performance-Analysis" target="_blank" class="btn-github-gradient" style="width:100%;justify-content:center;margin-bottom:16px;padding:10px 16px;font-size:.85rem">⌨ View on GitHub</a>
+        <div style="background:var(--surface);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border)">
+          <p style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px">📊 Dataset</p>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);margin:0">HRDataset (311 records)</p>
+        </div>
+      </div>
+
+      <!-- Table of Contents -->
+      <div class="toc-card" style="padding:20px">
+        <h4 style="font-size:.85rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Table of Contents</h4>
+        <ul class="toc-list" id="toc-list">
+          <li><a href="#business-challenge">01. Business Challenge</a></li>
+          <li><a href="#my-approach">02. My Approach</a></li>
+          <li><a href="#dashboard-design">03. Dashboard Design</a></li>
+          <li><a href="#results">04. Key Insights</a></li>
+          <li><a href="#business-impact">05. Recommendations</a></li>
+        </ul>
+      </div>
+
     </div></aside>
   </div></div></section>
 
