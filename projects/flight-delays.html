@@ -124,7 +124,7 @@
           <h4>Step 2. Define</h4>
           <p>Clearly define the core questions and the KPIs the dashboard must address — On-Time Performance, Delay Composition, Cancellation Rate, and Route Efficiency.</p>
           <img src="https://github.com/user-attachments/assets/ccbebf3d-aa1d-4e73-8e5c-e6c4266f54ad" class="img-fluid img-lightbox" alt="Define Stage" style="border-radius:var(--radius);box-shadow:var(--shadow)">
-          <img src="https://github.com/user-attachments/assets/dda5c371-6f61-4dae-bf0f-807d422b7655" class="img-fluid img-lightbox" alt="Define Stage 2" style="border-radius:var(--radius);box-shadow:var(--shadow)">
+          <img src="../assets/images/image.png" class="img-fluid img-lightbox" alt="Define Stage 2" style="border-radius:var(--radius);box-shadow:var(--shadow)">
         </div>
 
         <div class="dt-step">
@@ -177,7 +177,7 @@
         <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:28px">
           <h5 style="font-weight:700;margin-bottom:12px;font-size:.95rem">ℹ️ How to Use This Dashboard</h5>
           <ul style="margin:0;padding-left:20px;color:var(--text-secondary);font-size:.9rem;line-height:1.8">
-            <li><strong>Sign In Required:</strong> This dashboard is embedded from Power BI Service. Please <strong>sign in</strong> with your Microsoft account when prompted to view and interact with the report.</li>
+            <li><strong>Optimal Viewing:</strong> Click the <strong>Fit to page</strong> icon or the <strong>Full screen</strong> arrows at the bottom right corner of the dashboard for the best experience.</li>
             <li><strong>Exploration:</strong> Navigate between the core pages (<strong>Landing</strong>, <strong>Flight Summary</strong>, <strong>Root Cause</strong>, <strong>Hub & Route</strong>, <strong>Temporal</strong>) using the top buttons or bottom pagination.</li>
             <li><strong>Interaction:</strong> Use the side dropdowns to filter data, toggle metric buttons to change chart views, click on any chart element to cross-filter the entire page, and hover over data points to reveal detailed tooltips.</li>
           </ul>
@@ -187,7 +187,7 @@
         <figure style="margin-bottom:40px">
           <div style="position:relative;width:100%;padding-bottom:56%;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)">
             <iframe title="Project 5 - Airlines Performance Dashboard"
-              src="https://app.powerbi.com/reportEmbed?reportId=2a0a2e03-5f53-4948-99cb-60a39e335e39&autoAuth=true&ctid=11a2b842-29b4-4064-b490-7a8f18fae202"
+              src="https://app.powerbi.com/view?r=eyJrIjoiODI1ZDEzMDAtNjBlMC00NGRlLWI2NTEtZjZlZDNkZGYyNGQ0IiwidCI6IjgwY2M4ZjRjLWUzZDYtNDk0My1hNDAyLTJiZjBmYzMyNDFhZCJ9"
               style="position:absolute;top:0;left:0;width:100%;height:100%;border:none"
               allowFullScreen="true">
             </iframe>
@@ -195,58 +195,7 @@
           <figcaption style="text-align:center;margin-top:12px;font-size:.85rem;color:var(--text-muted);font-style:italic">Interactive Aviation Dashboard — Feel free to explore filters!</figcaption>
         </figure>
 
-        <!-- Dashboard Page Breakdowns -->
-        <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:24px">Dashboard Page Walkthrough</h3>
 
-        <div class="dashboard-page">
-          <h4>📋 Landing Page — Executive Summary</h4>
-          <img src="https://github.com/user-attachments/assets/15b7edad-8e65-47c0-9059-042f38f445da" class="img-fluid img-lightbox" alt="Dashboard Landing Page" style="width:100%">
-          <ul>
-            <li><strong>System Scale:</strong> Tracked <strong>5.82 million</strong> total flights across <strong>14</strong> airlines and <strong>322</strong> airports.</li>
-            <li><strong>Delay Severity:</strong> While the system achieved an overall <strong>82.1% On-Time rate</strong>, the 1.02 million delayed flights suffered an average arrival delay of <strong>61 minutes</strong>.</li>
-            <li><strong>Core Insight:</strong> <strong>72.0%</strong> of all delay minutes stem from controllable factors within airline operations (Late Aircraft: 39.8%, Airline Delay: 32.2%).</li>
-          </ul>
-        </div>
-
-        <div class="dashboard-page">
-          <h4>📊 Page 2 — Flight Summary & Airline Performance</h4>
-          <img src="https://github.com/user-attachments/assets/5d3f2cec-c5a3-4c50-bb89-74b4821d9f8d" class="img-fluid img-lightbox" alt="Flight Summary Dashboard" style="width:100%">
-          <ul>
-            <li><strong>Flight Categorization:</strong> 4.71M On-time vs 1.02M Delayed. Cancellations accounted for 1.54% (89.88K flights).</li>
-            <li><strong>Delay Composition:</strong> "Late Aircraft" (39.84%) and "Airline Delay" (32.22%) are the primary culprits. Weather delays account for merely 4.8%.</li>
-            <li><strong>Carrier Performance:</strong> Southwest, American, and Delta contribute the highest raw volume; Frontier, United, and Spirit exhibit the highest Average Arrival Delays per flight.</li>
-          </ul>
-        </div>
-
-        <div class="dashboard-page">
-          <h4>🔍 Page 3 — Root Cause & Time-of-Day Analysis</h4>
-          <img src="https://github.com/user-attachments/assets/e71970ec-6aa1-4327-acbf-078da2fe7b4d" class="img-fluid img-lightbox" alt="Root Cause Analysis Dashboard" style="width:100%">
-          <ul>
-            <li><strong>The "Controllable" Problem:</strong> Roughly 72% of total delay minutes are controllable (Airline, Late Aircraft) vs 28% uncontrollable (Weather, NAS, Security).</li>
-            <li><strong>Time of Day Cascades:</strong> Delays spike during evening peak hours (16:00–19:59), accounting for <strong>32%</strong> of all delayed flights. Morning disruptions snowball into severe evening bottlenecks.</li>
-            <li><strong>Late Aircraft Domino Effect:</strong> Southwest Airlines is massively affected by Late Aircraft delays, given their point-to-point network and rapid turnaround goals.</li>
-          </ul>
-        </div>
-
-        <div class="dashboard-page">
-          <h4>🗺️ Page 4 — Hub & Route Efficiency</h4>
-          <img src="https://github.com/user-attachments/assets/8adb6897-e056-45e1-beeb-0fbbe124a0ea" class="img-fluid img-lightbox" alt="Hub & Route Efficiency Dashboard" style="width:100%">
-          <ul>
-            <li><strong>High-Risk Carriers:</strong> The scatter plot isolates "High Risk" airlines (low reliability + high delay duration) such as Frontier Airlines and Spirit Airlines.</li>
-            <li><strong>Top Hub Bottlenecks:</strong> Spatial maps pinpoint intense ground congestion at Chicago O'Hare (ORD) and New York airports.</li>
-            <li><strong>Worst Routes (Min 500 flights):</strong> <strong>DFW → HNL</strong> averages 28.5 min delay, followed by <strong>ORD → ASE</strong> at 22.2 min and <strong>DCA → JFK</strong> at 20.9 min.</li>
-          </ul>
-        </div>
-
-        <div class="dashboard-page">
-          <h4>📅 Page 5 — Temporal & Seasonal Vulnerabilities</h4>
-          <img src="https://github.com/user-attachments/assets/5d889ef2-ce8a-4944-bdc3-88fbc54e6541" class="img-fluid img-lightbox" alt="Temporal Analysis Dashboard" style="width:100%">
-          <ul>
-            <li><strong>Winter & Summer Spikes:</strong> Summer (29.97%) and Winter (27.11%) are the most disruptive seasons.</li>
-            <li><strong>Day of Week Heatmap:</strong> Highest concentrations on Mondays and Thursdays in late afternoon/evening blocks.</li>
-            <li><strong>Cancellation Extremes:</strong> <strong>January 27th (2,884 cancellations)</strong> and <strong>March 5th (2,858 cancellations)</strong> were the worst single days of the year.</li>
-          </ul>
-        </div>
       </div>
 
       <!-- 06. Key Insights & Recommendations -->
