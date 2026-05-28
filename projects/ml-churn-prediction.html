@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Churn Prediction & Customer Segmentation — Xuan Ho</title>
+  <meta name="description"
+    content="Machine Learning project to predict and segment churned users in e-commerce using Random Forest and KMeans.">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Xuan Ho</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../resume.html">About Me</a></li>
+        <li><a href="../beyond.html">Beyond Work</a></li>
+        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span
+              class="theme-icon">🌙</span></button></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span
+            class="theme-icon">🌙</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Hero -->
+  <section class="project-detail-hero">
+    <div class="container hero-center">
+      <a href="../projects.html" class="project-back-link">← Back to Projects</a>
+      <div class="project-hero-tags">
+        <span class="project-tag tag-python">Python</span>
+      </div>
+      <h1>Churn Prediction & Customer Segmentation for E-Commerce</h1>
+      <p class="project-hero-summary" style="max-width:750px;margin-left:auto;margin-right:auto">Built an end-to-end Machine Learning pipeline to predict and segment churned users for an e-commerce platform. The tuned Random Forest model identifies high-risk customers with 95.5% balanced accuracy, while KMeans clustering segments churned users into 4 actionable personas — enabling targeted retention campaigns per segment.</p>
+      <div class="project-hero-meta" style="justify-content:center">
+        <span class="project-meta-item">📅 2026</span>
+        <span class="project-meta-item">🛠️ Python, scikit-learn, pandas</span>
+        <span class="project-meta-item">🛒 5,630 Customers · 20 Features</span>
+        <span class="project-meta-item">⭐ Random Forest</span>
+        <span class="project-meta-item">🧠 Predictive Analytics</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <div class="project-layout">
+
+        <!-- Left: Content -->
+        <div class="project-main">
+
+          <!-- Cover Photo -->
+          <div style="text-align: center; margin-top: 12px; margin-bottom: 40px;">
+            <img src="../assets/images/ml-churn/cover-inner.png" 
+                 style="max-width: 70%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: block; margin: 0 auto;" 
+                 class="lightbox-trigger"
+                 alt="Churn Prediction Overview">
+          </div>
+
+          <!-- 01. Business Challenge -->
+          <div class="project-section" id="challenge">
+            <h2 class="project-section-heading"><span class="section-number">01.</span> The Business Challenge</h2>
+            <p>Customer churn is one of the most expensive problems in e-commerce. It costs significantly more to acquire a new customer than to retain an existing one. For this project, I analyzed a dataset of <strong>5,630 customers</strong> to uncover hidden behavioral patterns that lead to churn.</p>
+            <p>The goal was to move beyond simply identifying churned users, and instead build a predictive system that can flag at-risk customers <em>before</em> they leave, allowing the business to intervene with targeted retention campaigns.</p>
+          </div>
+
+          <!-- 02. Methodology -->
+          <div class="project-section" id="methodology">
+            <h2 class="project-section-heading"><span class="section-number">02.</span> End-to-End Methodology</h2>
+            <p>To deliver a scalable and accurate business solution, I followed a structured, end-to-end data science lifecycle:</p>
+            
+            <div class="approach-steps" style="margin-top: 24px;">
+              <div class="approach-step">
+                <div class="step-badge" style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">1</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Data Preprocessing & Cleaning</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Addressed missing values and data imbalances to ensure the predictive model learns from reliable, unbiased historical data.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge" style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">2</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Exploratory Data Analysis (EDA)</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Discovered the root behavioral causes of churn, extracting actionable insights around tenure drops, cashback rates, and customer complaints.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge" style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">3</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Predictive Modeling</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Trained, evaluated, and fine-tuned an advanced Machine Learning model (Random Forest) capable of forecasting future churners with high precision.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge" style="background: var(--primary); color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">4</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Customer Segmentation</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Clustered the churned user base into distinct personas to enable targeted and highly personalized marketing interventions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03. Key Churn Drivers -->
+          <div class="project-section" id="drivers">
+            <h2 class="project-section-heading"><span class="section-number">03.</span> Key Churn Drivers</h2>
+            <p>By conducting a deep-dive analysis into the customer data, I identified the top three factors driving users away from the platform:</p>
+            
+            <div class="challenge-cards">
+              <div class="challenge-card">
+                <h4>⏱️ Low Tenure</h4>
+                <p>New users are the most likely to churn. They haven't built loyalty or trust in the brand yet. <em>Action: Overhaul the new-user onboarding experience.</em></p>
+              </div>
+              <div class="challenge-card">
+                <h4>😠 High Complaints</h4>
+                <p>The complaint rate is roughly 2x higher for churned users. A single bad experience triggers an immediate exit. <em>Action: Prioritize and fast-track complaint resolution.</em></p>
+              </div>
+              <div class="challenge-card">
+                <h4>💵 Low Cashback</h4>
+                <p>Churned users receive lower cashback amounts, indicating insufficient financial incentive to stay. <em>Action: Offer dynamic cashback incentives to at-risk segments.</em></p>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <img src="https://github.com/user-attachments/assets/44177379-f1f9-40d6-bc38-9416e76a6689" alt="Boxplot comparison of Top Features" class="img-fluid img-lightbox lightbox-trigger" style="border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); border: 1px solid var(--border-color);">
+            </div>
+          </div>
+
+          <!-- 04. Predictive Modeling -->
+          <div class="project-section" id="modeling">
+            <h2 class="project-section-heading"><span class="section-number">04.</span> Predictive Modeling</h2>
+            <p>To proactively address churn, I developed an advanced Machine Learning model trained on historical customer data. After rigorous testing across multiple algorithms, the final model achieved an impressive <strong>95.5% accuracy</strong> in identifying at-risk customers.</p>
+            <p>This high accuracy ensures that marketing budgets for retention are spent efficiently, targeting only the users who actually need an incentive to stay.</p>
+          </div>
+
+          <!-- 05. Customer Segmentation Strategy -->
+          <div class="project-section" id="segmentation">
+            <h2 class="project-section-heading"><span class="section-number">05.</span> Customer Segmentation Strategy</h2>
+            <p>Predicting churn is only half the battle; knowing <em>how</em> to retain them is the other. I segmented the at-risk customers into four distinct personas to enable highly personalized marketing strategies.</p>
+
+            <div class="impact-grid" style="margin-top: 24px;">
+              <div class="impact-card">
+                <h4 style="color: #2ecc71;">🟢 Loyal but Silently Disengaging</h4>
+                <p><strong>Profile:</strong> Long-time users who rarely complain but are slowly leaving out of boredom.<br>
+                <strong>Strategy:</strong> Engage them with VIP loyalty programs and personalized experiences. Do not rely on discounts.</p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #3498db;">🔵 Deal-Sensitive Buyers</h4>
+                <p><strong>Profile:</strong> New users who bought a product once during a promotion and left.<br>
+                <strong>Strategy:</strong> Deploy first-purchase follow-up promotions, bundle deals, and retargeting ads.</p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #e67e22;">🟠 Low-Engagement Mobile Users</h4>
+                <p><strong>Profile:</strong> Mobile-first users who spend minimal time on the app.<br>
+                <strong>Strategy:</strong> Send targeted push notifications, improve app UX, and introduce gamification.</p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #e74c3c;">🔴 High-Value but Demanding</h4>
+                <p><strong>Profile:</strong> Digitally-savvy customers facing slow deliveries. They complain because they care.<br>
+                <strong>Strategy:</strong> Offer faster delivery options, premium customer support, and proactive follow-ups.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06. Business Impact -->
+          <div class="project-section" id="impact">
+            <h2 class="project-section-heading"><span class="section-number">06.</span> Business Impact</h2>
+            <p>Churn is rarely driven by a single factor—it's a mix of pricing sensitivity, product preference, and engagement. By integrating this predictive model into the business workflow, the marketing team can automatically score active customers weekly and route them to their specific retention campaigns, transforming a reactive churn problem into a proactive retention engine.</p>
+          </div>
+
+          <!-- Source Code CTA -->
+          <div class="source-code-cta">
+            <h3>Explore the Full Project</h3>
+            <p>Interested in the technical methodology behind the 95.5% accuracy? Explore the complete data pipeline, feature engineering, and Python models on GitHub.</p>
+            <a href="https://github.com/hothanhxuan/Project-7-Machine-Learning-Churn-Prediction" target="_blank" class="btn-github-gradient"><svg
+                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                style="margin-right:6px;margin-bottom:2px">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+              </svg> View on GitHub →</a>
+          </div>
+
+          <!-- Prev / Next Navigation -->
+          <nav class="project-nav">
+            <a href="ecommerce-behavior.html" class="project-nav-item project-nav-prev">
+              <span class="project-nav-label">← Previous</span>
+              <span class="project-nav-title">E-Commerce Behavior</span>
+            </a>
+            <div class="project-nav-item project-nav-next disabled">
+              <span class="project-nav-label">Next Project →</span>
+              <span class="project-nav-title">—</span>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Right: Sidebar -->
+        <aside class="project-sidebar">
+          <div class="sidebar-sticky">
+            <div class="toc-card">
+              <h4>Table of Contents</h4>
+              <ul class="toc-list" id="toc-list">
+                <li><a href="#challenge">01. The Business Challenge</a></li>
+                <li><a href="#methodology">02. End-to-End Methodology</a></li>
+                <li><a href="#drivers">03. Key Churn Drivers</a></li>
+                <li><a href="#modeling">04. Predictive Modeling</a></li>
+                <li><a href="#segmentation">05. Customer Segmentation</a></li>
+                <li><a href="#impact">06. Business Impact</a></li>
+              </ul>
+            </div>
+            <div class="toc-card">
+              <h4>Source Code</h4>
+              <a href="https://github.com/hothanhxuan/Project-7-Machine-Learning-Churn-Prediction" target="_blank" class="btn-github-gradient"
+                style="width: 100%; justify-content: center; margin-bottom: 16px; padding: 10px 16px; font-size: 0.85rem;"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                  style="margin-right:6px;margin-bottom:2px">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg> View on GitHub</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+          </svg></a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
+      </div>
+      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">×</button>
+    <img src="" alt="Zoomed diagram" class="lightbox-img" id="lightbox-img">
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Lightbox Logic
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const overlay = document.getElementById('lightbox');
+    const zoomImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    triggers.forEach(img => {
+      img.addEventListener('click', () => {
+        zoomImg.src = img.src;
+        zoomImg.alt = img.alt;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    const closeLightbox = () => { overlay.style.display = 'none'; zoomImg.src = ''; };
+    closeBtn?.addEventListener('click', closeLightbox);
+    overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Table of Contents Highlighting
+    const tocLinks = document.querySelectorAll('#toc-list a');
+    const secs = document.querySelectorAll('.project-section');
+    function updateToc() {
+      let cur = '';
+      secs.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) {
+          cur = s.id;
+        }
+      });
+      tocLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+      });
+    }
+    window.addEventListener('scroll', updateToc, { passive: true });
+  </script>
+</body>
+
+</html>
