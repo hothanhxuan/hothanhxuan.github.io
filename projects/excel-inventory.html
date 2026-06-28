@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sushi Inventory Management System — Xuan Ho</title>
+  <meta name="description"
+    content="Excel-based inventory management system for a sushi restaurant in Finland — tracking 34 ingredients across 6,120 daily records with automated stock alerts and supplier evaluation.">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Xuan Ho</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../resume.html">About Me</a></li>
+        <li><a href="../beyond.html">Beyond Work</a></li>
+        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span
+              class="theme-icon">🌙</span></button></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span
+            class="theme-icon">🌙</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Hero -->
+  <section class="project-detail-hero">
+    <div class="container hero-center">
+      <a href="../projects.html" class="project-back-link">← Back to Projects</a>
+      <div class="project-hero-tags">
+        <span class="project-tag" style="background:#22C55E; color:#fff;">Excel</span>
+      </div>
+      <h1>Sushi Inventory Management System — F&B Operations</h1>
+      <p class="project-hero-summary" style="max-width:750px;margin-left:auto;margin-right:auto">Built a comprehensive
+        Excel-based application to digitize and automate supply chain management for a sushi restaurant in Finland. The
+        system tracks <strong>34 core ingredients</strong> across 3 categories through <strong>6,120 daily transaction
+          records</strong>, enabling data-driven purchasing decisions and optimized cash flow via automated stock alerts,
+        consumption heatmaps, and supplier performance evaluation.</p>
+      <div class="project-hero-meta" style="justify-content:center">
+        <span class="project-meta-item">📅 Jun 2026</span>
+        <span class="project-meta-item">🛠️ Microsoft Excel</span>
+        <span class="project-meta-item">🍣 34 Products · 6,120 Records</span>
+        <span class="project-meta-item">📦 Inventory Management</span>
+        <span class="project-meta-item">🇫🇮 Finland · F&B</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <div class="project-layout">
+
+        <!-- Left: Content -->
+        <div class="project-main">
+
+          <!-- Cover Photo -->
+          <div style="text-align: center; margin-top: 12px; margin-bottom: 40px;">
+            <img src="https://github.com/user-attachments/assets/640515ad-09d2-440f-9100-5f24476c346f"
+              style="max-width: 90%; height: auto; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); display: block; margin: 0 auto;"
+              class="lightbox-trigger" alt="Sushi Inventory Management System Dashboard">
+          </div>
+
+          <!-- 01. Business Challenge -->
+          <div class="project-section" id="challenge">
+            <h2 class="project-section-heading"><span class="section-number">01.</span> The Business Challenge</h2>
+            <p>Small-to-medium sushi restaurants in Finland face a unique operational challenge: they rely on
+              <strong>highly perishable ingredients</strong> — fresh salmon, tuna, avocado, nori — that must be tracked
+              daily to prevent costly stockouts during service or food waste from over-ordering.</p>
+            <p>Most SME restaurants still manage inventory with pen-and-paper logs or basic spreadsheets with no
+              structure, leading to:</p>
+
+            <div class="challenge-cards">
+              <div class="challenge-card">
+                <h4>🚨 Stockout Crises</h4>
+                <p>Running out of key ingredients mid-service forces the kitchen to remove dishes from the menu —
+                  directly impacting revenue and customer satisfaction.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>🗑️ Food Waste</h4>
+                <p>Without consumption tracking, over-ordering perishable goods leads to spoilage — a direct hit to
+                  profit margins in an industry with razor-thin margins.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>💸 Cash Flow Blindness</h4>
+                <p>No visibility into which ingredients consume the most budget, which suppliers are reliable, or when to
+                  negotiate bulk purchasing deals.</p>
+              </div>
+            </div>
+
+            <p style="margin-top: 20px;">The goal was to build a <strong>zero-cost, no-code solution</strong> using only
+              Microsoft Excel — accessible to all staff regardless of technical skill — that transforms daily inventory
+              data into actionable business intelligence.</p>
+          </div>
+
+          <!-- 02. System Architecture -->
+          <div class="project-section" id="architecture">
+            <h2 class="project-section-heading"><span class="section-number">02.</span> System Architecture</h2>
+            <p>The system is structured as a <strong>7-sheet Excel workbook</strong>, each sheet serving a distinct
+              purpose in the data flow — from daily data entry by kitchen staff to executive-level strategic insights for
+              the restaurant owner.</p>
+
+            <div class="approach-steps" style="margin-top: 24px;">
+              <div class="approach-step">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  1</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Dashboard — Central Control
+                    Panel</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Bird's-eye view of inventory health with
+                    KPI cards, stock status summary for all 34 products, and a monthly consumption heatmap
+                    (Green/Orange/Blue).</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  2</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Raw Data — Daily Transaction
+                    Log</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Single point of data entry for 6,120+
+                    records. Staff enter received, used, and waste quantities — closing stock is auto-calculated.
+                    Critical rows are highlighted via Conditional Formatting.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  3</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Stock Alerts — Inventory
+                    Warning Center</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Crisis management hub with Red Zone (Out of
+                    Stock) and Orange Zone (Low Stock) indicators — designed to be checked at the start of every shift.
+                  </p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  4</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Monthly Analysis — Trend
+                    Analysis</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Historical consumption data with H1 totals
+                    and monthly averages. Heatmap color coding from Dark Teal (>150 units) to Light Green (<50 units)
+                    supports demand forecasting and bulk purchasing negotiations.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  5</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Product Details — Individual
+                    Profiles</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Color-coded product cards showing unit,
+                    lead time, reorder point, reorder quantity, and 6-month consumption breakdown for each of the 34
+                    ingredients.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  6</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Supplier Report — Vendor
+                    Performance</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">Evaluates 3 suppliers on Total POs, Total
+                    Received Qty, Average Lead Time, and Activity Grade (Active/Steady/Low) — critical for perishable
+                    seafood sourcing decisions.</p>
+                </div>
+              </div>
+              <div class="approach-step" style="margin-top: 16px; display: flex;">
+                <div class="step-badge"
+                  style="background: #22C55E; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0; margin-top: 4px;">
+                  7</div>
+                <div class="step-content" style="margin-left: 16px;">
+                  <h4 style="margin-bottom: 6px; font-size: 1.1rem; color: var(--text);">Pivot Summary — Executive
+                    Insights</h4>
+                  <p style="color: var(--text-secondary); line-height: 1.6;">High-level diagnostic with category
+                    breakdowns (Dry/Frozen/Fresh) and Stockout Health labels — CRITICAL (<5 days), WARNING (<15 days),
+                    HEALTHY (≥15 days).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03. Key Features -->
+          <div class="project-section" id="features">
+            <h2 class="project-section-heading"><span class="section-number">03.</span> Key Features</h2>
+            <p>The system goes far beyond a basic spreadsheet. It's designed as a <strong>production-ready business
+                tool</strong> with visual intelligence baked into every sheet:</p>
+
+            <div class="impact-grid" style="margin-top: 24px;">
+              <div class="impact-card">
+                <h4 style="color: #22C55E;">📊 Dashboard KPIs</h4>
+                <p>Professional metric cards instantly show total products tracked, transaction records, alert status,
+                  and category count — giving managers a snapshot without scrolling.</p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #F59E0B;">🟧 Consumption Heatmaps</h4>
+                <p>Color-gradient maps on both Dashboard and Monthly Analysis sheets — Green for high-usage
+                  (best-sellers), Orange for medium, Blue for low (monitor expiration closely).</p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #EF4444;">🔴 Stock Alert Zones</h4>
+                <p><strong>Red Zone:</strong> OUT OF STOCK — immediate supplier contact required.
+                  <strong>Orange Zone:</strong> LOW STOCK — add to tomorrow's Purchase Order.
+                </p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #3B82F6;">⚡ Auto-Calculated Metrics</h4>
+                <p>Closing stock is computed automatically from opening + received − used − waste. Critical status rows
+                  are highlighted in orange via Conditional Formatting — zero manual effort.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04. Advanced Excel Techniques -->
+          <div class="project-section" id="techniques">
+            <h2 class="project-section-heading"><span class="section-number">04.</span> Advanced Excel Techniques</h2>
+            <p>This project demonstrates proficiency across a range of advanced Excel capabilities — far beyond basic
+              formulas and charts:</p>
+
+            <div style="overflow-x: auto; margin-top: 20px;">
+              <table
+                style="width:100%; border-collapse: collapse; font-size: 0.95rem; border-radius: 12px; overflow: hidden;">
+                <thead>
+                  <tr
+                    style="background: var(--primary); color: white; text-align: left;">
+                    <th style="padding: 14px 18px; font-weight: 600;">Technique</th>
+                    <th style="padding: 14px 18px; font-weight: 600;">Application in This Project</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background: var(--bg-alt);">
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                      Conditional Formatting</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">Auto-highlights
+                      Critical status rows with orange background on Raw Data</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                      AutoFilter</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">Enables instant data
+                      filtering across 6,000+ records by any column</td>
+                  </tr>
+                  <tr style="background: var(--bg-alt);">
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                      Freeze Panes</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">Locks header row for
+                      seamless scrolling through large datasets</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                      Dynamic Color Palette</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">34 unique hex color
+                      codes auto-rotate for Product Detail cards</td>
+                  </tr>
+                  <tr style="background: var(--bg-alt);">
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                      Heatmap Visualization</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">Color-gradient
+                      consumption maps on Dashboard and Monthly Analysis</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">KPI
+                      Dashboard Cards</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">Professional metric
+                      cards with custom borders and color schemes</td>
+                  </tr>
+                  <tr style="background: var(--bg-alt);">
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color); font-weight: 500;">
+                      Multi-Sheet Architecture</td>
+                    <td style="padding: 12px 18px; border-bottom: 1px solid var(--border-color);">7 purpose-built
+                      sheets with cross-referencing data flow</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 12px 18px; font-weight: 500;">Print-Ready Layout</td>
+                    <td style="padding: 12px 18px;">Pre-configured page setup with margins, headers, and footers</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 05. Role-Based Access Guide -->
+          <div class="project-section" id="roles">
+            <h2 class="project-section-heading"><span class="section-number">05.</span> Role-Based Access Guide</h2>
+            <p>The system is designed for <strong>4 distinct user roles</strong>, each interacting with different sheets
+              at different frequencies:</p>
+
+            <div class="impact-grid" style="margin-top: 24px;">
+              <div class="impact-card">
+                <h4 style="color: #22C55E;">👨‍🍳 Kitchen Staff</h4>
+                <p><strong>Sheet:</strong> Raw Data<br>
+                  <strong>Frequency:</strong> Daily<br>
+                  <strong>Action:</strong> Enter end-of-shift inventory data — received, used, and waste quantities.
+                </p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #EF4444;">👨‍🍳 Head Chef</h4>
+                <p><strong>Sheet:</strong> Stock Alerts<br>
+                  <strong>Frequency:</strong> Start of each shift<br>
+                  <strong>Action:</strong> Check for shortages and place urgent orders before service begins.
+                </p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #3B82F6;">📋 Store Manager</h4>
+                <p><strong>Sheet:</strong> Dashboard, Monthly Analysis<br>
+                  <strong>Frequency:</strong> Weekly<br>
+                  <strong>Action:</strong> Plan restocking and review consumption trends to optimize ordering.
+                </p>
+              </div>
+              <div class="impact-card">
+                <h4 style="color: #8B5CF6;">🏢 Restaurant Owner</h4>
+                <p><strong>Sheet:</strong> Supplier Report, Pivot Summary<br>
+                  <strong>Frequency:</strong> Monthly / Quarterly<br>
+                  <strong>Action:</strong> Negotiate with suppliers, optimize costs, and make strategic sourcing
+                  decisions.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 06. Business Impact -->
+          <div class="project-section" id="impact">
+            <h2 class="project-section-heading"><span class="section-number">06.</span> Business Impact</h2>
+            <p>This project demonstrates that <strong>advanced analytics doesn't require expensive software</strong>.
+              By leveraging only Microsoft Excel, the system delivers enterprise-grade inventory intelligence to a small
+              restaurant operation:</p>
+
+            <div class="challenge-cards" style="margin-top: 20px;">
+              <div class="challenge-card">
+                <h4>📦 Digitized Supply Chain</h4>
+                <p>Replaced pen-and-paper tracking with a structured, searchable digital system — eliminating data loss
+                  and enabling historical trend analysis across 6 months of operations.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>🎯 Data-Driven Purchasing</h4>
+                <p>Monthly consumption averages and heatmaps enable evidence-based ordering — reducing both stockouts
+                  and over-purchasing by aligning orders to actual demand patterns.</p>
+              </div>
+              <div class="challenge-card">
+                <h4>🤝 Supplier Negotiations</h4>
+                <p>Activity grades and delivery performance metrics give the owner leverage to negotiate volume discounts
+                  or replace underperforming vendors — especially critical for perishable seafood.</p>
+              </div>
+            </div>
+
+            <blockquote
+              style="margin-top: 28px; padding: 20px 24px; border-left: 4px solid #22C55E; background: var(--bg-alt); border-radius: 0 8px 8px 0; font-style: italic; color: var(--text-secondary);">
+              "This project demonstrates advanced Excel proficiency applied to a real-world supply chain management
+              problem in the F&B industry — from daily data entry operations to strategic analytics for executive
+              decision-making."
+            </blockquote>
+          </div>
+
+          <!-- Source Code CTA -->
+          <div class="source-code-cta">
+            <h3>Explore the Full Project</h3>
+            <p>Interested in the system architecture and Excel techniques? Download the workbook and explore the full
+              user guide on GitHub.</p>
+            <a href="https://github.com/hothanhxuan/Inventory-Management-" target="_blank"
+              class="btn-github-gradient"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;margin-bottom:2px">
+                <path
+                  d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+              </svg> View on GitHub →</a>
+          </div>
+
+          <!-- Prev / Next Navigation -->
+          <nav class="project-nav">
+            <a href="ml-churn-prediction.html" class="project-nav-item project-nav-prev">
+              <span class="project-nav-label">← Previous</span>
+              <span class="project-nav-title">ML Churn Prediction</span>
+            </a>
+            <div class="project-nav-item project-nav-next disabled">
+              <span class="project-nav-label">Next Project →</span>
+              <span class="project-nav-title">—</span>
+            </div>
+          </nav>
+        </div>
+
+        <!-- Right: Sidebar -->
+        <aside class="project-sidebar">
+          <div class="sidebar-sticky">
+            <div class="toc-card">
+              <h4>Table of Contents</h4>
+              <ul class="toc-list" id="toc-list">
+                <li><a href="#challenge">01. The Business Challenge</a></li>
+                <li><a href="#architecture">02. System Architecture</a></li>
+                <li><a href="#features">03. Key Features</a></li>
+                <li><a href="#techniques">04. Excel Techniques</a></li>
+                <li><a href="#roles">05. Role-Based Access</a></li>
+                <li><a href="#impact">06. Business Impact</a></li>
+              </ul>
+            </div>
+            <div class="toc-card">
+              <h4>Source Code</h4>
+              <a href="https://github.com/hothanhxuan/Inventory-Management-" target="_blank"
+                class="btn-github-gradient"
+                style="width: 100%; justify-content: center; margin-bottom: 16px; padding: 10px 16px; font-size: 0.85rem;"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"
+                  style="margin-right:6px;margin-bottom:2px">
+                  <path
+                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg> View on GitHub</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+          </svg></a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
+      </div>
+      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" aria-label="Close lightbox">×</button>
+    <img src="" alt="Zoomed diagram" class="lightbox-img" id="lightbox-img">
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Lightbox Logic
+    const triggers = document.querySelectorAll('.lightbox-trigger');
+    const overlay = document.getElementById('lightbox');
+    const zoomImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.lightbox-close');
+
+    triggers.forEach(img => {
+      img.addEventListener('click', () => {
+        zoomImg.src = img.src;
+        zoomImg.alt = img.alt;
+        overlay.style.display = 'flex';
+      });
+    });
+
+    const closeLightbox = () => { overlay.style.display = 'none'; zoomImg.src = ''; };
+    closeBtn?.addEventListener('click', closeLightbox);
+    overlay?.addEventListener('click', (e) => { if (e.target === overlay) closeLightbox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+    // Table of Contents Highlighting
+    const tocLinks = document.querySelectorAll('#toc-list a');
+    const secs = document.querySelectorAll('.project-section');
+    function updateToc() {
+      let cur = '';
+      secs.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) {
+          cur = s.id;
+        }
+      });
+      tocLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+      });
+    }
+    window.addEventListener('scroll', updateToc, { passive: true });
+
+    // Mobile theme toggle
+    const mobileToggle = document.getElementById('theme-toggle-mobile');
+    if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
+    window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
+    mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
+  </script>
+</body>
+
+</html>
