@@ -48,7 +48,7 @@ window.addEventListener('scroll', () => {
 // ========== TYPING ANIMATION ==========
 const typingEl = document.getElementById('typing-text');
 if (typingEl) {
-  const titles = ['Data Analyst', 'ETL Developer', 'BI Specialist', 'Problem Solver'];
+  const titles = ['Business Analyst', 'Data Analyst', 'BI Specialist', 'Problem Solver'];
   let titleIdx = 0, charIdx = 0, deleting = false;
 
   function type() {
