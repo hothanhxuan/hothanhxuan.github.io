@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Airlines Performance & Delay Analysis in US Aviation — Xuan Ho</title>
+  <title>Airlines Performance & Delay Analysis in US Aviation - Xuan Ho</title>
   <meta name="description"
     content="Power BI dashboard analyzing 5.82M flight records across 322 airports and 14 airlines. Identified 72% of delay minutes are controllable, with 82.1% On-Time Performance.">
   <link rel="stylesheet" href="../css/custom.css">
@@ -304,7 +304,7 @@
             <ul>
               <li><strong>Operational Efficiency:</strong> How efficiently are airlines operating across the national
                 network? Stakeholders needed to know if delays are systemic or isolated to specific airlines or airports
-                — tracking Scheduled vs. Actual Times, Delay Minutes, Cancellation Counts, and Carrier Performance.</li>
+                - tracking Scheduled vs. Actual Times, Delay Minutes, Cancellation Counts, and Carrier Performance.</li>
               <li><strong>Root Cause Analysis:</strong> What are the primary drivers of flight delays and cancellations?
                 Linking top-level delays to their root causes (Weather, Security, NAS, Late Aircraft) reveals whether
                 delays are controllable, enabling better strategic buffer planning.</li>
@@ -325,7 +325,7 @@
                 <div class="step-badge">1</div>
                 <div class="step-content">
                   <h4>Empathize &amp; Define</h4>
-                  <p>First, I identified key stakeholders — Airline Operations Directors needing national airspace
+                  <p>First, I identified key stakeholders - Airline Operations Directors needing national airspace
                     efficiency views, and Flight Schedulers tracking granular metrics like Average Delay by Airline,
                     Route, or Time of Day.</p>
                 </div>
@@ -335,7 +335,7 @@
                 <div class="step-content">
                   <h4>Prototype &amp; Test</h4>
                   <p>I started by designing low-fidelity layouts, then built test versions in Power BI. Each iteration
-                    addressed stakeholder reporting needs — Punctuality view, Root Cause view, Hub Efficiency view —
+                    addressed stakeholder reporting needs - Punctuality view, Root Cause view, Hub Efficiency view -
                     constantly checking against initial goals.</p>
                 </div>
               </div>
@@ -357,8 +357,8 @@
 
             <div class="dt-step">
               <h4>Step 1. Empathize</h4>
-              <p>Identify the stakeholder's goals — understanding what airline leadership and flight schedulers need to
-                see — and map the underlying operational problems.</p>
+              <p>Identify the stakeholder's goals - understanding what airline leadership and flight schedulers need to
+                see - and map the underlying operational problems.</p>
               <img src="https://github.com/user-attachments/assets/38e06a17-a4d9-4640-b189-b32df9e0a5c4"
                 class="img-fluid img-lightbox" alt="Empathize Stage 1"
                 style="border-radius:var(--radius);box-shadow:var(--shadow)">
@@ -369,7 +369,7 @@
 
             <div class="dt-step">
               <h4>Step 2. Define</h4>
-              <p>Clearly define the core questions and the KPIs the dashboard must address — On-Time Performance, Delay
+              <p>Clearly define the core questions and the KPIs the dashboard must address - On-Time Performance, Delay
                 Composition, Cancellation Rate, and Route Efficiency.</p>
               <img src="https://github.com/user-attachments/assets/ccbebf3d-aa1d-4e73-8e5c-e6c4266f54ad"
                 class="img-fluid img-lightbox" alt="Define Stage"
@@ -380,7 +380,7 @@
 
             <div class="dt-step">
               <h4>Step 3. Ideate</h4>
-              <p>Brainstorm data visualization layouts — deciding which chart types, spatial maps, and drill-through
+              <p>Brainstorm data visualization layouts - deciding which chart types, spatial maps, and drill-through
                 pages best tell the aviation performance story.</p>
               <img src="https://github.com/user-attachments/assets/7db437c0-d954-455b-bac7-465bc855cab3"
                 class="img-fluid img-lightbox" alt="Ideate Stage"
@@ -392,7 +392,7 @@
 
             <div class="dt-step">
               <h4>Step 4. Prototype &amp; Step 5. Test</h4>
-              <p>Continuously prototype and test across multiple iterations — gathering feedback to refine the
+              <p>Continuously prototype and test across multiple iterations - gathering feedback to refine the
                 operational dashboards significantly across the Punctuality, Root Cause, and Hub Efficiency views.</p>
               <img src="https://github.com/user-attachments/assets/195b1960-a4c7-4429-93af-6a20d50634a7"
                 class="img-fluid img-lightbox" alt="Prototype & Test Stage"
@@ -420,7 +420,7 @@
             <p>The Power BI data model follows a <strong>Star Schema</strong> structure, integrating multiple data
               sources to enable cross-filtering between flight operations and geographic/carrier outcomes:</p>
             <ul>
-              <li><strong>Fact Table (<code>flights</code>):</strong> Contains granular flight details — dates, flight
+              <li><strong>Fact Table (<code>flights</code>):</strong> Contains granular flight details - dates, flight
                 numbers, airline, origin/destination airports, and additive operational metrics like
                 <code>DEPARTURE_DELAY</code>, <code>ARRIVAL_DELAY</code>, <code>AIR_SYSTEM_DELAY</code>,
                 <code>WEATHER_DELAY</code>, <code>DISTANCE</code>, and <code>ELAPSED_TIME</code>.
@@ -434,12 +434,12 @@
             <p>The schema connects the central <code>flights</code> fact table to dimension tables via
               <strong>1-to-many</strong> relationships with single-direction cross-filtering. Notably, the
               <code>airports</code> dimension acts as a <strong>role-playing dimension</strong> with two relationship
-              lines — one for <code>ORIGIN_AIRPORT</code> and one for <code>DESTINATION_AIRPORT</code>.
+              lines - one for <code>ORIGIN_AIRPORT</code> and one for <code>DESTINATION_AIRPORT</code>.
             </p>
             <div class="diagram-wrap">
               <img src="https://github.com/user-attachments/assets/dc5ff959-7fd2-4ba7-b94b-b5a62ab53826"
-                alt="Power BI Data Model — Star Schema" class="img-lightbox">
-              <div class="diagram-caption">Data Model — Star Schema with Fact & Dimension Tables (Role-Playing Dimension
+                alt="Power BI Data Model - Star Schema" class="img-lightbox">
+              <div class="diagram-caption">Data Model - Star Schema with Fact & Dimension Tables (Role-Playing Dimension
                 for Airports)</div>
             </div>
           </div>
@@ -476,7 +476,7 @@
               </div>
               <figcaption
                 style="text-align:center;margin-top:12px;font-size:.85rem;color:var(--text-muted);font-style:italic">
-                Interactive Aviation Dashboard — Feel free to explore filters!</figcaption>
+                Interactive Aviation Dashboard - Feel free to explore filters!</figcaption>
             </figure>
 
 
@@ -494,7 +494,7 @@
                 <p>The national system operates at an <strong>82.1% On-Time Performance (OTP)</strong>, but efficiency
                   is highly polarized. Carriers like Hawaiian and Alaska perform exceptionally well (>87%), while
                   low-cost carriers (Spirit, Frontier) drag down the network. Critically, when flights <em>are</em>
-                  delayed, the average arrival delay is a severe <strong>61 minutes</strong> — not minor deviations.</p>
+                  delayed, the average arrival delay is a severe <strong>61 minutes</strong> - not minor deviations.</p>
               </div>
               <div class="insight-img">
                 <img src="../assets/images/insight1.png" class="img-fluid img-lightbox" alt="OTP Insight">
@@ -505,7 +505,7 @@
               <div class="insight-text">
                 <h4 style="font-weight:700;margin-bottom:8px">2. 72% of Delays Are Controllable</h4>
                 <p>Contrary to popular belief, <strong>72% of delay minutes are entirely controllable</strong> by
-                  airlines — chiefly "Late Aircraft" cascading delays (39.8%) and internal "Airline Delays" (32.2%).
+                  airlines - chiefly "Late Aircraft" cascading delays (39.8%) and internal "Airline Delays" (32.2%).
                   Weather only accounts for massive, isolated spikes (e.g., Q1 winter blizzards), challenging the common
                   narrative that weather is the primary villain.</p>
               </div>
@@ -520,7 +520,7 @@
                 <h4 style="font-weight:700;margin-bottom:8px">3. The Evening Cascade Effect</h4>
                 <p>The "Average Delay by Hour" chart reveals a classic cascading failure. Delays spike dramatically
                   during <strong>evening peak hours (16:00–19:59)</strong>, accounting for <strong>32%</strong> of all
-                  delayed flights. Minor morning disruptions constantly snowball — each delayed aircraft becomes the
+                  delayed flights. Minor morning disruptions constantly snowball - each delayed aircraft becomes the
                   "late arriving aircraft" for the next leg, creating a domino effect.</p>
               </div>
               <div class="insight-img">
@@ -558,7 +558,7 @@
                   historical catastrophe dates (Jan 27, Mar 5). Proactively cancel vulnerable routes like ORD→ASE during
                   expected storms 48 hours in advance.</li>
                 <li><strong>Hub Pushback Optimization:</strong> Partner with FAA and ATC to implement pushback metering
-                  programs at JFK and ORD — holding aircraft at gates instead of burning fuel on the tarmac.</li>
+                  programs at JFK and ORD - holding aircraft at gates instead of burning fuel on the tarmac.</li>
                 <li><strong>Reserve Aircraft Allocation:</strong> Station spare aircraft at high-delay hubs to limit the
                   domino effect when incoming flights are delayed.</li>
               </ul>
@@ -628,7 +628,7 @@
                   failures. Nearly <strong>40%</strong> of all delay minutes are categorized as 'Late Aircraft'.</p>
                 <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:16px; line-height:1.7">
                   <li><strong>Root Cause:</strong> Point-to-point networks with rapid turnaround goals create fragility
-                    — one delayed leg cascades through the entire day's schedule.</li>
+                    - one delayed leg cascades through the entire day's schedule.</li>
                   <li><strong>Action:</strong> Implement strategic buffer blocks in afternoon schedules, adding 10–15
                     minutes of scheduled ground time specifically for high-risk regional carriers.</li>
                   <li><strong>Target:</strong> High-frequency routes like DCA to JFK where cascading failures are most
@@ -646,7 +646,7 @@
                   <strong>3,000 cancellations in a single day</strong> each.
                 </p>
                 <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:16px; line-height:1.7">
-                  <li><strong>Root Cause:</strong> No proactive rerouting — airlines wait for conditions to deteriorate
+                  <li><strong>Root Cause:</strong> No proactive rerouting - airlines wait for conditions to deteriorate
                     before reacting.</li>
                   <li><strong>Action:</strong> Adopt dynamic re-routing algorithms for expected storm corridors at major
                     mid-western hubs (ORD) 48 hours in advance.</li>
@@ -677,7 +677,7 @@
             </h3>
             <div class="rec-box">
               <ul>
-                <li><strong>Cost Savings:</strong> Reduced fuel burn from pushback metering — millions of dollars
+                <li><strong>Cost Savings:</strong> Reduced fuel burn from pushback metering - millions of dollars
                   annually per major carrier.</li>
                 <li><strong>OTP Improvement:</strong> Targeting an industry-wide push above <strong>85% OTP</strong>
                   (from current 82.1%).</li>
@@ -725,7 +725,7 @@
                 style="background:var(--surface);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border)">
                 <p style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px">📊 Dataset</p>
                 <p style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);margin:0">
-                  Kaggle — 2015 Flight Delays & Cancellations (5.82M records)</p>
+                  Kaggle - 2015 Flight Delays & Cancellations (5.82M records)</p>
               </div>
             </div>
 

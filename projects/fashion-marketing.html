@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketing Spend & Sales Performance — Fashion Retail — Xuan Ho</title>
+  <title>Marketing Spend & Sales Performance - Fashion Retail - Xuan Ho</title>
   <meta name="description"
     content="Power BI dashboard analyzing 10,500+ records across 175 campaigns and 184 SKUs. Diagnosed budget misallocation, identified hero SKUs with 43.67× ROAS, and proposed a reallocation strategy worth 120–180M VND/month in incremental profit.">
   <link rel="stylesheet" href="../css/custom.css">
@@ -415,7 +415,7 @@
     <div class="container hero-center">
       <a href="../projects.html" class="project-back-link">← Back to Projects</a>
       <div class="project-hero-tags"><span class="project-tag tag-powerbi">Power BI</span></div>
-      <h1>Marketing Spend &amp; Sales Performance — Fashion Retail</h1>
+      <h1>Marketing Spend &amp; Sales Performance - Fashion Retail</h1>
       <p class="project-hero-summary" style="max-width:750px;margin-left:auto;margin-right:auto">Using Power BI and
         DAX, I integrated 10,500+ marketing and sales records into a Star Schema model to build an analytic dashboard
         that links campaign spend directly to revenue outcomes. The analysis diagnosed underfunded hero SKUs (Lisa Dress
@@ -454,7 +454,7 @@
             <ul>
               <li><strong>Budget Efficiency:</strong> How efficiently is the marketing budget being spent across
                 campaigns? Stakeholders needed to understand if allocated budget is generating sufficient engagement at
-                an optimal cost — tracking CPM, CPC, CTR, Budget Usage, Total Spend, and Conversations initiated per
+                an optimal cost - tracking CPM, CPC, CTR, Budget Usage, Total Spend, and Conversations initiated per
                 campaign.</li>
               <li><strong>Spend-to-Revenue Link:</strong> What is the direct relationship between marketing spend and
                 product sales? Linking top-of-funnel marketing metrics to bottom-line revenue shows which ad variations
@@ -477,7 +477,7 @@
                 <div class="step-badge">1</div>
                 <div class="step-content">
                   <h4>Empathize &amp; Define</h4>
-                  <p>First, I identified key stakeholders — Senior Leadership &amp; Marketing Directors needing clear
+                  <p>First, I identified key stakeholders - Senior Leadership &amp; Marketing Directors needing clear
                     budget efficiency views, and Marketing Analysts tracking granular metrics like Cost per Result,
                     Conversion Rate by Campaign and Product.</p>
                 </div>
@@ -508,7 +508,7 @@
 
             <div class="dt-step">
               <h4>Step 1. Empathize</h4>
-              <p>Identify the stakeholder's goals — understanding what marketing leadership and analysts need to see —
+              <p>Identify the stakeholder's goals - understanding what marketing leadership and analysts need to see -
                 and map the underlying business problems around budget efficiency and ROI.</p>
               <img src="https://github.com/user-attachments/assets/5503e4ea-0f98-40c0-bcc7-c1d852c3b4e0"
                 class="img-fluid img-lightbox" alt="Empathize Stage"
@@ -520,7 +520,7 @@
 
             <div class="dt-step">
               <h4>Step 2. Define</h4>
-              <p>Clearly define the core questions and the KPIs the dashboard must address — ROAS, CPM, CPC, CTR, Budget
+              <p>Clearly define the core questions and the KPIs the dashboard must address - ROAS, CPM, CPC, CTR, Budget
                 Usage, Revenue Attribution, and Cost per Result.</p>
               <img src="https://github.com/user-attachments/assets/f5e406bc-afb4-4dc4-85ea-c0c4e6bdcbdc"
                 class="img-fluid img-lightbox" alt="Define Stage"
@@ -532,7 +532,7 @@
 
             <div class="dt-step">
               <h4>Step 3. Ideate</h4>
-              <p>Brainstorm data visualization layouts — deciding which chart types, allocation views, and drill-through
+              <p>Brainstorm data visualization layouts - deciding which chart types, allocation views, and drill-through
                 pages best tell the marketing performance story.</p>
               <img src="https://github.com/user-attachments/assets/1f806f68-79b9-4068-a445-9071bc895925"
                 class="img-fluid img-lightbox" alt="Ideate Stage"
@@ -544,7 +544,7 @@
 
             <div class="dt-step">
               <h4>Step 4. Prototype &amp; Step 5. Test</h4>
-              <p>Continuously prototype and test across multiple iterations — gathering feedback to refine the marketing
+              <p>Continuously prototype and test across multiple iterations - gathering feedback to refine the marketing
                 and sales dashboards significantly across the Overview, Campaign ROAS, Revenue Source, and Product
                 Performance views.</p>
               <img src="https://github.com/user-attachments/assets/ecca880a-5ab6-4500-8ace-99a3cd8f6613"
@@ -562,13 +562,13 @@
               marketing performance of a fashion retail company for May 2024. Across the primary tables, the dataset
               encompasses <strong>10,533</strong> total records:</p>
             <ul>
-              <li><strong><code>fact-order</code>:</strong> 3,450 records — core sales transactions with order details
+              <li><strong><code>fact-order</code>:</strong> 3,450 records - core sales transactions with order details
                 including Customer ID, Product ID, Revenue, Quantity, Discount, and Order Status.</li>
-              <li><strong><code>fact-mkt_camp_by_sku_cost</code>:</strong> 3,981 records — allocated marketing
+              <li><strong><code>fact-mkt_camp_by_sku_cost</code>:</strong> 3,981 records - allocated marketing
                 performance at Campaign and SKU level with budget breakdowns and Cost-Per-Result indicators.</li>
-              <li><strong><code>dim-danh sach san pham</code> (Product Master):</strong> 2,249 records — the central
+              <li><strong><code>dim-danh sach san pham</code> (Product Master):</strong> 2,249 records - the central
                 product dimension linking sales to marketing with Category, SKU, Selling Price, and COGS.</li>
-              <li><strong><code>dim-mkt_camp_cost</code> (Campaign Overview):</strong> 853 records — top-level campaign
+              <li><strong><code>dim-mkt_camp_cost</code> (Campaign Overview):</strong> 853 records - top-level campaign
                 information with Campaign ID, Budget, Impressions, Click, CPC, and CPM.</li>
             </ul>
 
@@ -578,10 +578,10 @@
             <ul>
               <li><strong>Fact Tables (Transactional Data):</strong>
                 <ul>
-                  <li><strong><code>fact-order</code>:</strong> Records core sales transactions — Customer ID, Product
+                  <li><strong><code>fact-order</code>:</strong> Records core sales transactions - Customer ID, Product
                     ID, Revenue, Quantity, Discount, and Order Status. Primary source for Total and Direct Revenue.</li>
                   <li><strong><code>fact-mkt_camp_by_sku_cost</code>:</strong> Records allocated marketing performance at
-                    Campaign and SKU level — Budget per product, Amount Spent per product, New Customers, and
+                    Campaign and SKU level - Budget per product, Amount Spent per product, New Customers, and
                     SKU-level Cost-Per-Result indicators.</li>
                 </ul>
               </li>
@@ -603,8 +603,8 @@
               sales outcomes.</p>
             <div class="diagram-wrap">
               <img src="https://github.com/user-attachments/assets/b9b6270d-4ad5-4623-af9f-3e58fe54ee7f"
-                alt="Power BI Data Model — Star Schema" class="img-lightbox">
-              <div class="diagram-caption">Data Model — Star Schema with Fact & Dimension Tables (Marketing ↔ Sales
+                alt="Power BI Data Model - Star Schema" class="img-lightbox">
+              <div class="diagram-caption">Data Model - Star Schema with Fact & Dimension Tables (Marketing ↔ Sales
                 Integration)</div>
             </div>
           </div>
@@ -641,7 +641,7 @@
               </div>
               <figcaption
                 style="text-align:center;margin-top:12px;font-size:.85rem;color:var(--text-muted);font-style:italic">
-                Interactive Marketing Dashboard — Feel free to explore filters!</figcaption>
+                Interactive Marketing Dashboard - Feel free to explore filters!</figcaption>
             </figure>
 
 
@@ -655,7 +655,7 @@
 
             <div class="insight-row">
               <div class="insight-text">
-                <h4 style="font-weight:700;margin-bottom:8px">1. Budget Misallocation — Spending Where It's Easy, Not
+                <h4 style="font-weight:700;margin-bottom:8px">1. Budget Misallocation - Spending Where It's Easy, Not
                   Where It's Profitable</h4>
                 <p>The company is over-investing in Audrey Shirt campaigns (AOV = 980,000 VND) which have high volume
                   but the <strong>lowest per-unit margin</strong> in the portfolio. Meanwhile, high-margin products like
@@ -670,11 +670,11 @@
 
             <div class="insight-row reverse">
               <div class="insight-text">
-                <h4 style="font-weight:700;margin-bottom:8px">2. No Stop-Loss Rules — Budget Bleeding on
+                <h4 style="font-weight:700;margin-bottom:8px">2. No Stop-Loss Rules - Budget Bleeding on
                   Underperformers</h4>
                 <p>Campaigns with ROAS &lt;2× continue to run unchecked, burning budget that could be redirected to star
-                  performers. One campaign segment ran at <strong>CPM 144,314 VND and CPC 43,368 VND — 4.2× the
-                    portfolio average CPC</strong> — with no automatic halt. Multiple campaigns also show budget
+                  performers. One campaign segment ran at <strong>CPM 144,314 VND and CPC 43,368 VND - 4.2× the
+                    portfolio average CPC</strong> - with no automatic halt. Multiple campaigns also show budget
                   utilization &gt;100% (daily budget breached), indicating a lack of automated throttling.</p>
               </div>
               <div class="insight-img">
@@ -685,12 +685,12 @@
 
             <div class="insight-row">
               <div class="insight-text">
-                <h4 style="font-weight:700;margin-bottom:8px">3. Revenue Concentration Risk — Fragility of the "Star"
+                <h4 style="font-weight:700;margin-bottom:8px">3. Revenue Concentration Risk - Fragility of the "Star"
                   Dependency</h4>
                 <p>The <strong>top 3 campaigns</strong> (Audrey Shirt variants + Lisa Dress 5) account for a
                   disproportionate share of total attributed Ad Revenue. Audrey Shirt campaigns alone (3 variants)
                   absorbed <strong>~47.6M VND</strong> in spend and generated <strong>~637M VND</strong> in attributed
-                  revenue — representing ~21% of total ad-attributed revenue from a single product line. Any disruption
+                  revenue - representing ~21% of total ad-attributed revenue from a single product line. Any disruption
                   collapses system-wide revenue.</p>
               </div>
               <div class="insight-img">
@@ -701,9 +701,9 @@
 
             <div class="insight-row reverse">
               <div class="insight-text">
-                <h4 style="font-weight:700;margin-bottom:8px">4. The Misalignment Problem — Ad Spend vs. Organic
+                <h4 style="font-weight:700;margin-bottom:8px">4. The Misalignment Problem - Ad Spend vs. Organic
                   Leaders</h4>
-                <p><strong>Percy Set</strong> (138.6M Total Revenue, AOV 1,800,000) has zero ad attribution — selling
+                <p><strong>Percy Set</strong> (138.6M Total Revenue, AOV 1,800,000) has zero ad attribution - selling
                   entirely via Direct Sales. Similarly, <strong>Delia Set</strong> (96.2M, AOV 1,850,000) and
                   <strong>Lilla Dress 3</strong> (92.4M) show minimal ad dependency. The core problem: media budget
                   concentrates on high-volume/low-AOV items (Audrey Shirts at AOV 980,000) while high-margin Sets and
@@ -821,11 +821,11 @@
 
             <!-- Tier 1: Star SKUs -->
             <div class="tier-section">
-              <span class="tier-badge star">🌟 Tier 1 — Scale Immediately</span>
+              <span class="tier-badge star">🌟 Tier 1 - Scale Immediately</span>
 
-              <h4>Lisa Dress 5 (HELSDR — Price: 1,550,000 VND)</h4>
+              <h4>Lisa Dress 5 (HELSDR - Price: 1,550,000 VND)</h4>
               <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:16px; line-height:1.7">
-                <li><strong>ROAS: 43.67×</strong> — the highest performing SKU in the entire portfolio</li>
+                <li><strong>ROAS: 43.67×</strong> - the highest performing SKU in the entire portfolio</li>
                 <li><strong>Ad Spend:</strong> 4,578,194 VND → <strong>Ad Revenue:</strong> 199,950,000 VND</li>
                 <li><strong>Total Revenue:</strong> 314,650,000 VND | Qty Sold: 203 units</li>
                 <li><strong>Insight:</strong> This SKU is chronically underfunded. Every additional million VND invested
@@ -849,7 +849,7 @@
               <h4>Audrey Shirt 3 (Price: 980,000 VND)</h4>
               <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:0; line-height:1.7">
                 <li><strong>ROAS: 10.52×</strong> | Ad Spend: 29,613,977 VND → Revenue: 311,640,000 VND</li>
-                <li><strong>Total Revenue:</strong> 318,500,000 VND | 325 units — highest volume in portfolio</li>
+                <li><strong>Total Revenue:</strong> 318,500,000 VND | 325 units - highest volume in portfolio</li>
                 <li><strong>Note:</strong> AOV of 980,000 VND places this in the lower-margin segment (~18–22% margin).
                   Volume play, not premium margin driver.</li>
                 <li><strong>Action:</strong> Continue funding but avoid further concentration increases. Use its proven
@@ -859,11 +859,11 @@
 
             <!-- Tier 2: Underperforming -->
             <div class="tier-section">
-              <span class="tier-badge warning">⚠️ Tier 2 — Action Required</span>
+              <span class="tier-badge warning">⚠️ Tier 2 - Action Required</span>
 
               <h4>TH 26/4 YOU DESERVE THE MOST BEAUTIFUL THINGS (LAL)</h4>
               <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:16px; line-height:1.7">
-                <li><strong>CPM: 144,314 VND | CPC: 43,368 VND</strong> — the most expensive clicks in the dataset</li>
+                <li><strong>CPM: 144,314 VND | CPC: 43,368 VND</strong> - the most expensive clicks in the dataset</li>
                 <li><strong>Total Spend:</strong> 7,431,381 VND (1.9% of portfolio)</li>
                 <li><strong>Diagnosis:</strong> Broad awareness audience with unclear conversion intent. High CPM
                   indicates poor creative relevance score or saturated audience targeting.</li>
@@ -873,9 +873,9 @@
 
               <h4>AUDREY SHIRT LAL – Re (Retargeting)</h4>
               <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:0; line-height:1.7">
-                <li><strong>CPM: 98,295 VND | CPC: 26,665 VND</strong> — 2.5× the average CPC</li>
+                <li><strong>CPM: 98,295 VND | CPC: 26,665 VND</strong> - 2.5× the average CPC</li>
                 <li><strong>Spend:</strong> 23,283,353 VND (5.9% of total budget)</li>
-                <li><strong>Diagnosis:</strong> Retargeting audiences are likely over-saturated — same audience retargeted
+                <li><strong>Diagnosis:</strong> Retargeting audiences are likely over-saturated - same audience retargeted
                   too frequently, causing CPM inflation and diminishing returns.</li>
                 <li><strong>Action:</strong> Reduce retargeting frequency cap to max 2 impressions/user/day. Split
                   retargeting into 3-day window vs. 7-day window segments with separate creative.</li>
@@ -884,12 +884,12 @@
 
             <!-- Tier 3: Organic Stars -->
             <div class="tier-section">
-              <span class="tier-badge activate">🔄 Tier 3 — Activate with Ads</span>
+              <span class="tier-badge activate">🔄 Tier 3 - Activate with Ads</span>
 
               <h4>Percy Set (Price: 1,800,000 VND)</h4>
               <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:16px; line-height:1.7">
                 <li><strong>Total Revenue:</strong> 138,600,000 VND | 77 units sold | AOV: 1,800,000 VND</li>
-                <li><strong>Ad Attribution:</strong> Near zero — selling entirely organically</li>
+                <li><strong>Ad Attribution:</strong> Near zero - selling entirely organically</li>
                 <li><strong>Why it matters:</strong> Premium AOV product with proven end-customer demand. If ad spend can
                   achieve even a 5× ROAS, a 5M VND test campaign would yield 25M VND in attributed revenue.</li>
                 <li><strong>Action:</strong> Launch a small test campaign (5M VND/month) with LAL New audience. Focus
@@ -898,7 +898,7 @@
 
               <h4>Delia Set (Price: ~1,850,000 VND)</h4>
               <ul style="padding-left:20px; color:var(--text-secondary); margin-bottom:0; line-height:1.7">
-                <li><strong>Total Revenue:</strong> 96,200,000 VND | 52 units | AOV: 1,850,000 VND — highest AOV in
+                <li><strong>Total Revenue:</strong> 96,200,000 VND | 52 units | AOV: 1,850,000 VND - highest AOV in
                   top-15</li>
                 <li><strong>Ad Attribution:</strong> Minimal</li>
                 <li><strong>Action:</strong> Ideal candidate for a premium "style editorial" content campaign. Target
@@ -926,7 +926,7 @@ LOW VOLUME __________|__________ HIGH VOLUME
 
             <!-- Micro Case Study -->
             <h3 style="font-size:1.05rem;font-weight:700;margin-top:32px;margin-bottom:12px">🔬 Micro Case Study: TH
-              25/4 ELEGANT AESTHETICS — The Pausing Mistake</h3>
+              25/4 ELEGANT AESTHETICS - The Pausing Mistake</h3>
             <div class="rec-box">
               <ul>
                 <li>The campaign was actively running with a tracking ROAS well above the 5× threshold.</li>
@@ -1032,7 +1032,7 @@ LOW VOLUME __________|__________ HIGH VOLUME
                 style="background:var(--surface);padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border)">
                 <p style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:4px">📊 Dataset</p>
                 <p style="font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);margin:0">
-                  Fashion Retail — Marketing & Sales (10,533 records)</p>
+                  Fashion Retail - Marketing & Sales (10,533 records)</p>
               </div>
             </div>
 
