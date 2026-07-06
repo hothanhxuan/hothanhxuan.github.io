@@ -44,226 +44,382 @@
   <!-- Filter + Projects -->
   <section class="section">
     <div class="container">
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="python">Python</button>
-        <button class="filter-btn" data-filter="sql">SQL</button>
-        <button class="filter-btn" data-filter="powerbi">Power BI</button>
-        <button class="filter-btn" data-filter="webdev">Web Dev</button>
-        <button class="filter-btn" data-filter="excel">Excel</button>
+
+      <style>
+        .filter-bar-wrapper {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+          margin-bottom: 40px;
+        }
+        .sub-filter-bar {
+          display: flex;
+          justify-content: center;
+          gap: 8px;
+          flex-wrap: wrap;
+          transition: opacity 0.3s ease, max-height 0.3s ease;
+          overflow: hidden;
+        }
+        .sub-filter-bar.hidden {
+          opacity: 0;
+          max-height: 0;
+          margin: 0;
+          pointer-events: none;
+        }
+        .sub-filter-bar.visible {
+          opacity: 1;
+          max-height: 60px;
+        }
+        .project-section {
+          margin-bottom: 48px;
+        }
+        .project-section:last-child {
+          margin-bottom: 0;
+        }
+        .project-section-header {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-bottom: 28px;
+          padding-bottom: 14px;
+          border-bottom: 2px solid var(--border);
+        }
+        .project-section-icon {
+          width: 44px;
+          height: 44px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.4rem;
+          flex-shrink: 0;
+        }
+        .project-section-header h3 {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--text);
+          margin: 0;
+        }
+        .project-section-header p {
+          font-size: 0.85rem;
+          color: var(--text-muted);
+          margin: 2px 0 0;
+        }
+      </style>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar-wrapper reveal">
+        <div class="filter-bar" id="main-filter-bar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="business">Business</button>
+          <button class="filter-btn" data-filter="data">Data</button>
+        </div>
+        <div class="sub-filter-bar hidden" id="sub-filter-bar">
+          <button class="filter-btn sub-filter active" data-subfilter="all-data">All Data</button>
+          <button class="filter-btn sub-filter" data-subfilter="python">Python</button>
+          <button class="filter-btn sub-filter" data-subfilter="sql">SQL</button>
+          <button class="filter-btn sub-filter" data-subfilter="powerbi">Power BI</button>
+          <button class="filter-btn sub-filter" data-subfilter="webdev">Web Dev</button>
+        </div>
       </div>
 
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="card project-card reveal" data-tags="python bigquery gcs">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary">Python</span>
-            </div>
-            <h3>Building an Omnichannel Retail Data Pipeline</h3>
-            <p>A production-grade ETL pipeline processing <strong>6M+ records</strong> from multiple e-commerce
-              platforms into a BigQuery Star Schema - with <strong>RFM customer segmentation</strong> and 3 Power BI
-              dashboards.</p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">BigQuery</span>
-              <span class="tag-outline">GCS</span>
-              <span class="tag-outline">ETL Pipeline</span>
-            </div>
-            <a href="projects/etl-pipeline.html" class="project-link">View Case Study →</a>
-          </div>
-          <div class="card-image">
-            <div
-              style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); font-size:4rem;">
-              🛒</div>
+      <!-- ===== BUSINESS PROJECTS ===== -->
+      <div class="project-section" id="section-business">
+        <div class="project-section-header reveal">
+          <div class="project-section-icon" style="background: linear-gradient(135deg, rgba(111,66,193,0.15), rgba(111,66,193,0.05));">💼</div>
+          <div>
+            <h3>Business Projects</h3>
+            <p>Operations improvement, process design, and business systems case studies</p>
           </div>
         </div>
 
-        <!-- Project 2 -->
-        <div class="card project-card reveal" data-tags="powerbi">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+        <div class="projects-grid">
+          <!-- Business 1: SOP Standardisation -->
+          <div class="card project-card coming-soon reveal" data-tags="business">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#6f42c1">Case Study</span>
+              </div>
+              <h3>SOP Standardisation & Employee Onboarding Optimisation</h3>
+              <p>Developed Standard Operating Procedures for kitchen operations that reduced employee onboarding time from approximately <strong>3 months to 1 month</strong>, creating consistent and scalable workflows.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">SOP Design</span>
+                <span class="tag-outline">Process Improvement</span>
+                <span class="tag-outline">F&B Operations</span>
+              </div>
             </div>
-            <h3>Global Expansion: Where Next? A Retail Sales Performance Analysis</h3>
-            <p>Comprehensive Power BI solution using a <strong>fact-dimension data model</strong> to process 51,000+
-              transaction records, tracking $12.64M revenue with 11.61% profit margin. Identified high-potential
-              <strong>expansion zones</strong> like Canada.
-            </p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">DAX</span>
-              <span class="tag-outline">Data Modeling</span>
-              <span class="tag-outline">Market Expansion</span>
+            <div class="card-image">
+              <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); font-size:4rem;">📋</div>
             </div>
-            <a href="projects/superstore-dashboard.html" class="project-link">View Case Study →</a>
           </div>
-          <div class="card-image" style="background: white;">
-            <img src="assets/images/cover.png" alt="Global Expansion Dashboard Cover"
-              style="width:100%; height:100%; object-fit:cover;" />
-          </div>
-        </div>
 
-        <!-- Project 3 -->
-        <div class="card project-card reveal" data-tags="powerbi">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+          <!-- Business 2: Sushi Inventory (moved from Excel) -->
+          <div class="card project-card reveal" data-tags="business excel">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#6f42c1">Case Study</span>
+              </div>
+              <h3>Sushi Inventory Management System - F&B Operations</h3>
+              <p>Built a <strong>7-sheet Excel application</strong> to digitize supply chain management for a sushi
+                restaurant in Finland - tracking <strong>34 ingredients</strong> across 6,120 daily records with automated
+                stock alerts, heatmaps, and supplier evaluation.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">Inventory Control</span>
+                <span class="tag-outline">Supply Chain</span>
+                <span class="tag-outline">F&B Operations</span>
+              </div>
+              <a href="projects/excel-inventory.html" class="project-link">View Case Study →</a>
             </div>
-            <h3>HR Analytics: Employee Turnover & Workforce Performance</h3>
-            <p>Analyzed data for ~300 employees tracking <strong>turnover rate</strong> (34.78%), average tenure (12.31
-              years), and engagement scores. Used DAX to pinpoint the Production department's 40.69% turnover and
-              propose <strong>retention strategies</strong>.</p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">DAX</span>
-              <span class="tag-outline">HR Metrics</span>
-              <span class="tag-outline">Employee Retention</span>
+            <div class="card-image" style="background: white;">
+              <img src="https://github.com/user-attachments/assets/640515ad-09d2-440f-9100-5f24476c346f"
+                alt="Sushi Inventory Management System Cover" style="width:100%; height:100%; object-fit:cover;" />
             </div>
-            <a href="projects/hr-analytics.html" class="project-link">View Case Study →</a>
           </div>
-          <div class="card-image" style="background: white;">
-            <img src="assets/images/hr-analytics/hr-cover.png" alt="HR Analytics Dashboard Cover"
-              style="width:100%; height:100%; object-fit:cover;" />
-          </div>
-        </div>
 
-        <!-- Project 4 -->
-        <div class="card project-card reveal" data-tags="powerbi">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+          <!-- Business 3: CRM Workflow -->
+          <div class="card project-card reveal" data-tags="business">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#6f42c1">Case Study</span>
+              </div>
+              <h3>CRM Workflow Coordination & Customer Lifecycle Optimisation</h3>
+              <p>Coordinated CRM workflows supporting approximately <strong>70 customer cases per month</strong> across a 10-member sales team, managing the full customer lifecycle from lead intake to contract execution.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">CRM Operations</span>
+                <span class="tag-outline">Workflow Design</span>
+                <span class="tag-outline">Stakeholder Management</span>
+              </div>
+              <a href="projects/crm-workflow-hoozing.html" class="project-link">View Case Study →</a>
             </div>
-            <h3>Marketing Spend & Sales Performance - Fashion Retail</h3>
-            <p>Star Schema model integrating 10,500+ records across 4 tables with dynamic DAX measures for
-              <strong>Week-over-Week ROAS</strong>, Budget, and Revenue Growth. Diagnosed underfunded hero SKUs and
-              <strong>low-ROAS campaigns</strong>.
-            </p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">DAX</span>
-              <span class="tag-outline">ROAS Analysis</span>
-              <span class="tag-outline">Marketing Analytics</span>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/crm-card-cover-3.png" alt="CRM Workflow Coordination Cover"
+                style="width:100%; height:100%; object-fit:cover; object-position: center;" />
             </div>
-            <a href="projects/fashion-marketing.html" class="project-link">View Case Study →</a>
           </div>
-          <div class="card-image" style="background: white;">
-            <img src="https://github.com/user-attachments/assets/d4c1657b-f445-499a-b93d-41213d2af22b"
-              alt="Fashion Marketing Dashboard Cover" style="width:100%; height:100%; object-fit:cover;" />
-          </div>
-        </div>
 
-        <!-- Project 5 -->
-        <div class="card project-card reveal" data-tags="powerbi">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+          <!-- Business 4: Coca-Cola Campaign -->
+          <div class="card project-card reveal" data-tags="business">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#6f42c1">Case Study</span>
+              </div>
+              <h3>Coca-Cola Vietnam - Coke Coffee Campaign Analysis</h3>
+              <p>Transformed consumer conversations and market signals into actionable business recommendations for Coca-Cola Vietnam's campaign, analysing <strong>buzz volume, sentiment</strong> and channel performance.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">Consumer Intelligence</span>
+                <span class="tag-outline">Campaign Analysis</span>
+                <span class="tag-outline">FMCG</span>
+              </div>
+              <a href="projects/coca-cola-campaign.html" class="project-link">View Case Study →</a>
             </div>
-            <h3>Flight Delays & Network Performance - US Aviation</h3>
-            <p>Analytical dashboard processing <strong>5.8 million flight records</strong> across 322 airports and 14
-              airlines using a star-schema model. Analyzed <strong>On-Time Performance (OTP)</strong> and delay
-              distributions to optimize flight schedules.</p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">Big Data</span>
-              <span class="tag-outline">DAX</span>
-              <span class="tag-outline">Network Operations</span>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/coca-cola-cover.png" alt="Coca-Cola Coke Coffee Campaign Dashboard" style="width:100%; height:100%; object-fit:cover;" />
             </div>
-            <a href="projects/flight-delays.html" class="project-link">View Case Study →</a>
-          </div>
-          <div class="card-image" style="background: white;">
-            <img src="assets/images/coverairline.png" alt="Airlines Performance Dashboard Cover"
-              style="width:100%; height:100%; object-fit:cover;" />
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="card project-card reveal" data-tags="sql bigquery">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary">SQL</span>
-            </div>
-            <h3>Unlocking User Behavior: Google Analytics Session Analysis</h3>
-            <p>An Advanced SQL project utilizing <strong>Google BigQuery</strong> to analyze the public <strong>Google
-                Analytics Sessions Dataset</strong>. The analysis leverages CTEs and data segmentation to uncover
-              e-commerce conversion bottlenecks via <strong>Conversion Funnel Analysis</strong>, and contrasts
-              <strong>Purchaser vs. Non-Purchaser Behavior</strong> to pinpoint engagement quality.
-            </p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">BigQuery SQL</span>
-              <span class="tag-outline">Funnel Analysis</span>
-              <span class="tag-outline">User Segmentation</span>
-            </div>
-            <a href="projects/ecommerce-behavior.html" class="project-link">View Case Study →</a>
-          </div>
-          <div class="card-image" style="background: white;">
-            <img src="assets/images/sql-ga-session/ga-session-cover-image.jpg"
-              alt="Google Analytics Session Analysis" />
-          </div>
-        </div>
-
-        <!-- Project 7: ML Churn -->
-        <div class="card project-card reveal" data-tags="python ml">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#EC4899">Python / ML</span>
-            </div>
-            <h3>Churn Prediction & Customer Segmentation for E-Commerce</h3>
-            <p>End-to-end Machine Learning pipeline to predict churned users. Identified high-risk customers with
-              <strong>95.5% accuracy</strong> using a tuned Random Forest and segmented them via KMeans for targeted
-              retention.</p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">Scikit-Learn</span>
-              <span class="tag-outline">Random Forest</span>
-              <span class="tag-outline">KMeans</span>
-            </div>
-            <a href="projects/ml-churn-prediction.html" class="project-link">View Case Study →</a>
-          </div>
-          <div class="card-image" style="background: white;">
-            <img src="assets/images/ml-churn/cover.png" alt="ML Churn Prediction Cover"
-              style="width:100%; height:100%; object-fit:cover;" />
-          </div>
-        </div>
-
-        <!-- Coming Soon 2 -->
-        <div class="card project-card coming-soon reveal" data-tags="webdev react node">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#61DAFB; color:#000;">React / Node</span>
-            </div>
-            <h3>Full-Stack Web Development Project</h3>
-            <p>Coming soon - a dynamic, full-stack web application built with React on the frontend and Node.js on the backend.</p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">React.js</span>
-              <span class="tag-outline">Node.js</span>
-              <span class="tag-outline">Express</span>
-            </div>
-          </div>
-          <div class="card-image">
-            <div
-              style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); font-size:4rem;">
-              💻</div>
-          </div>
-        </div>
-
-        <!-- Project 8: Excel Inventory Management -->
-        <div class="card project-card reveal" data-tags="excel">
-          <div class="card-body">
-            <div class="card-primary-tag">
-              <span class="tag-primary" style="background:#22C55E">Excel</span>
-            </div>
-            <h3>Sushi Inventory Management System - F&B Operations</h3>
-            <p>Built a <strong>7-sheet Excel application</strong> to digitize supply chain management for a sushi
-              restaurant in Finland - tracking <strong>34 ingredients</strong> across 6,120 daily records with automated
-              stock alerts, heatmaps, and supplier evaluation.</p>
-            <div class="card-secondary-tags">
-              <span class="tag-outline">Inventory Control</span>
-              <span class="tag-outline">Supply Chain</span>
-              <span class="tag-outline">F&B Operations</span>
-            </div>
-            <a href="projects/excel-inventory.html" class="project-link">View Case Study →</a>
-          </div>
-          <div class="card-image" style="background: white;">
-            <img src="https://github.com/user-attachments/assets/640515ad-09d2-440f-9100-5f24476c346f"
-              alt="Sushi Inventory Management System Cover" style="width:100%; height:100%; object-fit:cover;" />
           </div>
         </div>
       </div>
+
+      <!-- ===== DATA PROJECTS ===== -->
+      <div class="project-section" id="section-data">
+        <div class="project-section-header reveal">
+          <div class="project-section-icon" style="background: linear-gradient(135deg, rgba(253,126,20,0.15), rgba(253,126,20,0.05));">📊</div>
+          <div>
+            <h3>Data Projects</h3>
+            <p>ETL pipelines, dashboards, SQL analysis, machine learning, and web development</p>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Data 1: ETL Pipeline -->
+          <div class="card project-card reveal" data-tags="data python bigquery gcs">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary">Python</span>
+              </div>
+              <h3>Building an Omnichannel Retail Data Pipeline</h3>
+              <p>A production-grade ETL pipeline processing <strong>6M+ records</strong> from multiple e-commerce
+                platforms into a BigQuery Star Schema - with <strong>RFM customer segmentation</strong> and 3 Power BI
+                dashboards.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">BigQuery</span>
+                <span class="tag-outline">GCS</span>
+                <span class="tag-outline">ETL Pipeline</span>
+              </div>
+              <a href="projects/etl-pipeline.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image">
+              <div
+                style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); font-size:4rem;">
+                🛒</div>
+            </div>
+          </div>
+
+          <!-- Data 2: Superstore -->
+          <div class="card project-card reveal" data-tags="data powerbi">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+              </div>
+              <h3>Global Expansion: Where Next? A Retail Sales Performance Analysis</h3>
+              <p>Comprehensive Power BI solution using a <strong>fact-dimension data model</strong> to process 51,000+
+                transaction records, tracking $12.64M revenue with 11.61% profit margin. Identified high-potential
+                <strong>expansion zones</strong> like Canada.
+              </p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">DAX</span>
+                <span class="tag-outline">Data Modeling</span>
+                <span class="tag-outline">Market Expansion</span>
+              </div>
+              <a href="projects/superstore-dashboard.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/cover.png" alt="Global Expansion Dashboard Cover"
+                style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+          </div>
+
+          <!-- Data 3: HR Analytics -->
+          <div class="card project-card reveal" data-tags="data powerbi">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+              </div>
+              <h3>HR Analytics: Employee Turnover & Workforce Performance</h3>
+              <p>Analyzed data for ~300 employees tracking <strong>turnover rate</strong> (34.78%), average tenure (12.31
+                years), and engagement scores. Used DAX to pinpoint the Production department's 40.69% turnover and
+                propose <strong>retention strategies</strong>.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">DAX</span>
+                <span class="tag-outline">HR Metrics</span>
+                <span class="tag-outline">Employee Retention</span>
+              </div>
+              <a href="projects/hr-analytics.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/hr-analytics/hr-cover.png" alt="HR Analytics Dashboard Cover"
+                style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+          </div>
+
+          <!-- Data 4: Fashion Marketing -->
+          <div class="card project-card reveal" data-tags="data powerbi">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+              </div>
+              <h3>Marketing Spend & Sales Performance - Fashion Retail</h3>
+              <p>Star Schema model integrating 10,500+ records across 4 tables with dynamic DAX measures for
+                <strong>Week-over-Week ROAS</strong>, Budget, and Revenue Growth. Diagnosed underfunded hero SKUs and
+                <strong>low-ROAS campaigns</strong>.
+              </p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">DAX</span>
+                <span class="tag-outline">ROAS Analysis</span>
+                <span class="tag-outline">Marketing Analytics</span>
+              </div>
+              <a href="projects/fashion-marketing.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image" style="background: white;">
+              <img src="https://github.com/user-attachments/assets/d4c1657b-f445-499a-b93d-41213d2af22b"
+                alt="Fashion Marketing Dashboard Cover" style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+          </div>
+
+          <!-- Data 5: Flight Delays -->
+          <div class="card project-card reveal" data-tags="data powerbi">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#F59E0B">Power BI</span>
+              </div>
+              <h3>Flight Delays & Network Performance - US Aviation</h3>
+              <p>Analytical dashboard processing <strong>5.8 million flight records</strong> across 322 airports and 14
+                airlines using a star-schema model. Analyzed <strong>On-Time Performance (OTP)</strong> and delay
+                distributions to optimize flight schedules.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">Big Data</span>
+                <span class="tag-outline">DAX</span>
+                <span class="tag-outline">Network Operations</span>
+              </div>
+              <a href="projects/flight-delays.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/coverairline.png" alt="Airlines Performance Dashboard Cover"
+                style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+          </div>
+
+          <!-- Data 6: GA Session SQL -->
+          <div class="card project-card reveal" data-tags="data sql bigquery">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary">SQL</span>
+              </div>
+              <h3>Unlocking User Behavior: Google Analytics Session Analysis</h3>
+              <p>An Advanced SQL project utilizing <strong>Google BigQuery</strong> to analyze the public <strong>Google
+                  Analytics Sessions Dataset</strong>. The analysis leverages CTEs and data segmentation to uncover
+                e-commerce conversion bottlenecks via <strong>Conversion Funnel Analysis</strong>, and contrasts
+                <strong>Purchaser vs. Non-Purchaser Behavior</strong> to pinpoint engagement quality.
+              </p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">BigQuery SQL</span>
+                <span class="tag-outline">Funnel Analysis</span>
+                <span class="tag-outline">User Segmentation</span>
+              </div>
+              <a href="projects/ecommerce-behavior.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/sql-ga-session/ga-session-cover-image.jpg"
+                alt="Google Analytics Session Analysis" />
+            </div>
+          </div>
+
+          <!-- Data 7: ML Churn -->
+          <div class="card project-card reveal" data-tags="data python ml">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#EC4899">Python / ML</span>
+              </div>
+              <h3>Churn Prediction & Customer Segmentation for E-Commerce</h3>
+              <p>End-to-end Machine Learning pipeline to predict churned users. Identified high-risk customers with
+                <strong>95.5% accuracy</strong> using a tuned Random Forest and segmented them via KMeans for targeted
+                retention.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">Scikit-Learn</span>
+                <span class="tag-outline">Random Forest</span>
+                <span class="tag-outline">KMeans</span>
+              </div>
+              <a href="projects/ml-churn-prediction.html" class="project-link">View Case Study →</a>
+            </div>
+            <div class="card-image" style="background: white;">
+              <img src="assets/images/ml-churn/cover.png" alt="ML Churn Prediction Cover"
+                style="width:100%; height:100%; object-fit:cover;" />
+            </div>
+          </div>
+
+          <!-- Data 8: Web Dev Coming Soon -->
+          <div class="card project-card coming-soon reveal" data-tags="data webdev react node">
+            <div class="card-body">
+              <div class="card-primary-tag">
+                <span class="tag-primary" style="background:#61DAFB; color:#000;">React / Node</span>
+              </div>
+              <h3>Full-Stack Web Development Project</h3>
+              <p>Coming soon - a dynamic, full-stack web application built with React on the frontend and Node.js on the backend.</p>
+              <div class="card-secondary-tags">
+                <span class="tag-outline">React.js</span>
+                <span class="tag-outline">Node.js</span>
+                <span class="tag-outline">Express</span>
+              </div>
+            </div>
+            <div class="card-image">
+              <div
+                style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:var(--bg-alt); font-size:4rem;">
+                💻</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 

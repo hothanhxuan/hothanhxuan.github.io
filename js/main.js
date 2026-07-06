@@ -101,31 +101,85 @@ const skillObserver = new IntersectionObserver((entries) => {
 skillBars.forEach(bar => skillObserver.observe(bar));
 
 // ========== PROJECT FILTER ==========
-const filterBtns = document.querySelectorAll('.filter-btn');
-const projectCards = document.querySelectorAll('.project-card');
+const mainFilterBtns = document.querySelectorAll('#main-filter-bar .filter-btn');
+const subFilterBar = document.getElementById('sub-filter-bar');
+const subFilterBtns = document.querySelectorAll('#sub-filter-bar .filter-btn');
+const sectionBusiness = document.getElementById('section-business');
+const sectionData = document.getElementById('section-data');
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
+function animateCards(cards) {
+  cards.forEach(card => {
+    if (card.style.display !== 'none') {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      requestAnimationFrame(() => {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      });
+    }
+  });
+}
 
-    projectCards.forEach(card => {
-      const tags = card.dataset.tags || '';
-      const show = filter === 'all' || tags.includes(filter);
-      card.style.display = show ? '' : 'none';
-      if (show) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        requestAnimationFrame(() => {
-          card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        });
+function showAllCards(section) {
+  section.querySelectorAll('.project-card').forEach(card => {
+    card.style.display = '';
+  });
+}
+
+// Main filter logic
+if (mainFilterBtns.length) {
+  mainFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      mainFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+
+      if (filter === 'all') {
+        // Show both sections, all cards
+        if (sectionBusiness) { sectionBusiness.style.display = ''; showAllCards(sectionBusiness); }
+        if (sectionData) { sectionData.style.display = ''; showAllCards(sectionData); }
+        if (subFilterBar) { subFilterBar.classList.remove('visible'); subFilterBar.classList.add('hidden'); }
+        animateCards(document.querySelectorAll('.project-card'));
+      } else if (filter === 'business') {
+        // Show only business section
+        if (sectionBusiness) { sectionBusiness.style.display = ''; showAllCards(sectionBusiness); }
+        if (sectionData) sectionData.style.display = 'none';
+        if (subFilterBar) { subFilterBar.classList.remove('visible'); subFilterBar.classList.add('hidden'); }
+        animateCards(sectionBusiness.querySelectorAll('.project-card'));
+      } else if (filter === 'data') {
+        // Show only data section, show sub-filters
+        if (sectionBusiness) sectionBusiness.style.display = 'none';
+        if (sectionData) { sectionData.style.display = ''; showAllCards(sectionData); }
+        if (subFilterBar) { subFilterBar.classList.remove('hidden'); subFilterBar.classList.add('visible'); }
+        // Reset sub-filter to "All Data"
+        subFilterBtns.forEach(b => b.classList.remove('active'));
+        const allDataBtn = document.querySelector('[data-subfilter="all-data"]');
+        if (allDataBtn) allDataBtn.classList.add('active');
+        animateCards(sectionData.querySelectorAll('.project-card'));
       }
     });
   });
-});
+}
+
+// Sub-filter logic (within Data section)
+if (subFilterBtns.length && sectionData) {
+  subFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      subFilterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const subfilter = btn.dataset.subfilter;
+      const dataCards = sectionData.querySelectorAll('.project-card');
+
+      dataCards.forEach(card => {
+        const tags = card.dataset.tags || '';
+        const show = subfilter === 'all-data' || tags.includes(subfilter);
+        card.style.display = show ? '' : 'none';
+      });
+      animateCards(dataCards);
+    });
+  });
+}
 
 // ========== BACK TO TOP ==========
 const backToTop = document.getElementById('back-to-top');

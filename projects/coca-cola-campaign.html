@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coca-Cola Vietnam - Coke Coffee Campaign Analysis - Xuan Ho</title>
+  <meta name="description"
+    content="Case study: Social listening campaign analysis for Coca-Cola Vietnam's Coke Coffee product launch, covering buzz volume, sentiment analysis, and stakeholder recommendations.">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+  <style>
+    /* ===== Coca-Cola Case Study Styles ===== */
+    .coca-hero {
+      background: linear-gradient(135deg, #B71C1C 0%, #D32F2F 50%, #8B0000 100%);
+      padding: 100px 24px 50px;
+      text-align: center;
+      color: #fff;
+    }
+    .coca-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      -webkit-text-fill-color: #fff;
+      background: none;
+    }
+    .coca-hero .coca-subtitle {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 20px;
+    }
+    .coca-meta-bar {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .coca-meta-bar span { display: flex; align-items: center; gap: 6px; }
+
+    /* Process Flow */
+    .process-section {
+      margin-bottom: 40px;
+      padding: 28px;
+      background: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .process-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 8px;
+    }
+    .process-number {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #B71C1C, #D32F2F);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .process-section-header h3 {
+      font-size: 1.1rem; font-weight: 700; color: var(--text); margin: 0;
+    }
+    .process-purpose {
+      font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px;
+      padding-left: 50px;
+    }
+    .process-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 12px;
+    }
+    .process-step {
+      background: var(--bg-alt);
+      border-radius: var(--radius);
+      padding: 16px 12px;
+      text-align: center;
+      border: 1px solid var(--border-light);
+      position: relative;
+      transition: all var(--transition);
+    }
+    .process-step:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-2px);
+    }
+    .process-step-icon {
+      width: 40px; height: 40px;
+      margin: 0 auto 8px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .process-step h4 {
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .process-step ul {
+      list-style: none;
+      padding: 0; margin: 0;
+      text-align: left;
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .process-step ul li::before {
+      content: "• ";
+      color: var(--primary);
+    }
+    .process-outputs {
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+    .process-outputs strong { color: var(--text); }
+    .step-arrow {
+      display: none;
+    }
+
+    /* Campaign Dashboard Styles */
+    .dashboard-section {
+      margin-bottom: 32px;
+    }
+    .dashboard-section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #B71C1C;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #B71C1C;
+    }
+
+    /* Campaign Timeline */
+    .campaign-timeline {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+    .timeline-phases {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .phase-bar {
+      display: grid;
+      grid-template-columns: 1fr 3fr 2fr;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .phase-label {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-align: center;
+      color: #fff;
+    }
+    .phase-teasing { background: #B71C1C; }
+    .phase-launching { background: #D32F2F; }
+    .phase-reinforcing { background: #1B5E20; }
+    .phase-detail {
+      padding: 16px;
+      background: var(--bg-alt);
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .phase-detail h4 {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    /* KPI Cards */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .kpi-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .kpi-value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #B71C1C;
+      margin-bottom: 2px;
+    }
+    .kpi-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .kpi-sub {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      margin-top: 2px;
+    }
+
+    /* Channel Insights */
+    .channel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .channel-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .channel-icon {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .channel-stat { font-size: 1.3rem; font-weight: 800; color: #B71C1C; }
+    .channel-desc { font-size: 0.78rem; color: var(--text-secondary); line-height: 1.4; }
+
+    /* Sentiment Cards */
+    .sentiment-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .sentiment-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 16px 12px;
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+    .sentiment-type {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .sentiment-score {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+    .sentiment-note {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+    }
+
+    /* Topics Grid */
+    .topics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .topics-column {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+    }
+    .topics-column h4 {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .topics-column ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+    .topics-column ul li {
+      padding: 6px 0;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--border-light);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .topics-column ul li:last-child { border-bottom: none; }
+
+    /* Business Impact */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .impact-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      transition: all var(--transition);
+    }
+    .impact-card:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+    }
+    .impact-icon {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(183,28,28,0.1), rgba(211,47,47,0.05));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+    .impact-card p {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .impact-card strong { color: var(--text); }
+
+    /* Closing Banner */
+    .coca-closing {
+      background: linear-gradient(135deg, #B71C1C 0%, #D32F2F 100%);
+      border-radius: var(--radius-lg);
+      padding: 32px 40px;
+      color: #fff;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .coca-closing p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.9);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .process-flow { grid-template-columns: repeat(3, 1fr); }
+      .campaign-timeline { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .sentiment-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .process-flow { grid-template-columns: repeat(2, 1fr); }
+      .channel-grid { grid-template-columns: 1fr; }
+      .topics-grid { grid-template-columns: 1fr; }
+      .impact-grid { grid-template-columns: 1fr; }
+      .sentiment-grid { grid-template-columns: repeat(2, 1fr); }
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="nav-logo">Xuan Ho</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../resume.html">About Me</a></li>
+        <li><a href="../beyond.html">Beyond Work</a></li>
+        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span
+              class="theme-icon">🌙</span></button></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span
+            class="theme-icon">🌙</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- Hero -->
+  <section class="coca-hero">
+    <div class="container">
+      <a href="../projects.html" class="project-back-link" style="color: rgba(255,255,255,0.7);">← Back to Projects</a>
+      <p class="coca-subtitle" style="margin-top: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;">[COCACOLA VIETNAM]</p>
+      <h1>COKE COFFEE CAMPAIGN</h1>
+      <p class="coca-subtitle">Social Listening & Campaign Insight Analysis</p>
+      <div class="coca-meta-bar">
+        <span>📋 Social Listening</span>
+        <span>📅 Feb 21 - Mar 25, 2018</span>
+        <span>👤 Research & Analysis Team</span>
+        <span>📍 HCMC, Vietnam</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <section class="section">
+    <div class="container">
+      <div class="project-layout">
+        <div class="project-main">
+
+          <!-- ══════ PART 1: PROCESSES ══════ -->
+          <div class="project-section" id="processes">
+            <h2 class="section-heading-gradient">Analytical Framework & Processes</h2>
+            <p style="margin-bottom: 28px;">Three structured processes were applied to transform raw social data into actionable business recommendations for Coca-Cola Vietnam.</p>
+
+            <!-- Process 1 -->
+            <div class="process-section">
+              <div class="process-section-header">
+                <div class="process-number">1</div>
+                <h3>Social Listening & Campaign Insight Process</h3>
+              </div>
+              <p class="process-purpose"><strong>Purpose:</strong> Transform social data into actionable insights to support marketing and business decisions.</p>
+              <div class="process-flow">
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(183,28,28,0.1);">🎯</div>
+                  <h4>1. Define Objectives</h4>
+                  <ul>
+                    <li>Understand campaign objectives & KPIs</li>
+                    <li>Identify key research questions</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(183,28,28,0.1);">📥</div>
+                  <h4>2. Data Collection</h4>
+                  <ul>
+                    <li>Collect social data from multiple sources</li>
+                    <li>Filter data by keywords, brand, time period</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(183,28,28,0.1);">⚙️</div>
+                  <h4>3. Data Processing</h4>
+                  <ul>
+                    <li>Clean and categorize data</li>
+                    <li>Remove noise & irrelevant mentions</li>
+                    <li>Tag data by theme, channel, sentiment</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(183,28,28,0.1);">📊</div>
+                  <h4>4. Analysis</h4>
+                  <ul>
+                    <li>Analyze buzz volume & trends</li>
+                    <li>Sentiment analysis</li>
+                    <li>Channel effectiveness analysis</li>
+                    <li>Identify key topics & drivers</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(183,28,28,0.1);">💡</div>
+                  <h4>5. Insights & Findings</h4>
+                  <ul>
+                    <li>Synthesize key insights</li>
+                    <li>Identify opportunities and risks</li>
+                    <li>Provide strategic recommendations</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(183,28,28,0.1);">📝</div>
+                  <h4>6. Reporting & Communication</h4>
+                  <ul>
+                    <li>Build structured report & visualizations</li>
+                    <li>Deliver executive summary</li>
+                    <li>Present to stakeholders</li>
+                    <li>Support decision-making</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="process-outputs"><strong>Key Outputs:</strong> Insight report · Executive summary · Dashboard · Recommendation</div>
+            </div>
+
+            <!-- Process 2 -->
+            <div class="process-section">
+              <div class="process-section-header">
+                <div class="process-number">2</div>
+                <h3>Product Launch Evaluation Process</h3>
+              </div>
+              <p class="process-purpose"><strong>Purpose:</strong> Evaluate product launch performance and customer perception to optimize strategy and execution.</p>
+              <div class="process-flow">
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(27,94,32,0.1);">📋</div>
+                  <h4>1. Launch Plan Alignment</h4>
+                  <ul>
+                    <li>Align on launch objectives, target audience & KPIs</li>
+                    <li>Define evaluation framework</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(27,94,32,0.1);">📡</div>
+                  <h4>2. Campaign Monitoring</h4>
+                  <ul>
+                    <li>Monitor campaign activities in real-time</li>
+                    <li>Track buzz, reach, engagement by channel</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(27,94,32,0.1);">📈</div>
+                  <h4>3. Performance Analysis</h4>
+                  <ul>
+                    <li>Analyze performance by phase, channel, and content</li>
+                    <li>Compare vs. benchmarks or norms</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(27,94,32,0.1);">👥</div>
+                  <h4>4. Customer Perception Analysis</h4>
+                  <ul>
+                    <li>Analyze sentiment & emotions</li>
+                    <li>Identify key positive & negative topics</li>
+                    <li>Voice of Customer analysis</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(27,94,32,0.1);">💡</div>
+                  <h4>5. Insights & Recommendations</h4>
+                  <ul>
+                    <li>Identify what works & what doesn't</li>
+                    <li>Provide actionable recommendations</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(27,94,32,0.1);">🤝</div>
+                  <h4>6. Stakeholder Decision Support</h4>
+                  <ul>
+                    <li>Present findings to stakeholders</li>
+                    <li>Support decisions on content, channel, and investment allocation</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="process-outputs"><strong>Key Outputs:</strong> Performance dashboard · Sentiment score · Top themes · Channel effectiveness report · Strategic recommendations</div>
+            </div>
+
+            <!-- Process 3 -->
+            <div class="process-section">
+              <div class="process-section-header">
+                <div class="process-number">3</div>
+                <h3>Insight Reporting & Stakeholder Communication Process</h3>
+              </div>
+              <p class="process-purpose"><strong>Purpose:</strong> Deliver clear, actionable insights to stakeholders for effective decision-making and campaign optimization.</p>
+              <div class="process-flow">
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(21,101,192,0.1);">✅</div>
+                  <h4>1. Data & Insight Validation</h4>
+                  <ul>
+                    <li>Validate data accuracy and reliability</li>
+                    <li>Ensure insights are consistent and credible</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(21,101,192,0.1);">📐</div>
+                  <h4>2. Report Structure Development</h4>
+                  <ul>
+                    <li>Define report structure and key messages</li>
+                    <li>Select relevant charts and visualizations</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(21,101,192,0.1);">📊</div>
+                  <h4>3. Report Creation</h4>
+                  <ul>
+                    <li>Build dashboards & visuals</li>
+                    <li>Write insight narratives and recommendations</li>
+                    <li>Highlight key takeaways</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(21,101,192,0.1);">🔍</div>
+                  <h4>4. Quality Review</h4>
+                  <ul>
+                    <li>Review insights and data</li>
+                    <li>Ensure clarity, accuracy, and actionability</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(21,101,192,0.1);">🎤</div>
+                  <h4>5. Presentation & Delivery</h4>
+                  <ul>
+                    <li>Present to internal team and client</li>
+                    <li>Explain insights and recommendations</li>
+                  </ul>
+                </div>
+                <div class="process-step">
+                  <div class="process-step-icon" style="background: rgba(21,101,192,0.1);">🔄</div>
+                  <h4>6. Feedback & Follow-Up</h4>
+                  <ul>
+                    <li>Gather feedback from stakeholders</li>
+                    <li>Refine recommendations</li>
+                    <li>Monitor implementation and impact</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="process-outputs"><strong>Key Outputs:</strong> Executive report · Dashboard · Presentation · Action plan · Follow-up insights</div>
+            </div>
+          </div>
+
+          <!-- ══════ PART 2: CAMPAIGN DASHBOARD ══════ -->
+          <div class="project-section" id="campaign-overview">
+            <h2 class="section-heading-gradient">Campaign Overview</h2>
+
+            <div class="campaign-timeline">
+              <!-- Timeline Phases -->
+              <div class="timeline-phases">
+                <p style="font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 16px;">MARCH - APRIL 2018 & AUG - SEP 2018</p>
+
+                <!-- Phase: Teasing -->
+                <div class="phase-detail" style="margin-bottom: 12px; border-left: 4px solid #B71C1C;">
+                  <h4>🔴 TEASING (TRIGGER) — 1 Week (21 Feb - 27 Feb)</h4>
+                  <p><strong>Objective:</strong> Create curiosity, create trend for Coke Coffee</p>
+                  <p><strong>Angles:</strong></p>
+                  <ul style="margin: 4px 0 0 16px; font-size: 0.78rem; color: var(--text-secondary);">
+                    <li>A new taste of Coke Coffee from Australia</li>
+                    <li>A new trend has stormed Vietnam: Coke Coffee</li>
+                  </ul>
+                  <p style="margin-top: 8px; font-weight: 600;">Total: 29 Posts</p>
+                </div>
+
+                <!-- Phase: Launching -->
+                <div class="phase-detail" style="margin-bottom: 12px; border-left: 4px solid #D32F2F;">
+                  <h4>🟠 LAUNCHING — 3 Weeks (28 Feb - 21 Mar)</h4>
+                  <p><strong>Objective:</strong> Create Mass Awareness & Deliver Product Intrinsic Benefits</p>
+                  <ul style="margin: 4px 0 0 16px; font-size: 0.78rem; color: var(--text-secondary);">
+                    <li>Coke Coffee is launched here in Vietnam</li>
+                    <li>Build Product Credibility with Taste and Uplift benefits</li>
+                    <li>Highlight the whole afternoon with 30% more caffeine from Coke</li>
+                  </ul>
+                  <p style="margin-top: 8px; font-weight: 600;">Total: 22 Posts</p>
+                </div>
+
+                <!-- Phase: Reinforcing -->
+                <div class="phase-detail" style="border-left: 4px solid #1B5E20;">
+                  <h4>🟢 REINFORCING CAMPAIGN — 4 Weeks (The National Taste)</h4>
+                  <p><strong>Objective:</strong> Reinforce Uplifting message together with National Pride</p>
+                  <ul style="margin: 4px 0 0 16px; font-size: 0.78rem; color: var(--text-secondary);">
+                    <li>Coke Coffee with the real coffee been from Vietnam — A National Pride</li>
+                    <li>"Tự hào hương vị cà phê Việt" to celebrate Coke Coffee — the national taste of Vietnam</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- KPI Metrics -->
+              <div>
+                <p style="font-size: 0.82rem; font-weight: 700; color: var(--text); margin-bottom: 12px; text-transform: uppercase;">Key Campaign Metrics</p>
+                <div class="kpi-grid">
+                  <div class="kpi-card">
+                    <div class="kpi-value">23,438</div>
+                    <div class="kpi-label">Total Campaign Buzz</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="kpi-value" style="color: #16A34A;">6,674</div>
+                    <div class="kpi-label">Total Positive Buzz</div>
+                    <div class="kpi-sub">(30%)</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="kpi-value" style="color: #DC2626;">679</div>
+                    <div class="kpi-label">Total Negative Buzz</div>
+                    <div class="kpi-sub">(3%)</div>
+                  </div>
+                  <div class="kpi-card">
+                    <div class="kpi-value" style="color: #2563EB;">0.82</div>
+                    <div class="kpi-label">Sentiment Score</div>
+                    <div class="kpi-sub">(Above norm index 0.6)</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ CHANNEL & SOURCE INSIGHTS ══════ -->
+          <div class="project-section" id="channel-insights">
+            <h2 class="section-heading-gradient">Channel & Source Insights</h2>
+            <div class="channel-grid">
+              <div class="channel-card">
+                <div class="channel-icon" style="background: #E3F2FD;">📘</div>
+                <div>
+                  <div class="channel-stat">Facebook</div>
+                  <div class="channel-desc">is the leading social communication channel.</div>
+                </div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-icon" style="background: #FFF3E0;">🏆</div>
+                <div>
+                  <div class="channel-stat">Top 10 sources</div>
+                  <div class="channel-desc">contribute over <strong>50%</strong> of conversation volume.</div>
+                </div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-icon" style="background: #E8F5E9;">📢</div>
+                <div>
+                  <div class="channel-stat">41%</div>
+                  <div class="channel-desc">KOL channel contributes the most buzz volume with <strong>8.8K buzz</strong> (41% of total).</div>
+                </div>
+              </div>
+              <div class="channel-card">
+                <div class="channel-icon" style="background: #FCE4EC;">☕</div>
+                <div>
+                  <div class="channel-stat">Coke Coffee Content</div>
+                  <div class="channel-desc">is the highest contributed activity. <strong>PR News</strong> makes up <strong>0.19%</strong> of total buzz.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ SENTIMENT & CONTENT INSIGHTS ══════ -->
+          <div class="project-section" id="sentiment-insights">
+            <h2 class="section-heading-gradient">Sentiment & Content Insights</h2>
+            <p style="margin-bottom: 16px; font-size: 0.85rem; font-weight: 600; color: var(--text);">Sentiment by Content Type (Sentiment Score)</p>
+            <div class="sentiment-grid" style="margin-bottom: 28px;">
+              <div class="sentiment-card">
+                <div class="sentiment-type">Coke Coffee Content</div>
+                <div class="sentiment-score" style="color: #16A34A;">0.85</div>
+                <div class="sentiment-note">Highest contribution to buzz volume</div>
+              </div>
+              <div class="sentiment-card">
+                <div class="sentiment-type">Organic Discussion</div>
+                <div class="sentiment-score" style="color: #2563EB;">0.61</div>
+                <div class="sentiment-note">&nbsp;</div>
+              </div>
+              <div class="sentiment-card">
+                <div class="sentiment-type">TVC</div>
+                <div class="sentiment-score" style="color: #7C3AED;">0.86</div>
+                <div class="sentiment-note">Highest Sentiment Score</div>
+              </div>
+              <div class="sentiment-card">
+                <div class="sentiment-type">Coke Buz</div>
+                <div class="sentiment-score" style="color: #F59E0B;">0.86</div>
+                <div class="sentiment-note">&nbsp;</div>
+              </div>
+              <div class="sentiment-card">
+                <div class="sentiment-type">PR News</div>
+                <div class="sentiment-score" style="color: #DC2626;">0.46</div>
+                <div class="sentiment-note">Lowest Sentiment Score</div>
+              </div>
+            </div>
+
+            <p style="margin-bottom: 16px; font-size: 0.85rem; font-weight: 600; color: var(--text);">Top Positive & Negative Topics</p>
+            <div class="topics-grid">
+              <div class="topics-column">
+                <h4>👍 <span style="color: #16A34A;">LIKED THE TASTE</span> <span style="font-weight: 400; font-size: 0.72rem; color: var(--text-muted);">(Positive Mentions)</span></h4>
+                <ul>
+                  <li><span style="color: #16A34A;">✓</span> New taste</li>
+                  <li><span style="color: #16A34A;">✓</span> Unique / Novel</li>
+                  <li><span style="color: #16A34A;">✓</span> Less sweet</li>
+                  <li><span style="color: #16A34A;">✓</span> Stay uplifted</li>
+                  <li><span style="color: #16A34A;">✓</span> Coffee flavor is good</li>
+                </ul>
+              </div>
+              <div class="topics-column">
+                <h4>👎 <span style="color: #DC2626;">DISLIKED THE TASTE</span> <span style="font-weight: 400; font-size: 0.72rem; color: var(--text-muted);">(Negative Mentions)</span></h4>
+                <ul>
+                  <li><span style="color: #DC2626;">✗</span> Herbal taste / Strange taste</li>
+                  <li><span style="color: #DC2626;">✗</span> Too sweet</li>
+                  <li><span style="color: #DC2626;">✗</span> High price</li>
+                  <li><span style="color: #DC2626;">✗</span> Prefer original Coke</li>
+                  <li><span style="color: #DC2626;">✗</span> Not for me</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ BUSINESS IMPACT ══════ -->
+          <div class="project-section" id="business-impact">
+            <h2 class="section-heading-gradient">Business Impact</h2>
+            <div class="impact-grid">
+              <div class="impact-card">
+                <div class="impact-icon">📢</div>
+                <p>Identified that <strong>KOL channels generated approximately 41% of campaign buzz</strong>, helping prioritise influencer-driven communication strategies.</p>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon">📊</div>
+                <p>Revealed <strong>significant differences in sentiment across communication channels</strong>, enabling optimisation of media investments and campaign messaging.</p>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon">👥</div>
+                <p>Identified <strong>customer concerns regarding taste profile and pricing perception</strong>, providing actionable input for product positioning and future campaign iterations.</p>
+              </div>
+              <div class="impact-card">
+                <div class="impact-icon">🎯</div>
+                <p>Supported <strong>enterprise decision-making</strong> for a national product launch through structured consumer intelligence and social listening analysis.</p>
+              </div>
+            </div>
+
+            <!-- Closing Banner -->
+            <div class="coca-closing">
+              <p>The insights from this campaign analysis helped Coca-Cola Vietnam understand consumer perception, optimise communication strategy and improve future campaign performance.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+          <div class="sticky-sidebar">
+            <div class="sidebar-card" style="padding: 20px;">
+              <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">Project Details</h4>
+              <div style="font-size: 0.82rem; line-height: 2; color: var(--text-secondary);">
+                <div><strong>Client:</strong> Coca-Cola Vietnam</div>
+                <div><strong>Product:</strong> Coke Coffee</div>
+                <div><strong>Type:</strong> Social Listening</div>
+                <div><strong>Period:</strong> Feb 21 - Mar 25, 2018</div>
+                <div><strong>Role:</strong> Research & Analysis Team</div>
+                <div><strong>Company:</strong> Buzzmetrics</div>
+                <div><strong>Location:</strong> HCMC, Vietnam</div>
+              </div>
+            </div>
+
+            <div style="background: var(--surface); padding: 12px; border-radius: var(--radius-sm); border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.04); margin-top: 16px;">
+              <p style="font-size: 0.8rem; font-weight: 700; color: var(--text); margin-bottom: 4px;">📊 Data Source</p>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">Buzzmetrics Social Listening Platform — Online News, Forums and Social Networks</p>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-card" style="padding: 20px; margin-top: 16px;">
+              <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">
+                Table of Contents</h4>
+              <ul class="toc-list" id="toc-list">
+                <li><a href="#processes">Analytical Framework</a></li>
+                <li><a href="#campaign-overview">Campaign Overview</a></li>
+                <li><a href="#channel-insights">Channel & Source Insights</a></li>
+                <li><a href="#sentiment-insights">Sentiment & Content</a></li>
+                <li><a href="#business-impact">Business Impact</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg></a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
+      </div>
+      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
+    </div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <script src="../js/main.js"></script>
+  <script>
+    const mobileToggle = document.getElementById('theme-toggle-mobile');
+    if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
+    window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
+    mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
+    const tocLinks = document.querySelectorAll('#toc-list a'), secs = document.querySelectorAll('.project-section');
+    function updateToc() { let cur = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; }); tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); }); }
+    window.addEventListener('scroll', updateToc, { passive: true });
+  </script>
+</body>
+
+</html>
