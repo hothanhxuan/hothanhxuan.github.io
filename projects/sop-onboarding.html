@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOP Standardisation - Xuan Ho</title>
+  <meta name="description"
+    content="Case study: Reducing employee onboarding time through process standardisation in restaurant kitchen operations.">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍣</text></svg>">
+  <style>
+    /* ===== SOP Case Study Styles ===== */
+    .sop-hero {
+      position: relative;
+      background: var(--gradient);
+      padding: 100px 24px 50px;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    .sop-hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .sop-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 8px;
+      -webkit-text-fill-color: #fff;
+      background: none;
+    }
+
+    .sop-hero .hero-desc {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    .sop-meta-bar {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin-top: 24px;
+    }
+
+    .sop-meta-bar span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Overview Cards */
+    .overview-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .overview-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .overview-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .overview-card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .overview-card-header h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .overview-card p,
+    .overview-card ul {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin: 0 0 10px 0;
+    }
+
+    .overview-card ul {
+      padding-left: 18px;
+    }
+
+    .overview-card ul li {
+      margin-bottom: 4px;
+    }
+
+    /* Process Flow Comparison */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .flow-box {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .flow-box-header {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      text-align: center;
+    }
+
+    .flow-before .flow-box-header {
+      color: #d32f2f;
+      border-color: rgba(211, 47, 47, 0.2);
+    }
+
+    .flow-after .flow-box-header {
+      color: #2e7d32;
+      border-color: rgba(46, 125, 50, 0.2);
+    }
+
+    .flow-steps {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .flow-step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      flex: 1;
+    }
+
+    .flow-step-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border-light);
+    }
+
+    .flow-before .flow-step-icon {
+      background: rgba(211, 47, 47, 0.05);
+      border-color: rgba(211, 47, 47, 0.2);
+      color: #d32f2f;
+    }
+
+    .flow-after .flow-step-icon {
+      background: rgba(46, 125, 50, 0.05);
+      border-color: rgba(46, 125, 50, 0.2);
+      color: #2e7d32;
+    }
+
+    .flow-step-item p {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      line-height: 1.3;
+      margin: 0;
+    }
+
+    .flow-arrow {
+      color: var(--border-light);
+      font-size: 1.2rem;
+      margin-top: 15px;
+    }
+
+    /* Framework Grid */
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .framework-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .framework-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .framework-card h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+    }
+
+    .framework-card p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* SOP Sample Table */
+    .sop-table-container {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .sop-table-header {
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .sop-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .sop-table th {
+      background: var(--bg-alt);
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .sop-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+
+    .sop-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sop-table td:first-child {
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .sop-table td:nth-child(2) {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* Implementation Timeline */
+    .timeline-container {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      margin-bottom: 40px;
+      background: var(--surface);
+      padding: 30px 20px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-line {
+      position: absolute;
+      top: 54px;
+      left: 50px;
+      right: 50px;
+      height: 2px;
+      background: var(--border);
+      z-index: 1;
+    }
+
+    .timeline-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+      width: 120px;
+    }
+
+    .timeline-circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #fff;
+      border: 2px solid #1565C0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .timeline-step h5 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 6px 0;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .timeline-step p {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    /* Outcomes Table */
+    .outcomes-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 0.85rem;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .outcomes-table th {
+      background: var(--bg-alt);
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--text);
+      border-bottom: 2px solid var(--border);
+    }
+
+    .outcomes-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-light);
+      color: var(--text-secondary);
+    }
+
+    .outcomes-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .outcomes-table td:first-child {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .improvement-cell {
+      color: #2E7D32;
+      font-weight: 600;
+      background: rgba(46, 125, 50, 0.05);
+    }
+
+    /* Skills List */
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-tag {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media (max-width: 1024px) {
+      .comparison-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .framework-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .timeline-line {
+        display: none;
+      }
+
+      .timeline-step {
+        width: 100%;
+        flex-direction: row;
+        text-align: left;
+        gap: 16px;
+      }
+
+      .timeline-circle {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+
+      .flow-steps {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .flow-arrow {
+        display: none;
+      }
+
+      .overview-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body class="light-mode">
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">Xuan Ho<span>.</span></a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../projects.html" class="active">Projects</a></li>
+        <li><a href="../resume.html">About Me</a></li>
+        <li><a href="../beyond.html">Beyond Work</a></li>
+        <li><button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"><span
+              class="theme-icon">🌙</span></button></li>
+      </ul>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="theme-toggle-mobile" aria-label="Toggle theme" style="display:none"><span
+            class="theme-icon">🌙</span></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <main style="padding-top: 0;">
+    <!-- Hero Section -->
+    <header class="sop-hero reveal">
+      <div class="container sop-hero-content">
+        <a href="../projects.html" class="project-back-link" style="color: rgba(255,255,255,0.8);">← Back to
+          Projects</a>
+        <div class="project-hero-tags" style="margin-top: 12px;">
+          <span class="project-tag"
+            style="background: rgba(255,255,255,0.2); color: #fff; backdrop-filter: blur(4px);">Business Process
+            Improvement</span>
+        </div>
+        <h1>Reducing Employee Onboarding Time Through Process Standardisation</h1>
+        <p class="hero-desc" style="font-weight: 600; font-size: 1rem; margin-bottom: 4px;">Restaurant Kitchen
+          Operations – SOP Development</p>
+        <p class="hero-desc">A real-world initiative to solve high employee turnover challenges and build a consistent,
+          scalable training system.</p>
+
+        <div class="sop-meta-bar">
+          <span>👔 Role: Assistant Manager</span>
+          <span>👥 Team Size: 9 members</span>
+          <span>📅 Period: Oct 2022 – Present</span>
+          <span>📍 Location: Finland</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="container" style="padding-top: 40px; padding-bottom: 60px;">
+      <div class="project-layout">
+        <!-- Main Content -->
+        <div class="project-main">
+
+          <!-- ══════ PROJECT OVERVIEW ══════ -->
+          <div class="project-section reveal" id="project-overview">
+            <h2 class="section-heading-gradient">Project Overview</h2>
+
+            <div class="overview-cards">
+              <div class="overview-card">
+                <div class="overview-card-header">
+                  <div class="overview-card-icon" style="background: #FFF3E0; color: #E65100;">1</div>
+                  <h4>The Opportunity</h4>
+                </div>
+                <p>High employee turnover in the kitchen team led to long onboarding time, inconsistent training and
+                  operational inefficiencies.</p>
+                <ul>
+                  <li>Heavy dependency on experienced staff</li>
+                  <li>Knowledge existed only in people's heads</li>
+                  <li>Inconsistent training methods</li>
+                  <li>New staff took ~3 months to work independently</li>
+                </ul>
+              </div>
+              <div class="overview-card">
+                <div class="overview-card-header">
+                  <div class="overview-card-icon" style="background: #E8F5E9; color: #2E7D32;">2</div>
+                  <h4>My Role</h4>
+                </div>
+                <p>I identified the root causes and designed a structured SOP and onboarding framework to standardise
+                  work processes and accelerate training.</p>
+                <ul>
+                  <li>Observed daily operations & pain points</li>
+                  <li>Interviewed experienced staff</li>
+                  <li>Documented workflows & best practices</li>
+                  <li>Created SOP, checklists & training plan</li>
+                </ul>
+              </div>
+              <div class="overview-card">
+                <div class="overview-card-header">
+                  <div class="overview-card-icon" style="background: #E3F2FD; color: #1565C0;">3</div>
+                  <h4>The Impact</h4>
+                </div>
+                <ul>
+                  <li><strong>66% Reduced onboarding time</strong> (3 months → 1 month)</li>
+                  <li><strong>Consistent</strong> training quality and food standard</li>
+                  <li><strong>Less Dependency</strong> on individual experienced staff</li>
+                  <li><strong>Higher Retention</strong> and better experience for new employees</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ PROCESS FLOW COMPARISON ══════ -->
+          <div class="project-section reveal" id="process-flow">
+            <h2 class="section-heading-gradient">Process Flow Comparison</h2>
+
+            <div class="comparison-grid">
+              <div class="flow-box flow-before">
+                <div class="flow-box-header">BEFORE (Verbal & Inconsistent Training)</div>
+                <div class="flow-steps">
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">🧠</div>
+                    <p>Knowledge in people's heads</p>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">🗣️</div>
+                    <p>Different people teach differently</p>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">❓</div>
+                    <p>Repeated questions & mistakes</p>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">⏱️</div>
+                    <p>~3 months to work independently</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="flow-box flow-after">
+                <div class="flow-box-header">AFTER (Standardised Training with SOP)</div>
+                <div class="flow-steps">
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">📖</div>
+                    <p>Read SOP & understand basics</p>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">👨‍🍳</div>
+                    <p>Structured training & practice</p>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">📋</div>
+                    <p>Supervisor review & quality check</p>
+                  </div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-step-item">
+                    <div class="flow-step-icon">⭐</div>
+                    <p>~1 month to work independently</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ SOP FRAMEWORK ══════ -->
+          <div class="project-section reveal" id="sop-framework">
+            <h2 class="section-heading-gradient">SOP Framework (Overview)</h2>
+            <div class="framework-grid">
+              <div class="framework-card">
+                <div class="framework-icon">🧑‍🍳</div>
+                <div>
+                  <h4>Personal & Safety</h4>
+                  <p>Uniform, hygiene, handwashing, safety rules, kitchen layout.</p>
+                </div>
+              </div>
+              <div class="framework-card">
+                <div class="framework-icon">🔪</div>
+                <div>
+                  <h4>Opening Preparation</h4>
+                  <p>Workstation setup, tools preparation, daily checklist.</p>
+                </div>
+              </div>
+              <div class="framework-card">
+                <div class="framework-icon">🥬</div>
+                <div>
+                  <h4>Material Preparation</h4>
+                  <p>Rice, fish, vegetables, sauces, toppings preparation.</p>
+                </div>
+              </div>
+              <div class="framework-card">
+                <div class="framework-icon">🍣</div>
+                <div>
+                  <h4>Sushi Production</h4>
+                  <p>Nigiri, maki, gunkan, temaki – step by step standard.</p>
+                </div>
+              </div>
+              <div class="framework-card">
+                <div class="framework-icon">🏅</div>
+                <div>
+                  <h4>Quality Standards</h4>
+                  <p>Portion size, appearance, consistency, food safety.</p>
+                </div>
+              </div>
+              <div class="framework-card">
+                <div class="framework-icon">✨</div>
+                <div>
+                  <h4>Cleaning & Closing</h4>
+                  <p>Cleaning checklist, equipment care, self-monitoring.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ SOP SAMPLE ══════ -->
+          <div class="project-section reveal" id="sop-sample">
+            <h2 class="section-heading-gradient">SOP Sample (Redacted)</h2>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px;">
+              🔒 <em>This is a sample page from the SOP I created. Sensitive information such as recipes, exact
+                measurements and proprietary details have been removed.</em>
+            </p>
+
+            <div class="sop-table-container">
+              <div class="sop-table-header">
+                📋 Example: Daily Opening Preparation Checklist
+              </div>
+              <table class="sop-table">
+                <thead>
+                  <tr>
+                    <th style="width: 50px; text-align: center;">Step</th>
+                    <th style="width: 150px;">Task</th>
+                    <th>Standard</th>
+                    <th style="width: 80px; text-align: center;">Check</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Personal hygiene & uniform</td>
+                    <td>Correct uniform, hair covered, no jewelry, hands washed.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Workstation inspection</td>
+                    <td>Clean, organised, all tools in place, no cross-contamination risk.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Ingredient check</td>
+                    <td>FIFO check, freshness verified, materials prepared.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Equipment check</td>
+                    <td>Machines clean, working properly, temperature verified.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Prepare rice</td>
+                    <td>Rice cooked, mixed with vinegar, temperature within standard.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Prepare materials</td>
+                    <td>Fish, vegetables, sauces, toppings prepared as per guidelines.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                  <tr>
+                    <td>7</td>
+                    <td>Ready for service</td>
+                    <td>All stations ready, quality check completed.</td>
+                    <td style="text-align: center; font-size: 1.2rem;">☐</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="sop-table-container">
+              <div class="sop-table-header">
+                🍣 Example: Sushi Production Flow (Redacted)
+              </div>
+              <div
+                style="padding: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
+                <div style="text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 8px;">🍚</div>
+                  <div style="font-size: 0.8rem; font-weight: 600;">Prepare Rice</div>
+                </div>
+                <div style="color: var(--border-light); font-size: 1.5rem;">→</div>
+                <div style="text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 8px;">🐟</div>
+                  <div style="font-size: 0.8rem; font-weight: 600;">Prepare Ingredients</div>
+                </div>
+                <div style="color: var(--border-light); font-size: 1.5rem;">→</div>
+                <div style="text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 8px;">🔪</div>
+                  <div style="font-size: 0.8rem; font-weight: 600;">Assemble Sushi</div>
+                </div>
+                <div style="color: var(--border-light); font-size: 1.5rem;">→</div>
+                <div style="text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 8px;">🏅</div>
+                  <div style="font-size: 0.8rem; font-weight: 600;">Quality Check</div>
+                </div>
+                <div style="color: var(--border-light); font-size: 1.5rem;">→</div>
+                <div style="text-align: center;">
+                  <div style="font-size: 2rem; margin-bottom: 8px;">🥡</div>
+                  <div style="font-size: 0.8rem; font-weight: 600;">Display & Serve</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px;">
+              <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 12px;">Documentation Highlights</h4>
+              <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; font-size: 0.85rem; color: var(--text-secondary);">
+                <div><span style="color: #2E7D32;">✔</span> Visual step-by-step guides with photos and diagrams</div>
+                <div><span style="color: #2E7D32;">✔</span> Checklists for opening, closing and daily self-monitoring
+                </div>
+                <div><span style="color: #2E7D32;">✔</span> Standard portion guidance (sizes hidden in sample)</div>
+                <div><span style="color: #2E7D32;">✔</span> Common mistakes & how to avoid them</div>
+                <div><span style="color: #2E7D32;">✔</span> Cleaning protocols and food safety guidelines</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ IMPLEMENTATION TIMELINE ══════ -->
+          <div class="project-section reveal" id="timeline">
+            <h2 class="section-heading-gradient">Implementation Timeline</h2>
+            <div class="timeline-container">
+              <div class="timeline-line"></div>
+              <div class="timeline-step">
+                <div class="timeline-circle" style="color: #1976D2; border-color: #bbdefb; background: #e3f2fd;">🔍
+                </div>
+                <div>
+                  <h5>1. Observe & Analyze</h5>
+                  <p>Identified pain points & training gaps</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-circle" style="color: #388E3C; border-color: #c8e6c9; background: #e8f5e9;">📝
+                </div>
+                <div>
+                  <h5>2. Document Workflows</h5>
+                  <p>Captured key steps & best practices</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-circle" style="color: #F57C00; border-color: #ffe0b2; background: #fff3e0;">📋
+                </div>
+                <div>
+                  <h5>3. Build SOP & Checklists</h5>
+                  <p>Created SOP, visual guides & checklists</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-circle" style="color: #7B1FA2; border-color: #e1bee7; background: #f3e5f5;">🧑‍🏫
+                </div>
+                <div>
+                  <h5>4. Train & Pilot</h5>
+                  <p>Trained team & collected feedback</p>
+                </div>
+              </div>
+              <div class="timeline-step">
+                <div class="timeline-circle" style="color: #1976D2; border-color: #bbdefb; background: #e3f2fd;">⚙️
+                </div>
+                <div>
+                  <h5>5. Refine & Standardise</h5>
+                  <p>Updated SOP & implemented fully</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══════ KEY OUTCOMES ══════ -->
+          <div class="project-section reveal" id="outcomes">
+            <h2 class="section-heading-gradient">Key Outcomes</h2>
+            <table class="outcomes-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Before</th>
+                  <th>After</th>
+                  <th>Improvement</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Onboarding time</td>
+                  <td>~3 months</td>
+                  <td>~1 month</td>
+                  <td class="improvement-cell">▼ 66% faster</td>
+                </tr>
+                <tr>
+                  <td>Training method</td>
+                  <td>Verbal, inconsistent</td>
+                  <td>Standardised SOP</td>
+                  <td class="improvement-cell">Consistent quality</td>
+                </tr>
+                <tr>
+                  <td>Knowledge retention</td>
+                  <td>Low</td>
+                  <td>High</td>
+                  <td class="improvement-cell">Sustainable</td>
+                </tr>
+                <tr>
+                  <td>Dependency on experienced staff</td>
+                  <td>High</td>
+                  <td>Low</td>
+                  <td class="improvement-cell">Independence</td>
+                </tr>
+                <tr>
+                  <td>Operational errors</td>
+                  <td>Frequent</td>
+                  <td>Significantly reduced</td>
+                  <td class="improvement-cell">Better efficiency</td>
+                </tr>
+                <tr>
+                  <td>Employee confidence</td>
+                  <td>Low (slow ramp-up)</td>
+                  <td>High (faster ramp-up)</td>
+                  <td class="improvement-cell">Improved</td>
+                </tr>
+                <tr>
+                  <td>Customer experience</td>
+                  <td>Inconsistent</td>
+                  <td>Consistent</td>
+                  <td class="improvement-cell">Higher satisfaction</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div
+              style="background: var(--surface); padding: 24px; border-radius: var(--radius); border-left: 4px solid #1565C0; box-shadow: var(--shadow);">
+              <p style="font-size: 1.1rem; font-style: italic; color: var(--text-secondary); margin: 0;">
+                "Standardising our processes didn't just shorten training time, it built a stronger, more independent
+                and consistent team."
+              </p>
+            </div>
+          </div>
+
+          <!-- ══════ SKILLS DEMONSTRATED ══════ -->
+          <div class="project-section reveal" id="skills">
+            <h2 class="section-heading-gradient">Skills & Competencies Demonstrated</h2>
+            <div class="skills-row">
+              <span class="skill-tag">🗺️ Process Mapping & Documentation</span>
+              <span class="skill-tag">📄 SOP Development</span>
+              <span class="skill-tag">🧠 Knowledge Management</span>
+              <span class="skill-tag">🧑‍🏫 Training Design & Delivery</span>
+              <span class="skill-tag">🔄 Change Management & Adoption</span>
+              <span class="skill-tag">⚙️ Operational Excellence</span>
+              <span class="skill-tag">🧩 Problem Solving</span>
+              <span class="skill-tag">📈 Continuous Improvement</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="project-sidebar">
+          <div class="sticky-sidebar">
+            <div class="sidebar-card" style="padding: 20px;">
+              <h4
+                style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">
+                Project Details</h4>
+              <div style="font-size: 0.82rem; line-height: 2; color: var(--text-secondary);">
+                <div><strong>Role:</strong> Assistant Manager</div>
+                <div><strong>Location:</strong> Finland</div>
+                <div><strong>Type:</strong> Business Process</div>
+                <div><strong>Focus:</strong> SOP Development</div>
+              </div>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-card" style="padding: 20px; margin-top: 16px;">
+              <h4
+                style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); margin-bottom: 12px;">
+                Table of Contents</h4>
+              <ul class="toc-list" id="toc-list">
+                <li><a href="#project-overview">Project Overview</a></li>
+                <li><a href="#process-flow">Process Flow Comparison</a></li>
+                <li><a href="#sop-framework">SOP Framework (Overview)</a></li>
+                <li><a href="#sop-sample">SOP Sample & Docs</a></li>
+                <li><a href="#timeline">Implementation Timeline</a></li>
+                <li><a href="#outcomes">Key Outcomes</a></li>
+                <li><a href="#skills">Skills Demonstrated</a></li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="https://linkedin.com/in/xuanhothanh" target="_blank" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/hothanhxuan" target="_blank" class="social-link" aria-label="GitHub"><svg
+            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+          </svg></a>
+        <a href="mailto:susanngo1995@gmail.com" class="social-link" aria-label="Email">✉</a>
+      </div>
+      <div class="footer-bottom">© 2026 Xuan Ho. Built with ☕ and curiosity.</div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+
+</html>
