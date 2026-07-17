@@ -4,12 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Building an Omnichannel Retail Data Pipeline - Xuan Ho</title>
-  <meta name="description" content="Case study: A production-grade ETL pipeline processing 6M+ records from multiple e-commerce platforms into a BigQuery Star Schema with RFM customer segmentation.">
+  <meta name="description" content="A deep-dive business analytics case study based on the E-commerce Analytics Pipeline dashboard.">
   <link rel="stylesheet" href="../css/custom.css">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+  <style>
+    .img-lightbox, .diagram-wrap img { cursor: zoom-in; transition: opacity .15s }
+    .img-lightbox:hover, .diagram-wrap img:hover { opacity: .88 }
+    .lightbox-overlay { display: none; position: fixed; inset: 0; z-index: 9999; background: rgba(0, 0, 0, .85); backdrop-filter: blur(4px); align-items: center; justify-content: center; cursor: zoom-out; animation: lbFadeIn .2s ease }
+    .lightbox-overlay.active { display: flex }
+    .lightbox-overlay img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: .75rem; box-shadow: 0 24px 80px rgba(0, 0, 0, .5); cursor: zoom-out }
+    .lightbox-close { position: fixed; top: 1.25rem; right: 1.5rem; font-size: 2rem; color: rgba(255, 255, 255, .8); cursor: pointer; background: none; border: none; z-index: 10000 }
+    .lightbox-close:hover { color: #fff; transform: scale(1.15) }
+    .lightbox-caption { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255, 255, 255, .7); font-size: .82rem; font-style: italic; text-align: center }
+    @keyframes lbFadeIn { from { opacity: 0 } to { opacity: 1 } }
+    .insight-row { display: flex; gap: 32px; align-items: center; margin-bottom: 40px; flex-wrap: wrap }
+    .insight-row .insight-text { flex: 3; min-width: 260px }
+    .insight-row .insight-img { flex: 2; min-width: 180px; max-width: 300px }
+    .insight-row .insight-img img { width: 100%; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow) }
+    .insight-row.reverse { flex-direction: row-reverse }
+    @media(max-width:768px) { .insight-row, .insight-row.reverse { flex-direction: column } }
+    .rec-box { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--primary); border-radius: var(--radius); padding: 28px; margin-top: 24px }
+    .rec-box ul { padding-left: 20px; margin: 0 }
+    .rec-box li { color: var(--text-secondary); margin-bottom: 14px; line-height: 1.8 }
+    .rec-box li strong { color: var(--text) }
+  </style>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar">
     <div class="nav-container">
       <a href="../index.html" class="nav-logo">Xuan Ho</a>
@@ -30,20 +50,19 @@
 
   <!-- Hero -->
   <section class="project-detail-hero">
-    <div class="container">
+    <div class="container hero-center">
       <a href="../projects.html" class="project-back-link">← Back to Projects</a>
       <div class="project-hero-tags">
         <span class="project-tag tag-python">Python</span>
         <span class="project-tag tag-bigquery">BigQuery</span>
-        <span class="project-tag tag-gcs">GCS</span>
+        <span class="project-tag tag-powerbi">Power BI</span>
       </div>
       <h1>Building an Omnichannel Retail Data Pipeline</h1>
-      <p class="project-hero-subtitle">End-to-End ETL · Star Schema · RFM Segmentation</p>
-      <p class="project-hero-summary">I built an ETL pipeline to process millions of sales records for a fast-growing technology retail chain. Driven by a custom Python orchestrator, the system cleans raw data and calculates customer segments - delivering an analysis-ready Data Warehouse for the analytics team.</p>
-      <div class="project-hero-meta">
+      <p class="project-hero-summary" style="max-width:750px;margin-left:auto;margin-right:auto">I built a Python-based ETL pipeline to process millions of sales records into a BigQuery Data Warehouse. This analysis highlights the translation of that raw data into actionable business strategy, identifying critical bottlenecks in payment gateways and dormant user activation.</p>
+      <div class="project-hero-meta" style="justify-content:center">
         <span class="project-meta-item">📅 2024–2025</span>
-        <span class="project-meta-item">🛠️ Python, BigQuery, GCS, Power BI</span>
-        <span class="project-meta-item">📊 6M+ Records</span>
+        <span class="project-meta-item">🛠️ Python, BigQuery, Power BI</span>
+        <span class="project-meta-item">📊 6M+ Records · 18T VND Revenue</span>
       </div>
     </div>
   </section>
@@ -53,85 +72,161 @@
     <div class="container">
       <div class="project-layout">
         <div class="project-main">
-          <!-- 01 -->
+
+          <!-- Cover Photo -->
+          <div class="cover-img" style="margin-bottom: 40px;">
+            <img src="../assets/images/techstore-promo.png" class="img-fluid img-lightbox"
+              alt="TechStore Vietnam Promo Cover" style="width: 100%; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border: 1px solid var(--border);">
+          </div>
+
+          <!-- 01. Business Challenge -->
           <div class="project-section" id="business-challenge">
-            <h2 class="project-section-heading"><span class="section-number">01.</span> Business Challenges</h2>
+            <h2 class="section-heading-gradient">01. Business Challenge</h2>
             <p>A fast-growing technology retail chain - selling through both Shopify storefronts and direct online order systems - had no unified view of its own business.</p>
             <p>Every month, analysts had to manually pull data from multiple sources, reconcile mismatched IDs, and stitch together reports in spreadsheets.</p>
-            <div class="challenge-cards">
-              <div class="challenge-card"><h4>🗄️ Data Silos</h4><p>Shopify, Online Orders, ZaloPay, MoMo, PayPal, and Mercury Bank - all storing data independently.</p></div>
-              <div class="challenge-card"><h4>👤 No Customer View</h4><p>Tracking a single customer's journey across channels was practically impossible.</p></div>
-              <div class="challenge-card"><h4>📋 Manual Reporting</h4><p>Cashflow and sales reports were compiled by hand each month - slow, error-prone, and inconsistent.</p></div>
+            <div class="insight-row" style="margin-bottom: 24px;">
+              <div class="insight-text">
+                <ul style="padding-left:20px; color:var(--text-secondary); line-height:1.7">
+                  <li><strong>Data Silos:</strong> Shopify, Online Orders, ZaloPay, MoMo, PayPal, and Mercury Bank - all storing data independently.</li>
+                  <li><strong>No Customer View:</strong> Tracking a single customer's journey across channels was practically impossible.</li>
+                  <li><strong>Manual Reporting:</strong> Cashflow and sales reports were compiled by hand each month - slow, error-prone, and inconsistent.</li>
+                </ul>
+              </div>
             </div>
           </div>
 
-          <!-- 02 -->
+          <!-- 02. My Approach -->
           <div class="project-section" id="my-approach">
-            <h2 class="project-section-heading"><span class="section-number">02.</span> My Approach</h2>
+            <h2 class="section-heading-gradient">02. My Approach</h2>
             <p>I prioritised getting the data architecture right first - so any downstream tool could plug in reliably.</p>
-            <div class="approach-steps">
-              <div class="approach-step"><div class="step-badge">1</div><div class="step-content"><h4>Ingest</h4><p>Raw data dumps ingested into Google Cloud Storage buckets as the single source of truth.</p></div></div>
-              <div class="approach-step"><div class="step-badge">2</div><div class="step-content"><h4>Transform</h4><p>Python scripts decompress, parse, clean, and standardise into a unified schema with data quality checks.</p></div></div>
-              <div class="approach-step"><div class="step-badge">3</div><div class="step-content"><h4>Load &amp; Segment</h4><p>Transformed data loaded into BigQuery. SQL <code>MERGE</code> calculates and updates each customer's RFM segment.</p></div></div>
+            <div class="insight-row">
+              <div class="insight-text">
+                <ul style="padding-left:20px; color:var(--text-secondary); line-height:1.7">
+                  <li><strong>Ingest:</strong> Raw data dumps ingested into Google Cloud Storage buckets as the single source of truth.</li>
+                  <li><strong>Transform:</strong> Python scripts decompress, parse, clean, and standardise into a unified schema with data quality checks.</li>
+                  <li><strong>Load &amp; Segment:</strong> Transformed data loaded into BigQuery. SQL <code>MERGE</code> calculates and updates each customer's RFM segment.</li>
+                </ul>
+              </div>
+              <div class="insight-img">
+                <img src="../assets/images/etl-pipeline.jpg" alt="ETL Pipeline Architecture Diagram" class="img-lightbox" />
+              </div>
             </div>
           </div>
 
-          <!-- 03 -->
-          <div class="project-section" id="system-architecture">
-            <h2 class="project-section-heading"><span class="section-number">03.</span> System Architecture</h2>
-            <p>The pipeline follows a cloud-native approach: raw files land in GCS, get processed by a custom Python orchestrator, and are loaded into BigQuery.</p>
-            <div class="figure-placeholder">
-              <div class="figure-placeholder-inner">📐 Architecture Diagram</div>
-              <p class="figure-caption">Figure 1 - High-level pipeline architecture: from raw sources to analysis-ready Data Warehouse.</p>
+          <!-- 03. Data Audit & Strategic Pivot -->
+          <div class="project-section" id="data-audit">
+            <h2 class="section-heading-gradient">03. Data Audit &amp; Strategic Pivot</h2>
+            <p>During the ETL phase, a comprehensive audit revealed structural anomalies in the web tracking data, making standard behavioral models (like end-to-end Funnels) mathematically unreliable.</p>
+            <p>To maintain the integrity of our BI solution, I pivoted the analytical strategy to focus exclusively on verified transactional data from the Star Schema. The resulting dashboards prioritize actionable, high-confidence insights: <strong>RFM Customer Segmentation</strong>, <strong>Net Cashflow Trends</strong>, and <strong>Payment Gateway Performance</strong>.</p>
+          </div>
+
+          <!-- 04. Executive Summary -->
+          <div class="project-section" id="executive-summary">
+            <h2 class="section-heading-gradient">04. Executive Summary</h2>
+            <p>While top-line revenue often steals the spotlight in e-commerce, true business health lies in the conversion funnel, cash flow realization, and customer retention. Through a deep analysis of our e-commerce dashboard, we identified a critical bottleneck: a severe disconnect between recognized sales revenue and actual cash-in-bank, driven largely by payment gateway failures.</p>
+            <p>By pivoting our focus from merely driving traffic to optimizing the payment experience and activating dormant accounts, we uncovered millions in easily recoverable revenue.</p>
+          </div>
+
+          <!-- 05. Dashboard -->
+          <div class="project-section" id="dashboard">
+            <h2 class="section-heading-gradient">05. The Dashboard</h2>
+            
+            <!-- Dashboard Usage Instructions -->
+            <div style="background:var(--bg-alt);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:28px;margin-top:20px;">
+              <h5 style="font-weight:700;margin-bottom:12px;font-size:.95rem">ℹ️ How to Use This Dashboard</h5>
+              <ul style="margin:0;padding-left:20px;color:var(--text-secondary);font-size:.9rem;line-height:1.8">
+                <li><strong>Optimal Viewing:</strong> Click the <strong>Fit to page</strong> icon or the <strong>Full screen</strong> arrows at the bottom right corner of the dashboard for the best experience.</li>
+                <li><strong>Exploration:</strong> Navigate between the 3 core analytical views (<strong>Daily Cashflow</strong>, <strong>Customer Journey</strong>, <strong>Payment Status</strong>) using the navigation buttons on the left sidebar.</li>
+                <li><strong>Interaction:</strong> Use the dropdowns to filter data, click on chart elements (like specific gateways or RFM segments) to cross-filter the entire page, and hover over data points for detailed tooltips.</li>
+              </ul>
             </div>
-            <h3>How the Pipeline Works</h3>
-            <p>Data flows through three layers - the <strong>Medallion Architecture</strong>:</p>
-            <div class="architecture-layers">
-              <div class="arch-layer"><h4>🥉 Bronze - Raw</h4><p>Compressed files ingested and stored as-is in GCS.</p></div>
-              <div class="arch-layer"><h4>🥈 Silver - Cleaned</h4><p>Python standardises schemas, fixes data types, generates surrogate keys.</p></div>
-              <div class="arch-layer"><h4>🥇 Gold - Serving</h4><p>Dimension &amp; Fact tables loaded into BigQuery with SQL views for reporting.</p></div>
+
+            <figure style="margin-bottom:40px;">
+              <div style="position:relative;width:100%;padding-bottom:62.25%;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)">
+                <iframe title="Project 6 - TechStore VN ETL pipeline" src="https://app.powerbi.com/view?r=eyJrIjoiNDJjNjAwYTAtYzA2OC00MzFjLTg1MmMtM2U2MjNiZjYxNDcxIiwidCI6IjgwY2M4ZjRjLWUzZDYtNDk0My1hNDAyLTJiZjBmYzMyNDFhZCJ9" style="position:absolute;top:0;left:0;width:100%;height:100%;border:none" allowFullScreen="true"></iframe>
+              </div>
+              <figcaption style="text-align:center;margin-top:12px;font-size:.85rem;color:var(--text-muted);font-style:italic">Interactive E-commerce Dashboard - Feel free to explore filters!</figcaption>
+            </figure>
+          </div>
+
+          <!-- 06. Key Insights -->
+          <div class="project-section" id="key-insights">
+            <h2 class="section-heading-gradient">06. Key Insights</h2>
+            
+            <div style="margin-bottom: 32px;">
+              <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:12px">📊 Key Insight 1: The Cash Flow Gap &amp; The Payment Gateway Crisis</h3>
+              <p><strong>The Observation:</strong><br>At first glance, the top-line metrics look phenomenal: <strong>18T VND in Total Sales Revenue</strong>. However, a closer look at the cash flow reveals a massive liquidity gap, with <strong>Total Bank Inflow sitting at only 1T VND</strong>.</p>
+              <p><strong>The Root Cause:</strong><br>The disparity is heavily driven by a staggering <strong>43.82% Failed Payment Rate</strong>. When breaking down the payments by gateway, we found the culprits:</p>
+              <ul>
+                <li>Local e-wallets like <strong>Momo and ZaloPay are experiencing ~50% failure rates</strong>.</li>
+                <li>Traditional <strong>Bank Transfers are suffering from massive processing delays</strong> (averaging ~10 hours), leading to customer drop-off or order timeout.</li>
+                <li>The volume of failed transactions consistently outpaces successful ones month-over-month.</li>
+              </ul>
+              <p><strong>The Business Impact:</strong><br>The company is aggressively acquiring customers and securing orders, but the checkout infrastructure is hemorrhaging cash at the finish line, resulting in massive outstanding debt, with a terrifyingly large portion aging past 60 days.</p>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+              <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:12px">🚨 Key Insight 2: The "VIP Debt" Paradox</h3>
+              <p><strong>The Observation:</strong><br>Using a decomposition tree to analyze the outstanding debt, a counterintuitive and alarming trend emerged: <strong>"VIP / Best Customers" hold the largest share of total outstanding debt (~36.9T VND).</strong></p>
+              <p><strong>The Insight:</strong><br>Our most loyal, high-value customers are attempting to place massive orders but are failing to complete the payment cycle. This is likely due to:</p>
+              <ol>
+                <li><strong>Gateway Transaction Limits:</strong> E-wallets often have daily transaction caps that VIP cart sizes easily exceed.</li>
+                <li><strong>Friction in High-Value Checkout:</strong> Complex authentication for large bank transfers causing friction and ultimate cart abandonment.</li>
+              </ol>
+              <p>This means we aren't just losing random sales; we are frustrating our most valuable demographic at the most critical moment of the customer journey.</p>
+            </div>
+
+            <div style="margin-bottom: 32px;">
+              <h3 style="font-size:1.15rem;font-weight:700;margin-bottom:12px">💡 Key Insight 3: The "Sleeping Giant" Customer Base</h3>
+              <p><strong>The Observation:</strong><br>Out of ~100,000 total registered customers, only 29,630 are classified as active.</p>
+              <p><strong>The Insight:</strong><br>There are <strong>~70,370 registered accounts with zero transaction history</strong>—accounting for roughly 70% of the entire user base. These are high-intent users who took the time to create an account but never made it past the consideration phase.</p>
+              <p>Furthermore, analyzing the time-of-day purchasing behavior reveals clear peaks late at night (<strong>8:00 PM - 10:00 PM</strong>) and early morning, providing a precise window for targeted interventions.</p>
             </div>
           </div>
 
-          <!-- 04 -->
-          <div class="project-section" id="results">
-            <h2 class="project-section-heading"><span class="section-number">04.</span> Results</h2>
-            <p>The team gains a centralised, analysis-ready Data Warehouse in BigQuery:</p>
-            <h3>4.1 - Final Data Structure</h3>
-            <p>A <strong>Star Schema</strong> data warehouse where all events connect back to Customers and Products.</p>
-            <div class="result-columns">
-              <div class="result-col"><h4>Dimension Tables</h4><ul><li><code>dim_customer</code> - profile + RFM segment</li><li><code>dim_product</code> - SKU, category, brand</li></ul></div>
-              <div class="result-col"><h4>Fact Tables</h4><ul><li><code>fact_orders</code> - all orders</li><li><code>fact_order_items</code> - line detail</li><li><code>fact_payment</code> - e-wallet</li><li><code>fact_bank_transactions</code> - bank</li><li><code>fact_cart_events</code> - behaviour</li></ul></div>
+          <!-- 07. Recommendations -->
+          <div class="project-section" id="recommendations">
+            <h2 class="section-heading-gradient">07. Strategic Recommendations &amp; Action Plan</h2>
+            <p>To transition from passive reporting to active growth, I recommend the following immediate business interventions based on the data:</p>
+            
+            <div class="rec-box">
+              <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:12px">1. Overhaul the Checkout Experience (Immediate Priority)</h3>
+              <ul>
+                <li><strong>Investigate E-wallet Failures:</strong> Partner closely with Momo and ZaloPay technical teams to diagnose the ~50% drop-off. If it cannot be resolved, dynamically deprioritize these payment methods in the UI for cart sizes that typically fail.</li>
+                <li><strong>Introduce Buy-Now-Pay-Later (BNPL):</strong> Given the high failure rate on large orders, integrating a reliable BNPL provider could alleviate sticker shock and bypass e-wallet transaction limits.</li>
+              </ul>
             </div>
-            <h3>4.2 - Auto-Updated Customer Metrics</h3>
-            <p>The pipeline recalculates LTV, last order date, order count, and average spend - re-classifying each customer into an <strong>RFM-based segment</strong> (11 segments).</p>
-            <h3>4.3 - Reporting Views</h3>
-            <div class="result-columns">
-              <div class="result-col"><h4>📊 Daily Cashflow View</h4><p>Reconciles orders, payments, and bank movements into one daily summary.</p></div>
-              <div class="result-col"><h4>🛒 Customer Journey View</h4><p>Stitches cart events and purchases into a chronological sequence per customer.</p></div>
+
+            <div class="rec-box" style="margin-top:20px; border-left-color: #2E7D32;">
+              <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:12px">2. Launch a "White-Glove" VIP Recovery Protocol</h3>
+              <ul>
+                <li>Do not treat failed VIP payments as standard debt collection. Instead, trigger an automated, high-touch "Concierge" workflow when a VIP payment fails. Offer a dedicated support rep to help them complete the transaction via alternative, more reliable methods (like a direct wire or split payment).</li>
+              </ul>
+            </div>
+
+            <div class="rec-box" style="margin-top:20px; border-left-color: #F57C00;">
+              <h3 style="font-size:1.1rem;font-weight:700;margin-bottom:12px">3. Activate the 70k Dormant Users</h3>
+              <ul>
+                <li>Launch a highly targeted <strong>"First-Purchase Discount"</strong> email and push notification campaign.</li>
+                <li><strong>Timing is everything:</strong> Schedule these communications to hit inboxes exactly between <strong>7:30 PM and 8:00 PM</strong> to intercept the natural 8:00 PM - 10:00 PM traffic surge observed in the data.</li>
+              </ul>
             </div>
           </div>
 
-          <!-- 05 -->
-          <div class="project-section" id="business-impact">
-            <h2 class="project-section-heading"><span class="section-number">05.</span> Business Impact</h2>
-            <p>With the pipeline in place, here is what changes for the business:</p>
-            <div class="impact-grid">
-              <div class="impact-card"><h4>🎯 One Source of Truth</h4><p>All data now lives in one place - clean, consistent, and version-controlled.</p></div>
-              <div class="impact-card"><h4>🔌 Plug-and-Play Analytics</h4><p>The team connects directly to BigQuery - no manual data prep needed.</p></div>
-              <div class="impact-card"><h4>💰 Daily Financial Visibility</h4><p>Finance reconciles all transactions into one daily cashflow summary.</p></div>
-              <div class="impact-card"><h4>👥 Always-Current Customer View</h4><p>Marketing sees Champions, Loyals, and At-Risk customers - updated automatically.</p></div>
-            </div>
+          <!-- 08. Conclusion -->
+          <div class="project-section" id="conclusion">
+            <h2 class="section-heading-gradient">08. Conclusion</h2>
+            <p>Data without action is just overhead. By identifying the payment gateway bottlenecks and the untapped potential of dormant accounts, this analysis shifts the organizational focus from <em>generating</em> demand to successfully <em>capturing</em> it. Fixing the 43% payment failure rate alone represents a multi-billion VND growth lever that requires zero additional marketing spend.</p>
           </div>
 
           <!-- Source Code CTA -->
           <div class="source-code-cta">
             <h3>Source Code &amp; Details</h3>
             <p>For a deep dive into the code structure, data schema, and setup instructions, visit the GitHub repository.</p>
-            <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;margin-bottom:2px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> View on GitHub →</a>
+            <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn-github-gradient"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;margin-bottom:2px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> View on GitHub →</a>
           </div>
 
-          <!-- Prev / Next -->
+          <!-- Project Nav -->
           <nav class="project-nav">
             <div class="project-nav-item project-nav-prev disabled">
               <span class="project-nav-label">← Previous</span>
@@ -147,19 +242,27 @@
         <!-- Sidebar -->
         <aside class="project-sidebar">
           <div class="sidebar-sticky">
-            <div class="toc-card">
-              <h4>Table of Contents</h4>
+
+            <!-- GitHub Card -->
+            <div class="toc-card" style="background:linear-gradient(135deg,rgba(111,66,193,0.05) 0%,rgba(253,126,20,0.05) 100%);border:1px solid rgba(111,66,193,0.15);padding:20px">
+              <h4 style="color:var(--primary);font-size:.85rem;font-weight:700;text-transform:uppercase;margin-bottom:8px">Source Code &amp; Data</h4>
+              <p style="font-size:.82rem;color:var(--text-secondary);margin-bottom:16px;line-height:1.5">For the detailed ETL pipeline repository, scripts, and documentation, visit GitHub.</p>
+              <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn-github-gradient" style="width:100%;justify-content:center;margin-bottom:16px;padding:10px 16px;font-size:.85rem"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;margin-bottom:2px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> View on GitHub</a>
+            </div>
+
+            <!-- Table of Contents -->
+            <div class="toc-card" style="padding:20px">
+              <h4 style="font-size:.85rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Table of Contents</h4>
               <ul class="toc-list" id="toc-list">
                 <li><a href="#business-challenge">01. Business Challenge</a></li>
                 <li><a href="#my-approach">02. My Approach</a></li>
-                <li><a href="#system-architecture">03. System Architecture</a></li>
-                <li><a href="#results">04. Results</a></li>
-                <li><a href="#business-impact">05. Business Impact</a></li>
+                <li><a href="#data-audit">03. Data Audit &amp; Pivot</a></li>
+                <li><a href="#executive-summary">04. Executive Summary</a></li>
+                <li><a href="#dashboard">05. The Dashboard</a></li>
+                <li><a href="#key-insights">06. Key Insights</a></li>
+                <li><a href="#recommendations">07. Recommendations</a></li>
+                <li><a href="#conclusion">08. Conclusion</a></li>
               </ul>
-            </div>
-            <div class="toc-card">
-              <h4>Source Code</h4>
-              <a href="https://github.com/hothanhxuan/E-commerce-Analytics-ETL-Pipeline" target="_blank" class="btn btn-outline" style="width:100%;justify-content:center;margin-top:8px"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="margin-right:6px;margin-bottom:2px"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg> View on GitHub</a>
             </div>
           </div>
         </aside>
@@ -179,22 +282,37 @@
     </div>
   </footer>
 
+  <!-- Lightbox -->
+  <div class="lightbox-overlay" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="" id="lightbox-img">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
   <script src="../js/main.js"></script>
   <script>
+    // Mobile theme toggle
     const mobileToggle = document.getElementById('theme-toggle-mobile');
     if (window.innerWidth <= 768 && mobileToggle) mobileToggle.style.display = 'flex';
     window.addEventListener('resize', () => { if (mobileToggle) mobileToggle.style.display = window.innerWidth <= 768 ? 'flex' : 'none'; });
     mobileToggle?.addEventListener('click', () => { const c = document.documentElement.getAttribute('data-theme'); setTheme(c === 'dark' ? 'light' : 'dark'); });
-    // Active TOC
-    const tocLinks = document.querySelectorAll('#toc-list a');
-    const secs = document.querySelectorAll('.project-section');
-    function updateToc() {
-      let cur = '';
-      secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
-      tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
-    }
+
+    // TOC active state
+    const tocLinks = document.querySelectorAll('#toc-list a'), secs = document.querySelectorAll('.project-section');
+    function updateToc() { let cur = ''; secs.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; }); tocLinks.forEach(a => { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); }); }
     window.addEventListener('scroll', updateToc, { passive: true });
+
+    // Lightbox
+    (function () {
+      const overlay = document.getElementById('lightbox'), lbImg = document.getElementById('lightbox-img'), lbCaption = document.getElementById('lightbox-caption'), lbClose = document.getElementById('lightbox-close');
+      function open(src, alt, cap) { lbImg.src = src; lbImg.alt = alt; lbCaption.textContent = cap || ''; overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+      function close() { overlay.classList.remove('active'); document.body.style.overflow = ''; setTimeout(() => { lbImg.src = ''; }, 250); }
+      document.querySelectorAll('.img-lightbox,.diagram-wrap img').forEach(img => { img.addEventListener('click', () => { open(img.src, img.alt, img.dataset?.caption || img.alt || ''); }); });
+      overlay.addEventListener('click', e => { if (e.target === overlay || e.target === lbImg) close(); });
+      lbClose.addEventListener('click', close);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
   </script>
 </body>
 </html>
